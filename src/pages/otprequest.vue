@@ -1,14 +1,10 @@
 <template>
   <div class="">
     <!-- mobile -->
-    <div class="mobile-only lt-sm">
-      <head-Mobile></head-Mobile>
-    </div>
+    <div class="mobile-only lt-sm"></div>
     <!-- tablet  -->
-    <div class="mobile-only gt-xs">
-      <head-tablet></head-tablet>
-    </div>
-
+    <div class="mobile-only gt-xs orientation-portrait"></div>
+    <div class="mobile-only gt-xs orientation-landscape"></div>
     <!-- PC  -->
     <div
       class="desktop-only shadow-6"
@@ -111,13 +107,9 @@
 
 <script>
 import headPC from "../components/headPC.vue";
-import headMobile from "../components/headMobile.vue";
-import headTablet from "../components/headTablet.vue";
 export default {
   components: {
     headPC,
-    headMobile,
-    headTablet,
   },
   data() {
     return {
