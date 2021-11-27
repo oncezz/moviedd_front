@@ -1,0 +1,72 @@
+// app global css in SCSS form
+@import url("https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,500&display=swap");
+
+.brx {
+  border: 1px solid red;
+}
+// ----------  font ----------
+.font32 {
+  font-size: 32px;
+}
+.font28 {
+  font-size: 28px;
+}
+.font24 {
+  font-size: 24px;
+}
+.font20 {
+  font-size: 20px;
+}
+.font19 {
+  font-size: 19px;
+}
+.font18 {
+  font-size: 18px;
+}
+.font16 {
+  font-size: 16px;
+}
+.fontU {
+  text-decoration: underline;
+}
+.fontB {
+  font-weight: bold;
+}
+.fontB700 {
+  font-weight: 700;
+}
+////////
+body {
+  background-color: #010101;
+  color: white;
+  font-family: "Prompt", sans-serif;
+}
+.bgDrop {
+  background-color: rgba($color: black, $alpha: 0.8);
+}
+// dialog
+.diaBox {
+  background: linear-gradient(
+    360deg,
+    rgba(0, 0, 0, 0.95) 74.33%,
+    rgba(0, 209, 255, 0.95) 127.31%
+  );
+  backdrop-filter: blur(4px);
+  width: 500px;
+  height: 250px;
+  border: 1px solid #00d1ff;
+}
+.okInDia {
+  position: absolute;
+  margin: auto;
+  bottom: 20px;
+  left: 190px;
+  cursor: pointer;
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  background: #00d1ff;
+  border: 1px solid #00d1ff;
+  color: black;
+  font-size: 18px;
+}
