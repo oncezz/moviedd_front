@@ -150,6 +150,7 @@
           </div>
         </div>
       </div>
+      <end-bar :menu="2" :login="false"></end-bar>
     </div>
 
     <!-- PC  -->
