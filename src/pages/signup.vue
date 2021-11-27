@@ -52,13 +52,14 @@
         </div>
       </div>
       <!-- end header  -->
+
       <div class="endHeaderMobile text-black">
         <div class="q-pt-md" style="font-size: 21px" align="center">
           สิทธิพิเศษสำหรับสมาชิก
         </div>
         <div class="row q-pt-md q-pl-md">
           <div class="lineOrderMobile"></div>
-          <div class="q-pl-md">
+          <div class="q-pl-sm">
             <div class="font16">ระบบจัดเก็บหนัง</div>
             <div class="font13">ง่ายต่อการดูหนัง หรือไว้ดูภายหลัง</div>
           </div>
@@ -67,13 +68,16 @@
         <div class="row q-pt-md q-pl-md">
           <div class="lineOrderMobile"></div>
 
-          <div class="q-pl-md">
+          <div class="q-pl-sm">
             <div class="font16">ระบบจัดการหน้าแรก</div>
             <div class="font13">
               ระบบ AI จะจัดหนังในแนวที่คุณชอบ <br />
               มารอให้คุณได้ชม อย่างจุใจ
             </div>
           </div>
+        </div>
+        <div class="picTagM">
+          <img src="../../public/image/sinupPromoMobile.png" alt="" />
         </div>
       </div>
 
@@ -83,6 +87,69 @@
     <!-- tablet  -->
     <div class="mobile-only gt-xs">
       <head-bar></head-bar>
+      <!-- head  -->
+      <div class="q-pr-lg" align="center">
+        <div>
+          <img
+            width="540.08px"
+            height="280.47px"
+            src="../../public/image/signupPromo.png"
+            alt=""
+          />
+        </div>
+        <div>
+          <div class="font28">สมัครสมาชิก</div>
+          <div
+            class="font20"
+            align="left"
+            style="padding-left: 133px; padding-right: 133px"
+          >
+            <div class="q-pt-md">หมายเลขโทรศัพท์มือถือ</div>
+            <q-input dark outlined dense v-model="userData.phoneNumber">
+            </q-input>
+            <div class="font16 q-pt-sm" style="color: #868686">
+              ใช้สำหรับยืนยันตัวตน
+            </div>
+            <div class="q-pt-md">ชื่อผู้ใช้งาน</div>
+            <q-input dark outlined dense v-model="userData.phoneNumber">
+            </q-input>
+            <div class="font16 q-pt-sm" style="color: #868686">
+              ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+            </div>
+            <div class="q-pt-sm">รหัสผ่าน</div>
+            <q-input
+              dark
+              outlined
+              dense
+              v-model="userData.password"
+              :type="isPwd ? 'password' : 'text'"
+              ><template v-slot:append>
+                <q-icon
+                  :name="isPwd ? 'visibility_off' : 'visibility'"
+                  class="cursor-pointer"
+                  @click="isPwd = !isPwd"
+                />
+              </template>
+            </q-input>
+            <div class="font16" style="color: #868686">
+              ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+            </div>
+          </div>
+          <div
+            class="saveBtnTablet font18"
+            style="margin-top: 37px"
+            @click="saveDia()"
+          >
+            ยืนยัน
+          </div>
+          <div class="font16 q-py-md">
+            ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
+            <span class="fontU cursor-pointer" style="color: #00d1ff">
+              เข้าสู่ระบบ</span
+            >
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- PC  -->
@@ -246,12 +313,23 @@ export default {
   bottom: -6px;
   right: 0px;
 }
+.picTagM {
+  position: absolute;
+  bottom: -60px;
+  right: 0px;
+}
 .saveBtnMobile {
   width: 90px;
   height: 27px;
   line-height: 27px;
   border: 1px solid white;
   border-radius: 2px;
+}
+.saveBtnTablet {
+  width: 116px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid white;
 }
 .endHeaderMobile {
   width: 100%;
