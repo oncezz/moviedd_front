@@ -106,10 +106,10 @@
 </template>
 
 <script>
-import headPC from "../components/headPC.vue";
+import headBar from "../components/headBar.vue";
 export default {
   components: {
-    headPC,
+    headBar,
   },
   data() {
     return {

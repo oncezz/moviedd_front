@@ -2,11 +2,15 @@
   <div class="">
     <!-- mobile -->
     <div class="mobile-only lt-sm">
-      <head-Mobile></head-Mobile>
+      <head-bar></head-bar>
+      <!-- head  -->
+
+      <!-- end  -->
+      <end-bar></end-bar>
     </div>
     <!-- tablet  -->
     <div class="mobile-only gt-xs">
-      <head-tablet></head-tablet>
+      <head-bar></head-bar>
     </div>
 
     <!-- PC  -->
@@ -14,7 +18,7 @@
       class="desktop-only shadow-6"
       style="max-width: 1600px; width: 100%; margin: auto"
     >
-      <head-PC></head-PC>
+      <head-bar></head-bar>
       <div class="q-pa-lg text-white" align="center">
         <div><img src="../../public/image/signupPromo.png" alt="" /></div>
         <div class="font28">สมัครสมาชิก</div>
@@ -110,14 +114,13 @@
 </template>
 
 <script>
-import headPC from "../components/headPC.vue";
-import headMobile from "../components/headMobile.vue";
-import headTablet from "../components/headTablet.vue";
+import headBar from "../components/headBar.vue";
+import endBar from "../components/endBar.vue";
 export default {
   components: {
-    headPC,
-    headMobile,
-    headTablet,
+    headBar,
+
+    endBar,
   },
   data() {
     return {
