@@ -103,7 +103,7 @@ export default {
   width: 100%;
   height: 66px;
   color: white;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 1);
 }
 .noPick {
   color: #797575;
