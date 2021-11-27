@@ -21,6 +21,10 @@ const routes = [
     path: "/otprequest",
     component: () => import("pages/otprequest.vue"),
   },
+  {
+    path: "/forgetpassword1",
+    component: () => import("pages/forgetpasswordstep1.vue"),
+  },
 ];
 
 export default routes;
