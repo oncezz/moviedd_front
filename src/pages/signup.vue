@@ -2,11 +2,87 @@
   <div class="">
     <!-- mobile -->
     <div class="mobile-only lt-sm">
-      <head-Mobile></head-Mobile>
+      <head-bar></head-bar>
+      <!-- head  -->
+      <div class="q-pr-lg" align="center">
+        <div>
+          <img
+            width="337px"
+            height="175.01px"
+            src="../../public/image/signupPromo.png"
+            alt=""
+          />
+        </div>
+        <div class="font20">สมัครสมาชิก</div>
+        <div class="font14 q-pl-lg" align="left">
+          <div class="q-pt-md">หมายเลขโทรศัพท์มือถือ</div>
+          <q-input dark outlined dense v-model="userData.phoneNumber">
+          </q-input>
+          <div class="font12" style="color: #868686">ใช้สำหรับยืนยันตัวตน</div>
+          <div class="q-pt-sm">ชื่อผู้ใช้งาน</div>
+          <q-input
+            dark
+            outlined
+            dense
+            v-model="userData.username"
+            :type="isPwd ? 'password' : 'text'"
+            ><template v-slot:append>
+              <q-icon
+                :name="isPwd ? 'visibility_off' : 'visibility'"
+                class="cursor-pointer"
+                @click="isPwd = !isPwd"
+              />
+            </template>
+          </q-input>
+          <div class="font12" style="color: #868686">
+            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+          </div>
+          <div class="q-pt-sm">รหัสผ่าน</div>
+          <q-input dark outlined dense v-model="userData.password"> </q-input>
+          <div class="font12" style="color: #868686">
+            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+          </div>
+        </div>
+        <div class="saveBtnMobile q-mt-md" @click="saveDia()">ยืนยัน</div>
+        <div class="font12 q-py-md">
+          ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
+          <span class="fontU cursor-pointer" style="color: #00d1ff">
+            เข้าสู่ระบบ</span
+          >
+        </div>
+      </div>
+      <!-- end header  -->
+      <div class="endHeaderMobile text-black">
+        <div class="q-pt-md" style="font-size: 21px" align="center">
+          สิทธิพิเศษสำหรับสมาชิก
+        </div>
+        <div class="row q-pt-md q-pl-md">
+          <div class="lineOrderMobile"></div>
+          <div class="q-pl-md">
+            <div class="font16">ระบบจัดเก็บหนัง</div>
+            <div class="font13">ง่ายต่อการดูหนัง หรือไว้ดูภายหลัง</div>
+          </div>
+        </div>
+
+        <div class="row q-pt-md q-pl-md">
+          <div class="lineOrderMobile"></div>
+
+          <div class="q-pl-md">
+            <div class="font16">ระบบจัดการหน้าแรก</div>
+            <div class="font13">
+              ระบบ AI จะจัดหนังในแนวที่คุณชอบ <br />
+              มารอให้คุณได้ชม อย่างจุใจ
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- end  -->
+      <end-bar :menu="2" :login="false"></end-bar>
     </div>
     <!-- tablet  -->
     <div class="mobile-only gt-xs">
-      <head-tablet></head-tablet>
+      <head-bar></head-bar>
     </div>
 
     <!-- PC  -->
@@ -14,7 +90,7 @@
       class="desktop-only shadow-6"
       style="max-width: 1600px; width: 100%; margin: auto"
     >
-      <head-PC></head-PC>
+      <head-bar></head-bar>
       <div class="q-pa-lg text-white" align="center">
         <div><img src="../../public/image/signupPromo.png" alt="" /></div>
         <div class="font28">สมัครสมาชิก</div>
@@ -110,14 +186,13 @@
 </template>
 
 <script>
-import headPC from "../components/headPC.vue";
-import headMobile from "../components/headMobile.vue";
-import headTablet from "../components/headTablet.vue";
+import headBar from "../components/headBar.vue";
+import endBar from "../components/endBar.vue";
 export default {
   components: {
-    headPC,
-    headMobile,
-    headTablet,
+    headBar,
+
+    endBar,
   },
   data() {
     return {
@@ -170,5 +245,23 @@ export default {
   position: absolute;
   bottom: -6px;
   right: 0px;
+}
+.saveBtnMobile {
+  width: 90px;
+  height: 27px;
+  line-height: 27px;
+  border: 1px solid white;
+  border-radius: 2px;
+}
+.endHeaderMobile {
+  width: 100%;
+  height: calc(100vh - 574px);
+  background: #00d1ff;
+}
+
+.lineOrderMobile {
+  width: 2px;
+  height: 44px;
+  background: #010101;
 }
 </style>
