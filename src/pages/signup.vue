@@ -78,7 +78,7 @@
       </div>
 
       <!-- end  -->
-      <end-bar></end-bar>
+      <end-bar :menu="2" :login="false"></end-bar>
     </div>
     <!-- tablet  -->
     <div class="mobile-only gt-xs">

@@ -64,20 +64,20 @@ export default {};
   width: 100%;
   height: 82px;
   color: white;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 1);
 }
 .headTablet {
   width: 100%;
   height: 78px;
   text-decoration: underline;
   color: white;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 1);
 }
 .headMobile {
   width: 100%;
   height: 46px;
   text-decoration: underline;
   color: white;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 1);
 }
 </style>
