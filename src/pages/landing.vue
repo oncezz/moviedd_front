@@ -31,7 +31,7 @@ export default {
 }
 .bgNeon {
   background: radial-gradient(
-    54.74% 54.74% at 50% 50%,
+    57.42% 57.42% at 50% 50%,
     #004150 0%,
     #010101 100%
   );
