@@ -83,6 +83,7 @@
     <!-- tablet  -->
     <div class="mobile-only gt-xs">
       <head-bar></head-bar>
+      <end-bar :menu="2" :login="false"></end-bar>
     </div>
 
     <!-- PC  -->
