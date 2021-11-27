@@ -25,6 +25,10 @@ const routes = [
     path: "/forgetpassword1",
     component: () => import("pages/forgetpasswordstep1.vue"),
   },
+  {
+    path: "/forgetpassword2",
+    component: () => import("pages/forgetpasswordstep2.vue"),
+  },
 ];
 
 export default routes;
