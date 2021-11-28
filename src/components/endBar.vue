@@ -5,7 +5,7 @@
       <div class="enderMobile font14 row items-center fixed-bottom">
         <!-- home  -->
         <div class="col" align="center">
-          <div class="noPick" v-show="menu != 1">
+          <div class="noPick" v-show="menu != 1" @click="goHome()">
             <div class="">
               <img src="../../public/image/homeIcon.svg" width="22px" alt="" />
             </div>
@@ -20,7 +20,7 @@
         </div>
         <!-- sign up  -->
         <div class="col" align="center" v-show="!login">
-          <div class="noPick" v-show="menu != 2">
+          <div class="noPick" v-show="menu != 2" @click="goTosignup()">
             <div>
               <img
                 src="../../public/image/signupIcon.svg"
@@ -43,7 +43,7 @@
         </div>
         <!-- log in  -->
         <div class="col noPick" align="center" v-show="!login">
-          <div class="noPick" v-show="menu != 3">
+          <div class="noPick" v-show="menu != 3" @click="goTologin()">
             <div>
               <img src="../../public/image/loginIcon.svg" width="24px" alt="" />
             </div>
@@ -107,7 +107,7 @@
       <div class="enderTablet font14 row items-center fixed-bottom">
         <!-- home  -->
         <div class="col" align="center">
-          <div class="noPick" v-show="menu != 1">
+          <div class="noPick" v-show="menu != 1" @click="goHome()">
             <div>
               <img src="../../public/image/homeIcon.svg" width="30px" alt="" />
             </div>
@@ -122,7 +122,7 @@
         </div>
         <!-- sign up  -->
         <div class="col" align="center" v-show="!login">
-          <div class="noPick" v-show="menu != 2">
+          <div class="noPick" v-show="menu != 2" @click="goTosignup()">
             <div>
               <img
                 src="../../public/image/signupIcon.svg"
@@ -145,7 +145,7 @@
         </div>
         <!-- log in  -->
         <div class="col noPick" align="center" v-show="!login">
-          <div class="noPick" v-show="menu != 3">
+          <div class="noPick" v-show="menu != 3" @click="goTologin()">
             <div>
               <img src="../../public/image/loginIcon.svg" width="30px" alt="" />
             </div>
@@ -213,6 +213,17 @@ export default {
     },
     login: {
       type: Boolean,
+    },
+  },
+  methods: {
+    goHome() {
+      this.$router.push("/home");
+    },
+    goTosignup() {
+      this.$router.push("/signup");
+    },
+    goTologin() {
+      this.$router.push("/login");
     },
   },
 };
