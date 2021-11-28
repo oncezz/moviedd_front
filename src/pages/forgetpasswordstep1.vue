@@ -2,6 +2,7 @@
   <div>
     <!-- mobile -->
     <div class="mobile-only lt-sm q-pa-md">
+      <head-bar></head-bar>
       <div align="center"><img src="../../public/image/lock.png" alt="" /></div>
       <div class="font24" align="center">ลืมรหัสผ่าน</div>
       <div class="font14">เบอร์โทรศัพท์มือถือของคุณที่ลงทะเบียนไว้</div>
@@ -36,9 +37,11 @@
         ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
         <span class="fontblue"> <U>เข้าสู่ระบบ</U></span>
       </div>
+      <end-bar :login="false" :menu="3"></end-bar>
     </div>
     <!-- tablet -->
     <div class="mobile-only gt-xs q-pa-md">
+      <head-bar></head-bar>
       <div align="center">
         <img src="../../public/image/lock.png" alt="" height="230px" />
       </div>
@@ -80,10 +83,12 @@
         ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
         <span class="fontblue"><u>เข้าสู่ระบบ</u> </span>
       </div>
+      <end-bar :login="false" :menu="3"></end-bar>
     </div>
 
     <!-- pc -->
     <div class="desktop-only q-pa-md">
+      <head-bar></head-bar>
       <div class="PCbox">
         <div align="center">
           <img src="../../public/image/lock.png" alt="" />
@@ -131,7 +136,10 @@
 </template>
 
 <script>
+import headBar from "src/components/headBar.vue";
+import EndBar from "src/components/endBar.vue";
 export default {
+  components: { headBar, EndBar },
   data() {
     return {
       telephone: "",

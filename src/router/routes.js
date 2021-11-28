@@ -6,7 +6,7 @@ const routes = [
     component: () => import("pages/Error404.vue"),
   },
   {
-    path: "/",
+    path: "/home",
     component: () => import("pages/main.vue"),
   },
   {
@@ -28,6 +28,18 @@ const routes = [
   {
     path: "/forgetpassword2",
     component: () => import("pages/forgetpasswordstep2.vue"),
+  },
+  {
+    path: "/",
+    component: () => import("pages/landing.vue"),
+  },
+  {
+    path: "/profile",
+    component: () => import("pages/profile.vue"),
+  },
+  {
+    path: "/favorite",
+    component: () => import("pages/favorite.vue"),
   },
 ];
 
