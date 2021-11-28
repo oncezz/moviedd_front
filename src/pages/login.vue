@@ -48,6 +48,7 @@
           ถ้าคุณไม่ได้เป็นสมาชิก สามารถกด
           <span class="fontU" style="color: #00d1ff">สมัครสมาชิก</span>
         </div>
+        <div style="height: 40px" class=""></div>
       </div>
 
       <!-- ---- content ------->
