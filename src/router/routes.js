@@ -33,6 +33,14 @@ const routes = [
     path: "/",
     component: () => import("pages/landing.vue"),
   },
+  {
+    path: "/profile",
+    component: () => import("pages/profile.vue"),
+  },
+  {
+    path: "/favorite",
+    component: () => import("pages/favorite.vue"),
+  },
 ];
 
 export default routes;

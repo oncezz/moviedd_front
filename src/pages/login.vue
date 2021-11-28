@@ -43,7 +43,9 @@
 
         <div class="fontU font14 q-pr-md" align="right">ลืมรหัสผ่าน</div>
 
-        <div class="loginBtnMobile q-mt-md">เข้าสู่ระบบ</div>
+        <div class="loginBtnMobile q-mt-md" @click="loginPass()">
+          เข้าสู่ระบบ
+        </div>
         <div class="font12 q-pt-md">
           ถ้าคุณไม่ได้เป็นสมาชิก สามารถกด
           <span class="fontU" style="color: #00d1ff">สมัครสมาชิก</span>
@@ -99,7 +101,9 @@
               </div>
             </div>
             <div class="fontU font16" align="right">ลืมรหัสผ่าน</div>
-            <div class="loginBtnTablet font18 q-mt-lg">ยืนยัน</div>
+            <div class="loginBtnTablet font18 q-mt-lg" @click="loginPass()">
+              ยืนยัน
+            </div>
             <div class="font16 q-pt-lg">
               ถ้าคุณไม่ได้เป็นสมาชิก สามารถกด
               <span class="fontU" style="color: #00d1ff">สมัครสมาชิก</span>
@@ -164,7 +168,9 @@
             </div>
             <div class="fontU font16 q-pt-md" align="right">ลืมรหัสผ่าน</div>
 
-            <div class="loginBtnTablet font18 q-mt-lg">ยืนยัน</div>
+            <div class="loginBtnTablet font18 q-mt-lg" @click="loginPass()">
+              ยืนยัน
+            </div>
             <div class="font16 q-pt-lg">
               ถ้าคุณไม่ได้เป็นสมาชิก สามารถกด
               <span class="fontU" style="color: #00d1ff">สมัครสมาชิก</span>
@@ -205,6 +211,10 @@ export default {
     },
     closeDia() {
       this.wrongDia = false;
+    },
+    loginPass() {
+      this.$q.localStorage.set("login", true);
+      this.$router.push("/profile");
     },
   },
 };

@@ -62,7 +62,7 @@
         </div>
         <!-- Favorite  -->
         <div class="col noPick" align="center" v-show="login">
-          <div class="noPick" v-show="menu != 4">
+          <div class="noPick" v-show="menu != 4" @click="goTofavorite()">
             <div>
               <img src="../../public/image/favIcon.svg" width="24px" alt="" />
             </div>
@@ -77,7 +77,7 @@
         </div>
         <!-- Profile  -->
         <div class="col noPick" align="center" v-show="login">
-          <div class="noPick" v-show="menu != 5">
+          <div class="noPick" v-show="menu != 5" @click="goProfile()">
             <div>
               <img
                 src="../../public/image/profileIcon.svg"
@@ -164,7 +164,7 @@
         </div>
         <!-- Favorite  -->
         <div class="col noPick" align="center" v-show="login">
-          <div class="noPick" v-show="menu != 4">
+          <div class="noPick" v-show="menu != 4" @click="goTofavorite()">
             <div>
               <img src="../../public/image/favIcon.svg" width="30px" alt="" />
             </div>
@@ -179,7 +179,7 @@
         </div>
         <!-- Profile  -->
         <div class="col noPick" align="center" v-show="login">
-          <div class="noPick" v-show="menu != 5">
+          <div class="noPick" v-show="menu != 5" @click="goProfile()">
             <div>
               <img
                 src="../../public/image/profileIcon.svg"
@@ -224,6 +224,12 @@ export default {
     },
     goTologin() {
       this.$router.push("/login");
+    },
+    goTofavorite() {
+      this.$router.push("/favorite");
+    },
+    goProfile() {
+      this.$router.push("/profile");
     },
   },
 };

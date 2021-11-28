@@ -5,14 +5,14 @@
       <!-- ---- content ------->
 
       <!-- ---- content ------->
-      <end-bar :login="loginKey == 1 ? true : false" :menu="1"></end-bar>
+      <end-bar :login="true" :menu="5"></end-bar>
     </div>
     <div class="mobile-only gt-xs">
       <head-bar></head-bar>
       <!-- ---- content ------->
 
       <!-- ---- content ------->
-      <end-bar :login="loginKey == 1 ? true : false" :menu="1"></end-bar>
+      <end-bar :login="true" :menu="5"></end-bar>
     </div>
     <div
       class="desktop-only shadow-6"
@@ -31,11 +31,6 @@ export default {
   components: {
     headBar,
     endBar,
-  },
-  data() {
-    return {
-      loginKey: this.$q.localStorage.getItem("login"),
-    };
   },
 };
 </script>
