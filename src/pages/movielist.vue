@@ -55,11 +55,11 @@ export default {
 
 <style lang="scss" scoped>
 .skipBtn {
-  width: 83px;
-  height: 58px;
-  line-height: 58px;
+  width: 120px;
+  height: 50px;
+  line-height: 50px;
   color: black;
   background: #00d1ff;
-  border-radius: 40px 0px 0px 40px;
+  border-radius: 40px;
 }
 </style>
