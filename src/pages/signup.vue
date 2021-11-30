@@ -43,7 +43,7 @@
             ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
           </div>
         </div>
-        <div class="saveBtnMobile q-mt-md" @click="saveDia()">ยืนยัน</div>
+        <div class="saveBtnMobile q-mt-md" @click="goToOpt()">ยืนยัน</div>
         <div class="font12 q-py-md">
           ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
           <span class="fontU cursor-pointer" style="color: #00d1ff">
@@ -136,7 +136,7 @@
             <div
               class="saveBtnTablet font18"
               style="margin-top: 37px"
-              @click="saveDia()"
+              @click="goToOpt()"
             >
               ยืนยัน
             </div>
@@ -224,7 +224,7 @@
             ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
           </div>
         </div>
-        <div class="saveBtn font18 q-mt-lg" @click="saveDia()">ยืนยัน</div>
+        <div class="saveBtn font18 q-mt-lg" @click="goToOpt()">ยืนยัน</div>
         <div class="font16 q-pt-md">
           ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
           <span class="fontU cursor-pointer" style="color: #00d1ff">
@@ -312,6 +312,9 @@ export default {
     closeDia() {
       this.wrongDia = false;
     },
+    goToOpt() {
+      this.$router.push("/otprequest")
+    }
   },
 };
 </script>

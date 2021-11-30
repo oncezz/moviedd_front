@@ -41,6 +41,10 @@ const routes = [
     path: "/favorite",
     component: () => import("pages/favorite.vue"),
   },
+  {
+    path: "/movielist",
+    component: () => import("pages/movielist.vue"),
+  },
 ];
 
 export default routes;
