@@ -30,6 +30,10 @@ const routes = [
     component: () => import("pages/forgetpasswordstep2.vue"),
   },
   {
+    path: "/forgetpassword3",
+    component: () => import("pages/forgetpasswordstep3.vue"),
+  },
+  {
     path: "/",
     component: () => import("pages/landing.vue"),
   },
@@ -44,6 +48,10 @@ const routes = [
   {
     path: "/movielist",
     component: () => import("pages/movielist.vue"),
+  },
+  {
+    path: "/search",
+    component: () => import("pages/search.vue"),
   },
 ];
 
