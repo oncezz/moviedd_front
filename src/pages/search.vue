@@ -79,9 +79,9 @@
       <end-bar :login="loginKey == 1 ? true : false" :menu="1"></end-bar>
     </div>
     <!-- tablet  -->
-    <div class="mobile-only gt-xs">
+    <div class="mobile-only gt-xs headBGtablet">
       <!-- ---- content ------->
-      <div class="fixed-top headBGtablet"></div>
+
       <div>
         <q-icon
           size="lg"
@@ -157,11 +157,10 @@
     </div>
     <!-- pc  -->
     <div
-      class="desktop-only shadow-6"
+      class="desktop-only shadow-6 headBG"
       style="max-width: 1600px; width: 100%; margin: auto"
     >
       <!-- ---- content ------->
-      <div class="fixed-top headBG"></div>
 
       <div>
         <q-icon size="xl" class="fas fa-arrow-left q-pt-xl" />
@@ -183,7 +182,9 @@
             <q-icon color="" class="fas fa-search" />
           </template>
         </q-input>
-        <div class="q-pt-lg font20">หนังค้นหายอดนิยม</div>
+        <div class="q-pt-lg font20 text-white" style="z-index: 1000">
+          หนังค้นหายอดนิยม
+        </div>
       </div>
       <div class="row q-pa-lg">
         <div class="col-2" align="center">
@@ -252,6 +253,11 @@ export default {
 
 <style lang="scss" scoped>
 .headBG {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 0;
   width: 100%;
   height: 40vh;
   background: linear-gradient(
@@ -262,7 +268,7 @@ export default {
 }
 .headBGtablet {
   width: 100%;
-  height: 40vh;
+  height: 30vh;
   background: linear-gradient(
     180deg,
     #00d1ff -82.5%,
