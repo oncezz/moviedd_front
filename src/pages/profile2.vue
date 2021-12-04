@@ -11,7 +11,7 @@
           src="../../public/image/profilePic.png"
           alt=""
         />
-        <div class="font24 q-pt-lg">ข้อมูลบัญชีผู้ใช้งาน</div>
+        <div class="font24 q-pt-lg">แก้ไขเบอร์โทรศัพท์</div>
 
         <div align="left" class="q-pa-md">
           <div class="font14 q-pt-sm">ชื่อผู้ใช้งาน</div>
@@ -33,44 +33,27 @@
               outlined
               dense
               v-model="userData.phoneNumber"
-              readonly
             />
           </div>
-          <div
-            class="font12 fontU q-pt-sm"
-            style="color: #868686"
-            align="right"
-          >
-            แก้ไข
-          </div>
-          <div class="font14">รหัสผ่าน</div>
+
+          <div class="font14 q-pt-lg">รหัสผ่าน</div>
           <q-input
-            class="q-pt-sm"
+            class=""
             input-style="font-size: 14px;"
             dark
             outlined
-            readonly
             dense
             v-model="userData.password"
             :type="isPwd ? 'password' : 'text'"
-            ><template v-slot:append>
-              <q-icon
-                :name="isPwd ? 'visibility_off' : 'visibility'"
-                class="cursor-pointer"
-                @click="isPwd = !isPwd"
-              />
-            </template>
-          </q-input>
-          <div
-            class="font12 fontU q-pt-sm"
-            style="color: #868686"
-            align="right"
           >
-            เปลี่ยนรหัสผ่าน
-          </div>
+          </q-input>
         </div>
-        <div align="center" class="q-pt-md">
-          <div class="signoutBtnMobile font14">ออกจากระบบ</div>
+        <div align="center">
+          <div class="font12 q-pt-md row justify-center">
+            <div class="backBtnMobile">ย้อนกลับ</div>
+            <div class="q-pa-md"></div>
+            <div class="nextBtnMobile text-black">ต่อไป</div>
+          </div>
         </div>
       </div>
 
@@ -88,7 +71,7 @@
           src="../../public/image/profilePic.png"
           alt=""
         />
-        <div class="font28 q-pt-xl">ข้อมูลบัญชีผู้ใช้งาน</div>
+        <div class="font28 q-pt-xl">แก้ไขเบอร์โทรศัพท์</div>
         <div class="row">
           <div class="col-2"></div>
           <div class="col">
@@ -115,41 +98,25 @@
                   readonly
                 />
               </div>
-              <div
-                class="font16 fontU q-pt-sm"
-                style="color: #868686"
-                align="right"
-              >
-                แก้ไข
-              </div>
-              <div class="font20 q-pt-md">รหัสผ่าน</div>
+
+              <div class="font20 q-pt-xl">รหัสผ่าน</div>
               <q-input
                 class="q-pt-sm"
                 input-style="font-size: 18px;"
                 dark
                 outlined
-                readonly
                 dense
                 v-model="userData.password"
                 :type="isPwd ? 'password' : 'text'"
-                ><template v-slot:append>
-                  <q-icon
-                    :name="isPwd ? 'visibility_off' : 'visibility'"
-                    class="cursor-pointer"
-                    @click="isPwd = !isPwd"
-                  />
-                </template>
-              </q-input>
-              <div
-                class="font16 fontU q-pt-sm"
-                style="color: #868686"
-                align="right"
               >
-                เปลี่ยนรหัสผ่าน
-              </div>
+              </q-input>
             </div>
-            <div align="center" class="q-pt-md">
-              <div class="signoutBtnTablet font18">ออกจากระบบ</div>
+            <div align="center">
+              <div class="font18 q-py-xl row justify-center">
+                <div class="backBtn">ย้อนกลับ</div>
+                <div class="q-pa-md"></div>
+                <div class="nextBtn text-black">ต่อไป</div>
+              </div>
             </div>
           </div>
           <div class="col-2"></div>
@@ -173,7 +140,7 @@
           src="../../public/image/profilePic.png"
           alt=""
         />
-        <div class="font28 q-pt-lg">ข้อมูลบัญชีผู้ใช้งาน</div>
+        <div class="font28 q-pt-lg">แก้ไขเบอร์โทรศัพท์</div>
         <div class="row">
           <div class="col-4"></div>
           <div class="col">
@@ -184,9 +151,9 @@
                   input-style="font-size: 18px;"
                   dark
                   outlined
-                  dense
                   v-model="userData.username"
                   readonly
+                  dense
                 />
               </div>
               <div class="font20 q-pt-xl">เบอร์โทรศัพท์</div>
@@ -197,44 +164,27 @@
                   outlined
                   dense
                   v-model="userData.phoneNumber"
-                  readonly
                 />
               </div>
-              <div
-                class="font16 fontU q-pt-sm"
-                style="color: #868686"
-                align="right"
-              >
-                แก้ไข
-              </div>
-              <div class="font20 q-pt-md">รหัสผ่าน</div>
+
+              <div class="font20 q-pt-xl">รหัสผ่าน</div>
               <q-input
                 class="q-pt-sm"
                 input-style="font-size: 18px;"
                 dark
-                outlined
-                readonly
                 dense
+                outlined
                 v-model="userData.password"
                 :type="isPwd ? 'password' : 'text'"
-                ><template v-slot:append>
-                  <q-icon
-                    :name="isPwd ? 'visibility_off' : 'visibility'"
-                    class="cursor-pointer"
-                    @click="isPwd = !isPwd"
-                  />
-                </template>
-              </q-input>
-              <div
-                class="font16 fontU q-pt-sm"
-                style="color: #868686"
-                align="right"
               >
-                เปลี่ยนรหัสผ่าน
-              </div>
+              </q-input>
             </div>
-            <div align="center" class="q-pt-md">
-              <div class="signoutBtn font18">ออกจากระบบ</div>
+            <div align="center">
+              <div class="font18 q-py-xl row justify-center">
+                <div class="backBtn">ย้อนกลับ</div>
+                <div class="q-pa-md"></div>
+                <div class="nextBtn text-black">ต่อไป</div>
+              </div>
             </div>
           </div>
           <div class="col-4"></div>
@@ -268,25 +218,43 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.signoutBtn {
+.backBtn {
   width: 116px;
   height: 40px;
   line-height: 40px;
   border: 1px solid #ffffff;
   box-sizing: border-box;
 }
-.signoutBtnTablet {
+.backBtntablet {
   width: 116px;
   height: 40px;
   line-height: 40px;
   border: 1px solid #ffffff;
   box-sizing: border-box;
 }
-.signoutBtnMobile {
+.backBtnMobile {
   width: 90px;
   height: 27px;
   line-height: 27px;
   border: 1px solid #ffffff;
   box-sizing: border-box;
+}
+.nextBtn {
+  width: 116px;
+  height: 40px;
+  line-height: 40px;
+  background: #00d1ff;
+}
+.nextBtntablet {
+  width: 116px;
+  height: 40px;
+  line-height: 40px;
+  background: #00d1ff;
+}
+.nextBtnMobile {
+  width: 90px;
+  height: 27px;
+  line-height: 27px;
+  background: #00d1ff;
 }
 </style>

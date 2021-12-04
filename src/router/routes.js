@@ -42,6 +42,14 @@ const routes = [
     component: () => import("pages/profile.vue"),
   },
   {
+    path: "/profile2",
+    component: () => import("pages/profile2.vue"),
+  },
+  {
+    path: "/profile3",
+    component: () => import("pages/profile3.vue"),
+  },
+  {
     path: "/favorite",
     component: () => import("pages/favorite.vue"),
   },
