@@ -40,6 +40,7 @@
             class="font12 fontU q-pt-sm"
             style="color: #868686"
             align="right"
+            @click="changePhoneNumber()"
           >
             แก้ไข
           </div>
@@ -65,6 +66,7 @@
             class="font12 fontU q-pt-sm"
             style="color: #868686"
             align="right"
+            @click="changePassword()"
           >
             เปลี่ยนรหัสผ่าน
           </div>
@@ -119,6 +121,7 @@
                 class="font16 fontU q-pt-sm"
                 style="color: #868686"
                 align="right"
+                @click="changePhoneNumber()"
               >
                 แก้ไข
               </div>
@@ -144,6 +147,7 @@
                 class="font16 fontU q-pt-sm"
                 style="color: #868686"
                 align="right"
+                @click="changePassword()"
               >
                 เปลี่ยนรหัสผ่าน
               </div>
@@ -201,9 +205,10 @@
                 />
               </div>
               <div
-                class="font16 fontU q-pt-sm"
+                class="font16 fontU q-pt-sm cursor-pointer"
                 style="color: #868686"
                 align="right"
+                @click="changePhoneNumber()"
               >
                 แก้ไข
               </div>
@@ -226,9 +231,10 @@
                 </template>
               </q-input>
               <div
-                class="font16 fontU q-pt-sm"
+                class="font16 fontU q-pt-sm cursor-pointer"
                 style="color: #868686"
                 align="right"
+                @click="changePassword()"
               >
                 เปลี่ยนรหัสผ่าน
               </div>
@@ -263,6 +269,14 @@ export default {
       comfirmPwd: "",
       loginKey: this.$q.localStorage.getItem("login"),
     };
+  },
+  methods: {
+    changePhoneNumber() {
+      this.$router.push("/profile2");
+    },
+    changePassword() {
+      this.$router.push("/profile3");
+    },
   },
 };
 </script>
