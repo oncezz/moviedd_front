@@ -13,13 +13,13 @@
 <script>
 export default {
   methods: {
-    goToMain() {
+    goHome() {
       this.$router.push("/home");
     },
   },
   mounted() {
     setTimeout(() => {
-      this.goToMain();
+      this.goHome();
     }, 3000);
   },
 };

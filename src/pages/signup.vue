@@ -289,7 +289,6 @@ import endBar from "../components/endBar.vue";
 export default {
   components: {
     headBar,
-
     endBar,
   },
   data() {
@@ -313,8 +312,8 @@ export default {
       this.wrongDia = false;
     },
     goToOpt() {
-      this.$router.push("/otprequest")
-    }
+      this.$router.push("/otprequest");
+    },
   },
 };
 </script>
