@@ -299,7 +299,6 @@ export default {
         password: "",
       },
       isPwd: true,
-
       wrongDia: false,
       wrongStr: "ชื่อผู้ใช้งานไม่สามารถใช้ได้ เนื่องจากมีชื่อใช้งานนี้อยู่แล้ว",
     };

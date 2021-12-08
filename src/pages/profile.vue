@@ -72,7 +72,9 @@
           </div>
         </div>
         <div align="center" class="q-pt-md">
-          <div class="signoutBtnMobile font14">ออกจากระบบ</div>
+          <div class="signoutBtnMobile font14" @click="exitBtn()">
+            ออกจากระบบ
+          </div>
         </div>
       </div>
 
@@ -240,7 +242,7 @@
               </div>
             </div>
             <div align="center" class="q-pt-md">
-              <div class="signoutBtn font18">ออกจากระบบ</div>
+              <div class="signoutBtn font18" @click="exitBtn()">ออกจากระบบ</div>
             </div>
           </div>
           <div class="col-4"></div>
@@ -271,6 +273,9 @@ export default {
     };
   },
   methods: {
+    exitBtn() {
+      this.$q.notify("Message");
+    },
     changePhoneNumber() {
       this.$router.push("/profile2");
     },
@@ -283,6 +288,7 @@ export default {
 
 <style lang="scss" scoped>
 .signoutBtn {
+  cursor: pointer;
   width: 116px;
   height: 40px;
   line-height: 40px;
