@@ -19,6 +19,8 @@
       style="max-width: 1600px; width: 100%; margin: auto"
     >
       <head-bar></head-bar>
+
+      <div class="posterPromote"></div>
       <!-- ---- content ------->
     </div>
   </div>
@@ -40,4 +42,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.posterPromote {
+  width: 1200px;
+  height: 670px;
+  margin: auto;
+  border: 1px solid yellow;
+}
+</style>

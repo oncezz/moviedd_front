@@ -83,7 +83,7 @@
         </div>
         <div align="center">
           <div class="font12 q-pt-md row justify-center">
-            <div class="backBtnMobile">ย้อนกลับ</div>
+            <div class="backBtnMobile" @click="goBackProfile()">ย้อนกลับ</div>
             <div class="q-pa-md"></div>
             <div class="nextBtnMobile text-black">ตกลง</div>
           </div>
@@ -183,7 +183,9 @@
             </div>
             <div align="center">
               <div class="font18 q-py-xl row justify-center">
-                <div class="backBtntablet">ย้อนกลับ</div>
+                <div class="backBtntablet" @click="goBackProfile()">
+                  ย้อนกลับ
+                </div>
                 <div class="q-pa-md"></div>
                 <div class="nextBtntablet text-black">ตกลง</div>
               </div>
@@ -286,7 +288,7 @@
             </div>
             <div align="center">
               <div class="font18 q-py-xl row justify-center">
-                <div class="backBtn">ย้อนกลับ</div>
+                <div class="backBtn" @click="goBackProfile()">ย้อนกลับ</div>
                 <div class="q-pa-md"></div>
                 <div class="nextBtn text-black">ตกลง</div>
               </div>
@@ -323,11 +325,17 @@ export default {
       loginKey: this.$q.localStorage.getItem("login"),
     };
   },
+  methods: {
+    goBackProfile() {
+      this.$router.push("/profile");
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .backBtn {
+  cursor: pointer;
   width: 116px;
   height: 40px;
   line-height: 40px;
@@ -349,6 +357,7 @@ export default {
   box-sizing: border-box;
 }
 .nextBtn {
+  cursor: pointer;
   width: 116px;
   height: 40px;
   line-height: 40px;
