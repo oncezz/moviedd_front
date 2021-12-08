@@ -274,7 +274,7 @@ export default {
   },
   methods: {
     exitBtn() {
-      this.$q.notify("Message");
+      this.greenNotify("exit");
     },
     changePhoneNumber() {
       this.$router.push("/profile2");

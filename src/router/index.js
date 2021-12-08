@@ -28,3 +28,16 @@ export default function (/* { store, ssrContext } */) {
 
   return Router;
 }
+Vue.mixin({
+  methods: {
+    greenNotify(text) {
+      this.$q.notify({
+        message: text,
+
+        color: "secondary",
+        position: "top",
+        icon: "fas fa-check-circle",
+      });
+    },
+  },
+});
