@@ -40,7 +40,7 @@
             class="font12 fontU q-pt-sm"
             style="color: #868686"
             align="right"
-            @click="changePhoneNumber()"
+            @click="editPhoneNumberBtn()"
           >
             แก้ไข
           </div>
@@ -66,7 +66,7 @@
             class="font12 fontU q-pt-sm"
             style="color: #868686"
             align="right"
-            @click="changePassword()"
+            @click="editPasswordBtn()"
           >
             เปลี่ยนรหัสผ่าน
           </div>
@@ -123,7 +123,7 @@
                 class="font16 fontU q-pt-sm"
                 style="color: #868686"
                 align="right"
-                @click="changePhoneNumber()"
+                @click="editPhoneNumberBtn()"
               >
                 แก้ไข
               </div>
@@ -149,17 +149,38 @@
                 class="font16 fontU q-pt-sm"
                 style="color: #868686"
                 align="right"
-                @click="changePassword()"
+                @click="editPasswordBtn()"
               >
                 เปลี่ยนรหัสผ่าน
               </div>
             </div>
             <div align="center" class="q-pt-md">
-              <div class="signoutBtnTablet font18">ออกจากระบบ</div>
+              <div class="signoutBtnTablet font18" @click="exitBtn()">
+                ออกจากระบบ
+              </div>
+              <div class="q-pa-md"></div>
             </div>
           </div>
           <div class="col-2"></div>
         </div>
+        <hr class="pageline" />
+        <div class="q-pa-sm"></div>
+        <div class="row">
+          <div class="font28 q-pl-lg col-4">แนวหนังที่คุณชอบ</div>
+          <div class="font28 q-pl-xl col-2 fontU" @click="editcatagory()">
+            แก้ไข
+          </div>
+        </div>
+        <div class="row q-pt-md q-pl-sm">
+          <div class="col-4" align="center">
+            <img
+              style="width: 90%"
+              src="../../public/image/movielist/fantasy.png"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="q-pa-md"></div>
       </div>
 
       <!-- ---- content ------->
@@ -210,7 +231,7 @@
                 class="font16 fontU q-pt-sm cursor-pointer"
                 style="color: #868686"
                 align="right"
-                @click="changePhoneNumber()"
+                @click="editPhoneNumberBtn()"
               >
                 แก้ไข
               </div>
@@ -236,16 +257,34 @@
                 class="font16 fontU q-pt-sm cursor-pointer"
                 style="color: #868686"
                 align="right"
-                @click="changePassword()"
+                @click="editPasswordBtn()"
               >
                 เปลี่ยนรหัสผ่าน
               </div>
             </div>
             <div align="center" class="q-pt-md">
               <div class="signoutBtn font18" @click="exitBtn()">ออกจากระบบ</div>
+              <div class="q-pa-md"></div>
             </div>
           </div>
           <div class="col-4"></div>
+        </div>
+      </div>
+      <hr class="pageline" />
+      <div class="q-pa-sm"></div>
+      <div class="row">
+        <div class="font28 q-pl-lg col-2">แนวหนังที่คุณชอบ</div>
+        <div class="font28 q-pl-xl col-2 fontU" @click="editcatagory()">
+          แก้ไข
+        </div>
+      </div>
+      <div class="row q-pt-md q-pl-sm">
+        <div class="col-2" align="center">
+          <img
+            style="width: 90%"
+            src="../../public/image/movielist/fantasy.png"
+            alt=""
+          />
         </div>
       </div>
     </div>
@@ -273,14 +312,21 @@ export default {
     };
   },
   methods: {
+    // กดปุ่มออกจากระบบ
     exitBtn() {
       this.greenNotify("exit");
     },
-    changePhoneNumber() {
+    // กดปุ่มแก้ไข เบอโทรศัพท์
+    editPhoneNumberBtn() {
       this.$router.push("/profile2");
     },
-    changePassword() {
+    // กดปุ่มเปลี่ยนรหัสผ่าน
+    editPasswordBtn() {
       this.$router.push("/profile3");
+    },
+    // กดปุ่มแก้ไขแนวหนังที่ชอบ
+    editcatagory() {
+      this.$router.push("/profile4");
     },
   },
 };
@@ -308,5 +354,10 @@ export default {
   line-height: 27px;
   border: 1px solid #ffffff;
   box-sizing: border-box;
+}
+.pageline {
+  width: 96%;
+  margin: auto;
+  border: 1px solid #868686;
 }
 </style>

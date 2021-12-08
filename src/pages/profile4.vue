@@ -25,55 +25,52 @@
               readonly
             />
           </div>
-          <div class="font14 q-pt-lg">เบอร์โทรศัพท์</div>
-          <div class="">
-            <q-input
-              input-style="font-size: 14px;"
-              dark
-              outlined
-              dense
-              v-model="userData.phoneNumber"
-              readonly
-            />
-          </div>
-          <div
-            class="font12 fontU q-pt-sm"
-            style="color: #868686"
-            align="right"
-          >
-            แก้ไข
-          </div>
-          <div class="font14">รหัสผ่าน</div>
-          <q-input
-            class="q-pt-sm"
-            input-style="font-size: 14px;"
-            dark
-            outlined
-            readonly
-            dense
-            v-model="userData.password"
-            :type="isPwd ? 'password' : 'text'"
-            ><template v-slot:append>
-              <q-icon
-                :name="isPwd ? 'visibility_off' : 'visibility'"
-                class="cursor-pointer"
-                @click="isPwd = !isPwd"
-              />
-            </template>
-          </q-input>
-          <div
-            class="font12 fontU q-pt-sm"
-            style="color: #868686"
-            align="right"
-          >
-            เปลี่ยนรหัสผ่าน
-          </div>
-        </div>
-        <div align="center" class="q-pt-md">
-          <div class="signoutBtnMobile font14">ออกจากระบบ</div>
         </div>
       </div>
+      <div class="row q-pt-md">
+        <div class="col-3" align="left">
+          <div
+            class="backBtnMobile font18 text-black"
+            align="center"
+            @click="backBtn()"
+          >
+            กลับ
+          </div>
+        </div>
+        <div class="col" align="center">
+          <div class="font18">เลือกแนวหนังที่คุณชอบ</div>
+          <div class="font14">เลือกหนังไปแล้ว 4/8 แนว</div>
+        </div>
+        <div class="col-3"></div>
+      </div>
+      <div class="row q-ma-md">
+        <div class="col-6" align="center">
+          <img
+            style="width: 90%"
+            src="../../public/image/movielist/cartoon.png"
+            alt=""
+          />
+        </div>
 
+        <div class="col-6" align="center">
+          <img
+            style="width: 90%"
+            src="../../public/image/movielist/korea.png"
+            alt=""
+          />
+        </div>
+        <div class="row" style="width: 100%; height: 15px"></div>
+        <div class="col-6" align="center">
+          <img
+            style="width: 90%"
+            src="../../public/image/movielist/family.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <div align="center" class="q-pt-md font18">
+        <div class="saveBtnMobile" @click="saveBtn()">บันทึก</div>
+      </div>
       <!-- ---- content ------->
       <end-bar :login="true" :menu="5"></end-bar>
     </div>
@@ -88,7 +85,7 @@
           src="../../public/image/profilePic.png"
           alt=""
         />
-        <div class="font28 q-pt-xl">ข้อมูลบัญชีผู้ใช้งาน</div>
+        <div class="font28 q-pt-xl">แนวหนังที่ชอบ</div>
         <div class="row">
           <div class="col-2"></div>
           <div class="col">
@@ -104,56 +101,53 @@
                   readonly
                 />
               </div>
-              <div class="font20 q-pt-xl">เบอร์โทรศัพท์</div>
-              <div class="q-pt-sm">
-                <q-input
-                  input-style="font-size: 18px;"
-                  dark
-                  outlined
-                  dense
-                  v-model="userData.phoneNumber"
-                  readonly
-                />
-              </div>
-              <div
-                class="font16 fontU q-pt-sm"
-                style="color: #868686"
-                align="right"
-              >
-                แก้ไข
-              </div>
-              <div class="font20 q-pt-md">รหัสผ่าน</div>
-              <q-input
-                class="q-pt-sm"
-                input-style="font-size: 18px;"
-                dark
-                outlined
-                readonly
-                dense
-                v-model="userData.password"
-                :type="isPwd ? 'password' : 'text'"
-                ><template v-slot:append>
-                  <q-icon
-                    :name="isPwd ? 'visibility_off' : 'visibility'"
-                    class="cursor-pointer"
-                    @click="isPwd = !isPwd"
-                  />
-                </template>
-              </q-input>
-              <div
-                class="font16 fontU q-pt-sm"
-                style="color: #868686"
-                align="right"
-              >
-                เปลี่ยนรหัสผ่าน
-              </div>
-            </div>
-            <div align="center" class="q-pt-md">
-              <div class="signoutBtnTablet font18">ออกจากระบบ</div>
             </div>
           </div>
           <div class="col-2"></div>
         </div>
+        <div class="row q-pt-xl">
+          <div class="col-4" align="left">
+            <div
+              class="brx backBtnTablet font24 text-black"
+              align="center"
+              @click="backBtn()"
+            >
+              กลับ
+            </div>
+          </div>
+          <div class="col" align="center">
+            <div class="font24">เลือกแนวหนังที่คุณชอบ</div>
+            <div class="font20">เลือกหนังไปแล้ว 4/8 แนว</div>
+          </div>
+          <div class="col-4"></div>
+        </div>
+        <div class="row q-ma-lg">
+          <div class="col-4" align="center">
+            <img
+              style="width: 90%"
+              src="../../public/image/movielist/cartoon.png"
+              alt=""
+            />
+          </div>
+
+          <div class="col-4" align="center">
+            <img
+              style="width: 90%"
+              src="../../public/image/movielist/korea.png"
+              alt=""
+            />
+          </div>
+          <div class="col-4" align="center">
+            <img
+              style="width: 90%"
+              src="../../public/image/movielist/family.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <div align="center" class="q-pt-md font24">
+        <div class="saveBtnTablet" @click="saveBtn()">บันทึก</div>
       </div>
 
       <!-- ---- content ------->
@@ -196,7 +190,11 @@
       </div>
       <div class="row q-pt-xl">
         <div class="col-3">
-          <div class="backBtn text-black font24 q-ml-lg" align="center">
+          <div
+            class="backBtn text-black font24 q-ml-lg"
+            align="center"
+            @click="backBtn()"
+          >
             กลับ
           </div>
         </div>
@@ -251,6 +249,10 @@
         </div>
       </div>
     </div>
+    <div align="center" class="q-pt-lg font24">
+      <div class="saveBtn" @click="saveBtn()">บันทึก</div>
+    </div>
+    <div class="q-pt-xl"></div>
   </div>
 </template>
 
@@ -273,6 +275,16 @@ export default {
       comfirmPwd: "",
       loginKey: this.$q.localStorage.getItem("login"),
     };
+  },
+  methods: {
+    // กดปุ่มกลับ
+    backBtn() {
+      this.$router.push("/profile");
+    },
+    // กดปุ่มยืนยันแนวหนัง
+    saveBtn() {
+      this.greenNotify("complete");
+    },
   },
 };
 </script>
@@ -305,5 +317,43 @@ export default {
   line-height: 50px;
   background: #00d1ff;
   border-radius: 40px;
+}
+.backBtnTablet {
+  width: 83px;
+  height: 58px;
+  line-height: 58px;
+  background: #00d1ff;
+  border-radius: 0px 40px 40px 0px;
+}
+.backBtnMobile {
+  width: 60px;
+  height: 42px;
+  line-height: 42px;
+  background: #00d1ff;
+  border-radius: 0px 20px 20px 0px;
+}
+.saveBtnMobile {
+  width: 90px;
+  height: 27px;
+  line-height: 27px;
+  color: black;
+  background: #00d1ff;
+  border-radius: 2px;
+}
+.saveBtnTablet {
+  width: 116px;
+  height: 40px;
+  line-height: 40px;
+  color: black;
+  background: #00d1ff;
+  border-radius: 2px;
+}
+.saveBtn {
+  width: 116px;
+  height: 40px;
+  line-height: 40px;
+  color: black;
+  background: #00d1ff;
+  border-radius: 2px;
 }
 </style>
