@@ -227,7 +227,11 @@
         <div class="saveBtn font18 q-mt-lg" @click="goToOpt()">ยืนยัน</div>
         <div class="font16 q-pt-md">
           ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
-          <span class="fontU cursor-pointer" style="color: #00d1ff">
+          <span
+            class="fontU cursor-pointer"
+            style="color: #00d1ff"
+            @click="saveDia()"
+          >
             เข้าสู่ระบบ</span
           >
         </div>
