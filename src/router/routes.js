@@ -50,6 +50,10 @@ const routes = [
     component: () => import("pages/profile3.vue"),
   },
   {
+    path: "/profile4",
+    component: () => import("pages/profile4.vue"),
+  },
+  {
     path: "/favorite",
     component: () => import("pages/favorite.vue"),
   },
