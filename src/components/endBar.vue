@@ -237,12 +237,14 @@ export default {
 
 <style lang="scss" scoped>
 .enderMobile {
+  z-index: 9;
   width: 100%;
   height: 66px;
   color: white;
   background: rgba(0, 0, 0, 1);
 }
 .enderTablet {
+  z-index: 9;
   width: 100%;
   height: 78px;
   color: white;

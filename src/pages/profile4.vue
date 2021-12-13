@@ -28,15 +28,7 @@
         </div>
       </div>
       <div class="row q-pt-md">
-        <div class="col-3" align="left">
-          <div
-            class="backBtnMobile font18 text-black"
-            align="center"
-            @click="backBtn()"
-          >
-            กลับ
-          </div>
-        </div>
+        <div class="col-3" align="left"></div>
         <div class="col" align="center">
           <div class="font18">เลือกแนวหนังที่คุณชอบ</div>
           <div class="font14">เลือกหนังไปแล้ว 4/8 แนว</div>
@@ -68,8 +60,12 @@
           />
         </div>
       </div>
-      <div align="center" class="q-pt-md font18">
-        <div class="saveBtnMobile" @click="saveBtn()">บันทึก</div>
+      <div align="center" class="q-pt-md font12">
+        <div class="q-py-xl row justify-center">
+          <div class="backBtnMobile" @click="backBtn()">ย้อนกลับ</div>
+          <div class="q-pa-md"></div>
+          <div class="saveBtnMobile" @click="saveBtn()">ตกลง</div>
+        </div>
       </div>
       <!-- ---- content ------->
       <end-bar :login="true" :menu="5"></end-bar>
@@ -106,15 +102,7 @@
           <div class="col-2"></div>
         </div>
         <div class="row q-pt-xl">
-          <div class="col-4" align="left">
-            <div
-              class="brx backBtnTablet font24 text-black"
-              align="center"
-              @click="backBtn()"
-            >
-              กลับ
-            </div>
-          </div>
+          <div class="col-4" align="left"></div>
           <div class="col" align="center">
             <div class="font24">เลือกแนวหนังที่คุณชอบ</div>
             <div class="font20">เลือกหนังไปแล้ว 4/8 แนว</div>
@@ -146,9 +134,14 @@
           </div>
         </div>
       </div>
-      <div align="center" class="q-pt-md font24">
-        <div class="saveBtnTablet" @click="saveBtn()">บันทึก</div>
+      <div align="center" class="q-pt-lg">
+        <div class="q-py-xl font18 row justify-center">
+          <div class="backBtnTablet" @click="backBtn()">ย้อนกลับ</div>
+          <div class="q-pa-md"></div>
+          <div class="saveBtnTablet" @click="saveBtn()">ตกลง</div>
+        </div>
       </div>
+      <div class="q-pt-xl"></div>
 
       <!-- ---- content ------->
       <end-bar :login="true" :menu="5"></end-bar>
@@ -189,15 +182,7 @@
         </div>
       </div>
       <div class="row q-pt-xl">
-        <div class="col-3">
-          <div
-            class="backBtn text-black font24 q-ml-lg"
-            align="center"
-            @click="backBtn()"
-          >
-            กลับ
-          </div>
-        </div>
+        <div class="col-3"></div>
         <div class="col" align="center">
           <div class="font24">เลือกแนวหนังที่คุณชอบ</div>
           <div class="font20">เลือกหนังไปแล้ว 4/8 แนว</div>
@@ -248,11 +233,17 @@
           />
         </div>
       </div>
+      <div align="center" class="q-pt-lg">
+        <div class="q-py-xl font18 row justify-center">
+          <div class="backBtn" @click="backBtn()">ย้อนกลับ</div>
+          <div class="q-pa-md"></div>
+          <div class="saveBtn" @click="saveBtn()">ตกลง</div>
+        </div>
+      </div>
     </div>
-    <div align="center" class="q-pt-lg font24">
-      <div class="saveBtn" @click="saveBtn()">บันทึก</div>
+    <div>
+      <div class="q-pt-xl"></div>
     </div>
-    <div class="q-pt-xl"></div>
   </div>
 </template>
 
@@ -277,7 +268,7 @@ export default {
     };
   },
   methods: {
-    // กดปุ่มกลับ
+    // กดปุ่มกลับไปหน้า profile
     backBtn() {
       this.$router.push("/profile");
     },
@@ -312,25 +303,25 @@ export default {
   box-sizing: border-box;
 }
 .backBtn {
-  width: 120px;
-  height: 50px;
-  line-height: 50px;
-  background: #00d1ff;
-  border-radius: 40px;
+  width: 116px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #ffffff;
 }
 .backBtnTablet {
-  width: 83px;
-  height: 58px;
-  line-height: 58px;
-  background: #00d1ff;
-  border-radius: 0px 40px 40px 0px;
+  width: 116px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #ffffff;
 }
 .backBtnMobile {
-  width: 60px;
-  height: 42px;
-  line-height: 42px;
-  background: #00d1ff;
-  border-radius: 0px 20px 20px 0px;
+  width: 90px;
+  height: 27px;
+  line-height: 27px;
+
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 2px;
 }
 .saveBtnMobile {
   width: 90px;

@@ -59,6 +59,7 @@ export default {};
 
 <style lang="scss" scoped>
 .headPC {
+  z-index: 9;
   margin: auto;
   max-width: 1600px;
   width: 100%;
@@ -67,6 +68,7 @@ export default {};
   background: rgba(0, 0, 0, 1);
 }
 .headTablet {
+  z-index: 9;
   width: 100%;
   height: 78px;
   text-decoration: underline;
@@ -74,6 +76,7 @@ export default {};
   background: rgba(0, 0, 0, 1);
 }
 .headMobile {
+  z-index: 9;
   width: 100%;
   height: 46px;
   text-decoration: underline;

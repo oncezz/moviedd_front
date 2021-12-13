@@ -229,7 +229,6 @@
               </div>
               <div
                 class="font16 fontU q-pt-sm cursor-pointer"
-                style="color: #868686"
                 align="right"
                 @click="editPhoneNumberBtn()"
               >
@@ -255,7 +254,6 @@
               </q-input>
               <div
                 class="font16 fontU q-pt-sm cursor-pointer"
-                style="color: #868686"
                 align="right"
                 @click="editPasswordBtn()"
               >
@@ -273,20 +271,57 @@
       <hr class="pageline" />
       <div class="q-pa-sm"></div>
       <div class="row">
-        <div class="font28 q-pl-lg col-2">แนวหนังที่คุณชอบ</div>
-        <div class="font28 q-pl-xl col-2 fontU" @click="editcatagory()">
+        <div class="col-2"></div>
+        <div class="col">
+          <div align="center" class="font28">แนวหนังที่คุณชอบ 5/8</div>
+          <div class="row q-pt-md" align="center">
+            <div class="col-3">
+              <img
+                width="90%"
+                src="../../public/image/movielist/horror.png"
+                alt=""
+              />
+            </div>
+            <div class="col-3">
+              <img
+                width="90%"
+                src="../../public/image/movielist/fantasy.png"
+                alt=""
+              />
+            </div>
+            <div class="col-3">
+              <img
+                width="90%"
+                src="../../public/image/movielist/cartoon.png"
+                alt=""
+              />
+            </div>
+            <div class="col-3">
+              <img
+                width="90%"
+                src="../../public/image/movielist/mystery.png"
+                alt=""
+              />
+            </div>
+            <div class="row" style="width: 100%; height: 15px"></div>
+            <div class="col-3">
+              <img
+                width="90%"
+                src="../../public/image/movielist/india.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-2 font16 fontU q-pr-lg"
+          align="right "
+          @click="editcatagory()"
+        >
           แก้ไข
         </div>
       </div>
-      <div class="row q-pt-md q-pl-sm">
-        <div class="col-2" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/fantasy.png"
-            alt=""
-          />
-        </div>
-      </div>
+      <div class="row q-pt-md q-pl-sm"></div>
     </div>
   </div>
 </template>

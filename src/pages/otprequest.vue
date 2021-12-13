@@ -19,9 +19,9 @@
           <div class="font14 q-pt-sm">รหัสอ้างอิง #3566</div>
           <div class="brx" style="height: 200px"></div>
           <div class="row justify-center q-py-xl">
-            <div class="backBtnMobile">ย้อนกลับ</div>
+            <div class="backBtnMobile" @click="backBtn()">ย้อนกลับ</div>
             <div class="q-pa-md"></div>
-            <div class="saveBtnMobile">ยืนยัน</div>
+            <div class="saveBtnMobile" @click="saveOtpBtn()">ยืนยัน</div>
           </div>
         </div>
       </div>
@@ -51,9 +51,9 @@
           <div class="font20 q-pt-md">รหัสอ้างอิง #3566</div>
           <div class="brx" style="height: 200px"></div>
           <div class="row justify-center q-py-xl">
-            <div class="backBtnTablet">ย้อนกลับ</div>
+            <div class="backBtnTablet" @click="backBtn()">ย้อนกลับ</div>
             <div class="q-pa-md"></div>
-            <div class="saveBtnTablet">ต่อไป</div>
+            <div class="saveBtnTablet" @click="saveOtpBtn()">ต่อไป</div>
           </div>
         </div>
       </div>
@@ -86,9 +86,13 @@
           <div class="font20">รหัสอ้างอิง #3566</div>
           <div class="brx" style="height: 200px"></div>
           <div class="q-py-xl row justify-center">
-            <div class="backBtn">ย้อนกลับ</div>
+            <div class="backBtn cursor-pointer" @click="backBtn()">
+              ย้อนกลับ
+            </div>
             <div class="q-pa-md"></div>
-            <div class="saveBtn">ยืนยัน</div>
+            <div class="saveBtn cursor-pointer" @click="saveOtpBtn()">
+              ยืนยัน
+            </div>
           </div>
         </div>
         <div></div>
@@ -104,6 +108,16 @@ export default {
   components: {
     headBar,
     endBar,
+  },
+  methods: {
+    // กดปุ่มย้อนกลับ
+    backBtn() {
+      this.$router.push("/signup");
+    },
+    // กดปุ่มยืนยันหน้า otp
+    saveOtpBtn() {
+      this.greenNotify("OtpComplete");
+    },
   },
 };
 </script>
