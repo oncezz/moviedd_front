@@ -52,7 +52,7 @@
           <div class="font12 q-pt-md row justify-center">
             <div class="backBtnMobile" @click="goBackProfile()">ย้อนกลับ</div>
             <div class="q-pa-md"></div>
-            <div class="nextBtnMobile text-black">ต่อไป</div>
+            <div class="nextBtnMobile text-black" @click="nextBtn()">ต่อไป</div>
           </div>
         </div>
       </div>
@@ -115,7 +115,7 @@
               <div class="font18 q-py-xl row justify-center">
                 <div class="backBtn" @click="goBackProfile()">ย้อนกลับ</div>
                 <div class="q-pa-md"></div>
-                <div class="nextBtn text-black">ต่อไป</div>
+                <div class="nextBtn text-black" @click="nextBtn()">ต่อไป</div>
               </div>
             </div>
           </div>
@@ -183,7 +183,7 @@
               <div class="font18 q-py-xl row justify-center">
                 <div class="backBtn" @click="goBackProfile()">ย้อนกลับ</div>
                 <div class="q-pa-md"></div>
-                <div class="nextBtn text-black">ต่อไป</div>
+                <div class="nextBtn text-black" @click="nextBtn()">ต่อไป</div>
               </div>
             </div>
           </div>
@@ -217,6 +217,10 @@ export default {
   methods: {
     goBackProfile() {
       this.$router.push("/profile");
+    },
+    // กดปุ่มต่อไป
+    nextBtn() {
+      this.greenNotify("complete");
     },
   },
 };
