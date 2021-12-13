@@ -282,6 +282,7 @@ export default {
 
 <style lang="scss" scoped>
 .signoutBtn {
+  cursor: pointer;
   width: 116px;
   height: 40px;
   line-height: 40px;
@@ -303,6 +304,7 @@ export default {
   box-sizing: border-box;
 }
 .backBtn {
+  cursor: pointer;
   width: 116px;
   height: 40px;
   line-height: 40px;
@@ -340,6 +342,7 @@ export default {
   border-radius: 2px;
 }
 .saveBtn {
+  cursor: pointer;
   width: 116px;
   height: 40px;
   line-height: 40px;
