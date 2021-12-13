@@ -43,7 +43,7 @@
             ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
           </div>
         </div>
-        <div class="saveBtnMobile q-mt-md" @click="goToOpt()">ยืนยัน</div>
+        <div class="saveBtnMobile q-mt-md" @click="goToOpt()">สมัครสมาชิก</div>
         <div class="font12 q-py-md">
           ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
           <span class="fontU cursor-pointer" style="color: #00d1ff">
@@ -138,7 +138,7 @@
               style="margin-top: 37px"
               @click="goToOpt()"
             >
-              ยืนยัน
+              สมัครสมาชิก
             </div>
             <div class="font16 q-py-md">
               ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
@@ -224,7 +224,7 @@
             ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
           </div>
         </div>
-        <div class="saveBtn font18 q-mt-lg" @click="goToOpt()">ยืนยัน</div>
+        <div class="saveBtn font18 q-mt-lg" @click="goToOpt()">สมัครสมาชิก</div>
         <div class="font16 q-pt-md">
           ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
           <span
