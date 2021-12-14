@@ -19,9 +19,9 @@
           <div class="font14 q-pt-sm">รหัสอ้างอิง #3566</div>
           <div class="brx" style="height: 200px"></div>
           <div class="row justify-center q-py-xl">
-            <div class="backBtnMobile">ย้อนกลับ</div>
+            <div class="backBtnMobile" @click="backBtn()">ย้อนกลับ</div>
             <div class="q-pa-md"></div>
-            <div class="saveBtnMobile">ยืนยัน</div>
+            <div class="nextBtnMobile" @click="nextBtn()">ยืนยัน</div>
           </div>
         </div>
       </div>
@@ -51,9 +51,9 @@
           <div class="font20 q-pt-md">รหัสอ้างอิง #3566</div>
           <div class="brx" style="height: 200px"></div>
           <div class="row justify-center q-py-xl">
-            <div class="backBtnTablet">ย้อนกลับ</div>
+            <div class="backBtnTablet" @click="backBtn()">ย้อนกลับ</div>
             <div class="q-pa-md"></div>
-            <div class="saveBtnTablet">ต่อไป</div>
+            <div class="nextBtnTablet" @click="nextBtn()">ต่อไป</div>
           </div>
         </div>
       </div>
@@ -85,10 +85,10 @@
           <div class="font20">รหัส OTP ได้ถูกส่งไปหมายเลข 098-765-4321</div>
           <div class="font20">รหัสอ้างอิง #3566</div>
           <div class="brx" style="height: 200px"></div>
-          <div class="q-py-xl row justify-center">
-            <div class="backBtn">ย้อนกลับ</div>
+          <div class="q-py-xl row justify-center font18">
+            <div class="backBtn" @click="backBtn()">ย้อนกลับ</div>
             <div class="q-pa-md"></div>
-            <div class="saveBtn">ยืนยัน</div>
+            <div class="nextBtn" @click="nextBtn()">ต่อไป</div>
           </div>
         </div>
         <div></div>
@@ -105,25 +105,36 @@ export default {
     headBar,
     endBar,
   },
+  methods: {
+    // กดปุ่มย้อนกลับไปหน้า ลืมรหัสผ่าน
+    backBtn() {
+      this.$router.push("/forgetpassword1");
+    },
+    // กดปุ่มต่อไปเพื่อไปหน้าตั้งค่ารหัสผ่านใหม่
+    nextBtn() {
+      this.$router.push("/forgetpassword3");
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-.saveBtn {
+.nextBtn {
+  cursor: pointer;
   color: black;
   width: 116px;
   height: 40px;
   line-height: 40px;
   background: #00d1ff;
 }
-.saveBtnTablet {
+.nextBtnTablet {
   color: black;
   width: 116px;
   height: 40px;
   line-height: 40px;
   background: #00d1ff;
 }
-.saveBtnMobile {
+.nextBtnMobile {
   color: black;
   width: 90px;
   height: 27px;
@@ -131,6 +142,7 @@ export default {
   background: #00d1ff;
 }
 .backBtn {
+  cursor: pointer;
   width: 116px;
   height: 40px;
   line-height: 40px;

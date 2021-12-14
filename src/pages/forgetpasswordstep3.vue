@@ -4,6 +4,7 @@
     <div class="mobile-only lt-sm">
       <head-bar></head-bar>
       <!-- ---- content ------->
+
       <div align="center" class="q-pt-xl">
         <img
           width="139px"
@@ -68,9 +69,7 @@
       </div>
       <div align="center" class="font12">
         <div class="row justify-center q-py-lg">
-          <div class="backBtnMobile">ย้อนกลับ</div>
-          <div class="q-pa-md"></div>
-          <div class="saveBtnMobile text-black">ยืนยัน</div>
+          <div class="saveBtnMobile text-black" @click="saveBtn()">ยืนยัน</div>
         </div>
       </div>
 
@@ -151,9 +150,7 @@
       </div>
       <div align="center" class="font18">
         <div class="row justify-center q-py-xl">
-          <div class="backBtnTablet">ย้อนกลับ</div>
-          <div class="q-pa-md"></div>
-          <div class="saveBtnTablet text-black">ยืนยัน</div>
+          <div class="saveBtnTablet text-black" @click="saveBtn()">ยืนยัน</div>
         </div>
       </div>
       <!-- ---- content ------->
@@ -238,9 +235,7 @@
       </div>
       <div align="center" class="font18">
         <div class="row justify-center q-py-xl">
-          <div class="backBtn">ย้อนกลับ</div>
-          <div class="q-pa-md"></div>
-          <div class="saveBtn text-black">ยืนยัน</div>
+          <div class="saveBtn text-black" @click="saveBtn()">ยืนยัน</div>
         </div>
       </div>
     </div>
@@ -266,6 +261,12 @@ export default {
       comfirmPwd: "",
       loginKey: this.$q.localStorage.getItem("login"),
     };
+  },
+  methods: {
+    // กดปุ่มยืนยันตั้งค่ารหัสผ่านใหม่
+    saveBtn() {
+      this.greenNotify("complete");
+    },
   },
 };
 </script>
@@ -293,6 +294,7 @@ export default {
   box-sizing: border-box;
 }
 .saveBtn {
+  cursor: pointer;
   width: 116px;
   height: 40px;
   line-height: 40px;

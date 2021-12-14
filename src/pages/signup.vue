@@ -43,7 +43,7 @@
             ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
           </div>
         </div>
-        <div class="saveBtnMobile q-mt-md" @click="goToOpt()">ยืนยัน</div>
+        <div class="saveBtnMobile q-mt-md" @click="goToOpt()">ถัดไป</div>
         <div class="font12 q-py-md">
           ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
           <span class="fontU cursor-pointer" style="color: #00d1ff">
@@ -53,7 +53,7 @@
       </div>
       <!-- end header  -->
 
-      <div class="endHeaderMobile text-black">
+      <div class="endHeaderMobile">
         <div class="q-pt-md" style="font-size: 21px" align="center">
           สิทธิพิเศษสำหรับสมาชิก
         </div>
@@ -138,7 +138,7 @@
               style="margin-top: 37px"
               @click="goToOpt()"
             >
-              ยืนยัน
+              ถัดไป
             </div>
             <div class="font16 q-py-md">
               ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
@@ -151,7 +151,7 @@
         </div>
       </div>
       <!-- endHeader  -->
-      <div class="endHeaderTablet text-black">
+      <div class="endHeaderTablet">
         <div class="q-pt-md" style="font-size: 32px" align="center">
           สิทธิพิเศษสำหรับสมาชิก
         </div>
@@ -224,7 +224,7 @@
             ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
           </div>
         </div>
-        <div class="saveBtn font18 q-mt-lg" @click="goToOpt()">ยืนยัน</div>
+        <div class="saveBtn font18 q-mt-lg" @click="goToOpt()">ถัดไป</div>
         <div class="font16 q-pt-md">
           ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
           <span
@@ -237,7 +237,7 @@
         </div>
       </div>
       <div>
-        <div class="promoTag text-black row no-padding">
+        <div class="promoTag row no-padding">
           <div class="col q-pt-md q-pl-xl">
             <div class="font32">สิทธิพิเศษสำหรับสมาชิก</div>
             <div class="row q-pt-md">
@@ -337,17 +337,17 @@ export default {
   position: relative;
   height: 287px;
   width: 100%;
-  background: #00d1ff;
+  background: #1f1f1f;
 }
 .lineOrder {
   width: 2px;
   height: 57px;
-  background: #010101;
+  background: #ffffff;
 }
 .lineOrderTablet {
   width: 2px;
   height: 57px;
-  background: #010101;
+  background: #ffffff;
 }
 .picTag {
   position: absolute;
@@ -380,17 +380,17 @@ export default {
 .endHeaderMobile {
   width: 100%;
   height: calc(100vh - 574px);
-  background: #00d1ff;
+  background: #1f1f1f;
 }
 .endHeaderTablet {
   width: 100%;
   height: 291px;
-  background: #00d1ff;
+  background: #1f1f1f;
 }
 
 .lineOrderMobile {
   width: 2px;
   height: 44px;
-  background: #010101;
+  background: #ffffff;
 }
 </style>

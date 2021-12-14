@@ -314,7 +314,7 @@
           </div>
         </div>
         <div
-          class="col-2 font16 fontU q-pr-lg"
+          class="col-2 font16 fontU q-pr-lg cursor-pointer"
           align="right "
           @click="editcatagory()"
         >

@@ -41,14 +41,18 @@
           </div>
         </div>
 
-        <div class="fontU font14 q-pr-md" align="right">ลืมรหัสผ่าน</div>
+        <div class="fontU font14 q-pr-md" align="right" @click="forget1()">
+          ลืมรหัสผ่าน
+        </div>
 
-        <div class="loginBtnMobile q-mt-md" @click="loginPass()">
+        <div class="loginBtnMobile text-black q-mt-md" @click="loginPass()">
           เข้าสู่ระบบ
         </div>
         <div class="font12 q-pt-md">
           ถ้าคุณไม่ได้เป็นสมาชิก สามารถกด
-          <span class="fontU" style="color: #00d1ff">สมัครสมาชิก</span>
+          <span class="fontU" style="color: #00d1ff" @click="signUp()"
+            >สมัครสมาชิก</span
+          >
         </div>
         <div style="height: 40px" class=""></div>
       </div>
@@ -100,13 +104,20 @@
                 ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
               </div>
             </div>
-            <div class="fontU font16" align="right">ลืมรหัสผ่าน</div>
-            <div class="loginBtnTablet font18 q-mt-lg" @click="loginPass()">
-              ยืนยัน
+            <div class="fontU font16" align="right" @click="forget1()">
+              ลืมรหัสผ่าน
+            </div>
+            <div
+              class="loginBtnTablet text-black font18 q-mt-lg"
+              @click="loginPass()"
+            >
+              เข้าสู่ระบบ
             </div>
             <div class="font16 q-pt-lg">
               ถ้าคุณไม่ได้เป็นสมาชิก สามารถกด
-              <span class="fontU" style="color: #00d1ff">สมัครสมาชิก</span>
+              <span class="fontU" style="color: #00d1ff" @click="signUp()"
+                >สมัครสมาชิก</span
+              >
             </div>
           </div>
 
@@ -166,14 +177,28 @@
                 ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
               </div>
             </div>
-            <div class="fontU font16 q-pt-md" align="right">ลืมรหัสผ่าน</div>
+            <div
+              class="fontU font16 q-pt-md cursor-pointer"
+              align="right"
+              @click="forget1()"
+            >
+              ลืมรหัสผ่าน
+            </div>
 
-            <div class="loginBtnTablet font18 q-mt-lg" @click="loginPass()">
-              ยืนยัน
+            <div
+              class="loginBtnPc text-black font18 q-mt-lg"
+              @click="loginPass()"
+            >
+              เข้าสู่ระบบ
             </div>
             <div class="font16 q-pt-lg">
               ถ้าคุณไม่ได้เป็นสมาชิก สามารถกด
-              <span class="fontU" style="color: #00d1ff">สมัครสมาชิก</span>
+              <span
+                class="fontU cursor-pointer"
+                style="color: #00d1ff"
+                @click="signUp()"
+                >สมัครสมาชิก</span
+              >
             </div>
           </div>
 
@@ -216,6 +241,14 @@ export default {
       this.$q.localStorage.set("login", true);
       this.$router.push("/profile");
     },
+    // กดลืมรหัสผ่านเพื่่อไปหน้า forgetpassword1
+    forget1() {
+      this.$router.push("/forgetpassword1");
+    },
+    // กดสมัครสมาชิกเพื่อไปหน้า signup
+    signUp() {
+      this.$router.push("/signup");
+    },
   },
 };
 </script>
@@ -225,20 +258,20 @@ export default {
   width: 90px;
   height: 27px;
   line-height: 27px;
-  border: 1px solid white;
+  background: #00d1ff;
   border-radius: 2px;
 }
 .loginBtnTablet {
   width: 116px;
   height: 40px;
   line-height: 40px;
-  border: 1px solid white;
+  background: #00d1ff;
 }
-.loginBtnTabPc {
+.loginBtnPc {
   width: 116px;
   height: 40px;
   line-height: 40px;
-  border: 1px solid white;
+  background: #00d1ff;
 }
 .loginPicTablet {
   width: 337px;

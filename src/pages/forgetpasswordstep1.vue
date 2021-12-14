@@ -22,15 +22,12 @@
       </div>
       <div align="center">
         <div class="font12 q-pt-md row justify-center">
-          <div class="backBtnMobile">ย้อนกลับ</div>
+          <div class="backBtnMobile" @click="backBtn()">ย้อนกลับ</div>
           <div class="q-pa-md"></div>
-          <div class="nextBtnMobile text-black">ต่อไป</div>
+          <div class="nextBtnMobile text-black" @click="nextBtn()">ต่อไป</div>
         </div>
       </div>
-      <div class="q-pt-lg font12" align="center">
-        ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
-        <span class="fontblue"> <U>เข้าสู่ระบบ</U></span>
-      </div>
+
       <end-bar :login="false" :menu="3"></end-bar>
     </div>
     <!-- tablet -->
@@ -57,15 +54,12 @@
       </div>
       <div align="center">
         <div class="font18 q-py-xl row justify-center">
-          <div class="backBtntablet">ย้อนกลับ</div>
+          <div class="backBtntablet" @click="backBtn()">ย้อนกลับ</div>
           <div class="q-pa-md"></div>
-          <div class="nextBtntablet text-black">ต่อไป</div>
+          <div class="nextBtntablet text-black" @click="nextBtn()">ต่อไป</div>
         </div>
       </div>
-      <div class="font16" align="center">
-        ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
-        <span class="fontblue"><u>เข้าสู่ระบบ</u></span>
-      </div>
+
       <end-bar :login="false" :menu="3"></end-bar>
     </div>
 
@@ -94,14 +88,10 @@
         </div>
         <div align="center">
           <div class="font18 q-py-xl row justify-center">
-            <div class="backBtn">ย้อนกลับ</div>
+            <div class="backBtn" @click="backBtn()">ย้อนกลับ</div>
             <div class="q-pa-md"></div>
-            <div class="nextBtn text-black">ต่อไป</div>
+            <div class="nextBtn text-black" @click="nextBtn()">ต่อไป</div>
           </div>
-        </div>
-        <div class="font16" align="center">
-          ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
-          <span class="fontblue"><u>เข้าสู่ระบบ</u></span>
         </div>
       </div>
     </div>
@@ -118,6 +108,16 @@ export default {
       telephone: "",
     };
   },
+  methods: {
+    // กดปุ่มย้อนกลับไปหน้า เข้าสู่ระบบ
+    backBtn() {
+      this.$router.push("/login");
+    },
+    // กดปุ่มต่อไปเพื่อไปหน้า ขอ OTP
+    nextBtn() {
+      this.$router.push("/forgetpassword2");
+    },
+  },
 };
 </script>
 
@@ -130,6 +130,7 @@ export default {
   margin: auto;
 }
 .backBtn {
+  cursor: pointer;
   width: 116px;
   height: 40px;
   line-height: 40px;
@@ -151,6 +152,7 @@ export default {
   box-sizing: border-box;
 }
 .nextBtn {
+  cursor: pointer;
   width: 116px;
   height: 40px;
   line-height: 40px;

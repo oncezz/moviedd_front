@@ -664,15 +664,153 @@ export default {
       loginKey: this.$q.localStorage.getItem("login"),
       movieCatList: [
         {
-          list: "cartoon",
-          urlp: "../../public/image/movielist/cartoonBlue.png",
-          urln: "../../public/image/movielist/cartoon.png",
+          // ดราม่า
+          id: 1,
+          orderid: 800,
           pick: false,
         },
         {
-          list: "korea",
-          urlPick: "../../public/image/movielist/koreaBlue.png",
-          urlNopick: "../../public/image/movielist/korea.png",
+          // แอคชั่น
+          id: 2,
+          orderid: 3000,
+          pick: false,
+        },
+        {
+          // สารคดี
+          id: 3,
+          orderid: 2200,
+          pick: false,
+        },
+        {
+          // เกาหลี
+          id: 4,
+          orderid: 200,
+          pick: false,
+        },
+        {
+          // การ์ตูน
+          id: 713,
+          orderid: 100,
+          pick: false,
+        },
+        {
+          // ครอบครัว
+          id: 714,
+          orderid: 300,
+          pick: false,
+        },
+        {
+          // ซุปเปอร์ฮีโร่
+          id: 716,
+          orderid: 500,
+          pick: false,
+        },
+        {
+          // ตลก
+          id: 717,
+          orderid: 900,
+          pick: false,
+        },
+        {
+          // ไทย
+          id: 718,
+          orderid: 1000,
+          pick: false,
+        },
+        {
+          // ประวัติศาสตร์
+          id: 719,
+          orderid: 1100,
+          pick: false,
+        },
+        {
+          // ยอดนิยม
+          id: 721,
+          orderid: 1500,
+          pick: false,
+        },
+        {
+          // ระทึกขวัญ
+          id: 722,
+          orderid: 1600,
+          pick: false,
+        },
+        {
+          // รายการโชว์
+          id: 723,
+          orderid: 1700,
+          pick: false,
+        },
+        {
+          // ลึกลับ
+          id: 724,
+          orderid: 1900,
+          pick: false,
+        },
+        {
+          // จีน
+          id: 725,
+          orderid: 400,
+          pick: false,
+        },
+        {
+          // ไซไฟ
+          id: 726,
+          orderid: 600,
+          pick: false,
+        },
+        {
+          // ญี่ปุ่น
+          id: 727,
+          orderid: 700,
+          pick: false,
+        },
+        {
+          // ผจญภัย
+          id: 728,
+          orderid: 1200,
+          pick: false,
+        },
+        {
+          // เพลง
+          id: 729,
+          orderid: 1300,
+          pick: false,
+        },
+        {
+          // แฟนตาซี
+          id: 730,
+          orderid: 1400,
+          pick: false,
+        },
+        {
+          // โรแมนติก
+          id: 731,
+          orderid: 1800,
+          pick: false,
+        },
+        {
+          // สงคราม
+          id: 732,
+          orderid: 2000,
+          pick: false,
+        },
+        {
+          // สยองขวัญ
+          id: 733,
+          orderid: 2100,
+          pick: false,
+        },
+        {
+          // หนังรางวัล
+          id: 734,
+          orderid: 2300,
+          pick: false,
+        },
+        {
+          // อาชญากรรม
+          id: 735,
+          orderid: 2400,
           pick: false,
         },
       ],
