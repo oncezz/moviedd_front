@@ -29,6 +29,13 @@ export default function (/* { store, ssrContext } */) {
   return Router;
 }
 Vue.mixin({
+  data() {
+    return {
+      serverpath: "http://localhost/moviedd/",
+      // serverpath: "http://192.168.2.147/moviedd/",
+      //    serverpath: "https://www.yaksaconcept.com/movieddapi/",
+    };
+  },
   methods: {
     greenNotify(text) {
       this.$q.notify({
