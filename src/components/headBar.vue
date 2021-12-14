@@ -45,7 +45,37 @@
         <div class="col-1" align="center">ประเภท</div>
         <div class="col"></div>
         <div class="col-1" align="center">รายชื่อ</div>
-        <div class="col-1" align="center">โปรไฟล์</div>
+        <div class="col-1" align="center">
+          <q-btn
+            style="width: 160px"
+            class="font20"
+            :label="userData.username"
+            no-caps
+          >
+            <q-menu dark auto-close>
+              <q-list style="width: 160px">
+                <q-item clickable class="font18" align="center">
+                  <q-item-section>บัญชีผู้ใช้งาน</q-item-section>
+                </q-item>
+                <q-item clickable class="font18" align="center">
+                  <q-item-section>ออกจากระบบ</q-item-section>
+                </q-item>
+                <q-separator />
+              </q-list>
+            </q-menu>
+          </q-btn>
+
+          <!-- <q-select
+            class="font20 q-pb-sm"
+            dark
+            dense
+            rounded
+            filled
+            v-model="userData.username"
+            :options="options"
+            label=""
+          /> -->
+        </div>
         <div class="col-1" align="center"><q-icon class="fas fa-search" /></div>
       </div>
       <div class="headPC q-pa-sm"></div>
@@ -54,7 +84,17 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      userData: {
+        username: "DESTINY",
+      },
+      model: null,
+      options: ["บัญชีผู้ใช้งาน", "ออกจากระบบ"],
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
