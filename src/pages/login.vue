@@ -163,7 +163,7 @@
                 dark
                 outlined
                 dense
-                v-model="userData.username"
+                v-model="userData.password"
                 :type="isPwd ? 'password' : 'text'"
                 ><template v-slot:append>
                   <q-icon
@@ -210,6 +210,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import headBar from "../components/headBar.vue";
 import endBar from "../components/endBar.vue";
 export default {
@@ -220,7 +221,6 @@ export default {
   data() {
     return {
       userData: {
-        phoneNumber: "",
         username: "",
         password: "",
       },
@@ -237,9 +237,21 @@ export default {
     closeDia() {
       this.wrongDia = false;
     },
-    loginPass() {
-      this.$q.localStorage.set("login", true);
-      this.$router.push("/profile");
+    async loginPass() {
+      let data = {
+        username: this.userData.username,
+        password: this.userData.password,
+      };
+      let url = this.serverpath + "fe_checkpassword.php";
+      let res = await axios.post(url, JSON.stringify(data));
+      // console.log(res.data);
+      if (res.data == "fail") {
+        this.redNotify("wrong password");
+      } else {
+        this.$q.localStorage.set("userid", res.data[0].id);
+        this.$q.localStorage.set("username", res.data[0].username);
+        this.$router.push("/home");
+      }
     },
     // กดลืมรหัสผ่านเพื่่อไปหน้า forgetpassword1
     forget1() {
@@ -268,6 +280,7 @@ export default {
   background: #00d1ff;
 }
 .loginBtnPc {
+  cursor: pointer;
   width: 116px;
   height: 40px;
   line-height: 40px;

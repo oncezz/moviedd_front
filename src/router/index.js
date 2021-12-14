@@ -46,5 +46,14 @@ Vue.mixin({
         icon: "fas fa-check-circle",
       });
     },
+    redNotify(text) {
+      this.$q.notify({
+        message: text,
+
+        color: "negative",
+        position: "top",
+        icon: "fas fa-times-circle",
+      });
+    },
   },
 });
