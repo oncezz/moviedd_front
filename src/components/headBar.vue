@@ -37,14 +37,20 @@
     <!-- PC  -->
     <div class="desktop-only">
       <div class="headPC font20 row items-center fixed-top">
-        <div class="col-2" align="center">
+        <div class="col-2 cursor-pointer" align="center" @click="goHome()">
           <img src="../../public/image/netgig.svg" alt="" />
         </div>
         <div class="col-1" align="center">หนัง</div>
         <div class="col-1" align="center">ซี่รี่ย์</div>
         <div class="col-1" align="center">ประเภท</div>
         <div class="col"></div>
-        <div class="col-1" align="center">รายชื่อ</div>
+        <div
+          class="col-1 cursor-pointer"
+          align="center"
+          @click="goTofavorite()"
+        >
+          รายการโปรด
+        </div>
         <div class="col-1" align="center">
           <q-btn
             style="width: 160px"
@@ -54,7 +60,12 @@
           >
             <q-menu dark auto-close>
               <q-list style="width: 160px">
-                <q-item clickable class="font18" align="center">
+                <q-item
+                  clickable
+                  class="font18"
+                  align="center"
+                  @click="profileBtn()"
+                >
                   <q-item-section>บัญชีผู้ใช้งาน</q-item-section>
                 </q-item>
                 <q-item clickable class="font18" align="center">
@@ -93,6 +104,33 @@ export default {
       model: null,
       options: ["บัญชีผู้ใช้งาน", "ออกจากระบบ"],
     };
+  },
+  methods: {
+    // กดปุ่มบัญชีอผู้ใช้งานไปหน้า profile
+    profileBtn() {
+      this.$router.push("/profile");
+    },
+    // กดปุ่มยืนยันแนวหนัง
+    saveBtn() {
+      this.greenNotify("complete");
+    },
+    // กดไอค่อน NETGIG กลับมาหน้า home
+    goHome() {
+      this.$router.push("/home");
+    },
+    goTosignup() {
+      this.$router.push("/signup");
+    },
+    goTologin() {
+      this.$router.push("/login");
+    },
+    // กดปุ่มรายการโปรดเพื่อไป favorite
+    goTofavorite() {
+      this.$router.push("/favorite");
+    },
+    goProfile() {
+      this.$router.push("/profile");
+    },
   },
 };
 </script>
