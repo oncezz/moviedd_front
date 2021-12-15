@@ -44,14 +44,17 @@
         <div class="col-1" align="center">ซี่รี่ย์</div>
         <div class="col-1" align="center">ประเภท</div>
         <div class="col"></div>
+        <!-- ----- Fav ----  -->
         <div
+          v-show="login"
           class="col-1 cursor-pointer"
           align="center"
           @click="goTofavorite()"
         >
           รายการโปรด
         </div>
-        <div class="col-1" align="center">
+        <!-- -- Profile--- -->
+        <div v-show="login" class="col-1" align="center">
           <q-btn
             style="width: 160px"
             class="font20"
@@ -66,27 +69,37 @@
                   align="center"
                   @click="profileBtn()"
                 >
-                  <q-item-section>บัญชีผู้ใช้งาน</q-item-section>
+                  <q-item-section @click="profileBtn()"
+                    >บัญชีผู้ใช้งาน</q-item-section
+                  >
                 </q-item>
                 <q-item clickable class="font18" align="center">
-                  <q-item-section>ออกจากระบบ</q-item-section>
+                  <q-item-section @click="logOut()">ออกจากระบบ</q-item-section>
                 </q-item>
                 <q-separator />
               </q-list>
             </q-menu>
           </q-btn>
-
-          <!-- <q-select
-            class="font20 q-pb-sm"
-            dark
-            dense
-            rounded
-            filled
-            v-model="userData.username"
-            :options="options"
-            label=""
-          /> -->
         </div>
+        <!-- ------- sign Up -----  -->
+        <div
+          v-show="!login"
+          class="col-1 cursor-pointer"
+          align="center"
+          @click="goTosignup()"
+        >
+          สมัครสมาชิก
+        </div>
+        <!-- --------  log in ----------  -->
+        <div
+          v-show="!login"
+          class="col-1 cursor-pointer"
+          align="center"
+          @click="goTologin()"
+        >
+          เข้าสู่ระบบ
+        </div>
+        <!----------------------->
         <div class="col-1" align="center"><q-icon class="fas fa-search" /></div>
       </div>
       <div class="headPC q-pa-sm"></div>
@@ -96,12 +109,18 @@
 
 <script>
 export default {
+  props: {
+    login: {
+      type: Boolean,
+    },
+  },
   data() {
     return {
       userData: {
-        username: "DESTINY",
+        id: this.$q.localStorage.getItem("userid"),
+        username: this.$q.localStorage.getItem("username"),
       },
-      model: null,
+
       options: ["บัญชีผู้ใช้งาน", "ออกจากระบบ"],
     };
   },
@@ -131,13 +150,17 @@ export default {
     goProfile() {
       this.$router.push("/profile");
     },
+    logOut() {
+      this.$q.localStorage.clear();
+      this.$router.push("/home");
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .headPC {
-  z-index: 9;
+  z-index: 99;
   margin: auto;
   max-width: 1600px;
   width: 100%;
@@ -146,7 +169,7 @@ export default {
   background: rgba(0, 0, 0, 1);
 }
 .headTablet {
-  z-index: 9;
+  z-index: 99;
   width: 100%;
   height: 78px;
   text-decoration: underline;
@@ -154,7 +177,7 @@ export default {
   background: rgba(0, 0, 0, 1);
 }
 .headMobile {
-  z-index: 9;
+  z-index: 99;
   width: 100%;
   height: 46px;
   text-decoration: underline;

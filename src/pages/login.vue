@@ -248,6 +248,7 @@ export default {
       if (res.data == "fail") {
         this.redNotify("wrong password");
       } else {
+        this.$q.localStorage.set("login", true);
         this.$q.localStorage.set("userid", res.data[0].id);
         this.$q.localStorage.set("username", res.data[0].username);
         this.$router.push("/home");
