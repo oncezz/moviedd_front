@@ -191,7 +191,7 @@
       class="desktop-only shadow-6"
       style="max-width: 1600px; width: 100%; margin: auto"
     >
-      <head-bar></head-bar>
+      <head-bar :login="true" :menu="5"></head-bar>
       <!-- ---- content ------->
       <div align="center" class="q-pt-xl">
         <img
