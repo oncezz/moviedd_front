@@ -444,22 +444,32 @@
           <div class="col-4"></div>
           <div class="col">
             <div class="font24 q-ma-sm">เลือกแนวหนังที่คุณชอบ</div>
-            <div class="font20">เลือกสูงสุดได้ 8 แนว</div>
+            <div class="font20">เลือกสูงสุดได้ {{ allPick }}/8 แนว</div>
           </div>
           <div class="col-4" align="right">
             <div class="skipBtn font24" align="center">ข้าม</div>
           </div>
         </div>
       </div>
-      <div class="row q-pt-xl">
-        <div class="col-2" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/cartoon.png"
-            alt=""
-          />
+      <div class="row q-pt-xl q-px-xl q-ml-lg">
+        <div
+          class="col-2 q-pa-sm"
+          v-for="(item, index) in movieCatList"
+          :key="index"
+          style="position: relative"
+          @click="pickCategory(index, item.pick)"
+        >
+          <div class="blueCatBtn" v-show="item.pick"></div>
+          <div
+            class="catBtn"
+            align="center"
+            :style="{ background: getPicPath(item.id) }"
+          >
+            <div class="font22" align>{{ item.catname }}</div>
+          </div>
         </div>
       </div>
+      <!----------------------->
     </div>
   </div>
 </template>
@@ -477,6 +487,7 @@ export default {
     return {
       temp: "@/assets/cartoonBlue.png",
       loginKey: this.$q.localStorage.getItem("login"),
+      allPick: 0,
       movieCatList: [
         {
           catname: "ดราม่า",
@@ -484,16 +495,29 @@ export default {
           orderid: 800,
           pick: false,
         },
-        {
-          catname: "แอคชั่น",
-          id: 2,
-          orderid: 3000,
-          pick: false,
-        },
       ],
     };
   },
   methods: {
+    pickCategory(index, pick) {
+      if (pick) {
+        this.movieCatList[index].pick = false;
+        this.allPick--;
+      } else {
+        if (this.allPick == 8) {
+          this.redNotify("pick 8/8");
+          return;
+        } else {
+          this.movieCatList[index].pick = true;
+          this.allPick++;
+        }
+      }
+    },
+    getPicPath(id) {
+      let url = "";
+      url = "url(" + this.serverpath + "category/" + id + ".png) no-repeat";
+      return url;
+    },
     async loadFavCat() {
       let data = {
         userid: this.$q.localStorage.getItem("userid"),
@@ -501,6 +525,11 @@ export default {
       let url = this.serverpath + "fe_profileloadfav.php";
       let res = await axios.post(url, JSON.stringify(data));
       this.movieCatList = res.data;
+      for (let i = 0; i < res.data.length; i++) {
+        if (res.data[i].pick) {
+          this.allPick++;
+        }
+      }
     },
   },
   mounted() {
@@ -533,5 +562,23 @@ export default {
   color: black;
   background: #00d1ff;
   border-radius: 20px 0px 0px 20px;
+}
+.catBtn {
+  cursor: pointer;
+  border-radius: 10px;
+  height: 124px;
+  width: 208px;
+  line-height: 124px;
+}
+.blueCatBtn {
+  z-index: 99;
+  position: fixed;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 10px;
+  height: 124px;
+  line-height: 124px;
+  width: 208px;
+  background: rgba(0, 209, 255, 0.3);
 }
 </style>
