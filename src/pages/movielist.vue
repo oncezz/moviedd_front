@@ -444,10 +444,18 @@
           <div class="col-4"></div>
           <div class="col">
             <div class="font24 q-ma-sm">เลือกแนวหนังที่คุณชอบ</div>
-            <div class="font20">เลือกสูงสุดได้ {{ allPick }}/8 แนว</div>
+            <div v-show="allPick == 0" class="font20">เลือกสูงสุดได้ 8 แนว</div>
+            <div v-show="allPick != 0" class="font20">
+              เลือกไปแล้ว {{ allPick }}/8 แนว
+            </div>
           </div>
           <div class="col-4" align="right">
-            <div class="skipBtn font24" align="center">ข้าม</div>
+            <div v-show="allPick == 0" class="skipBtn font24" align="center">
+              ข้าม
+            </div>
+            <div v-show="allPick != 0" class="skipBtn font24" align="center">
+              เสร็จสิ้น
+            </div>
           </div>
         </div>
       </div>
@@ -540,9 +548,10 @@ export default {
 
 <style lang="scss" scoped>
 .skipBtn {
-  width: 120px;
-  height: 50px;
-  line-height: 50px;
+  cursor: pointer;
+  width: 125px;
+  height: 55px;
+  line-height: 55px;
   color: black;
   background: #00d1ff;
   border-radius: 40px;

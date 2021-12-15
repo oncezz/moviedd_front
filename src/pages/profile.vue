@@ -314,7 +314,7 @@
           </div>
         </div>
         <div
-          class="col-2 font16 fontU q-pr-lg cursor-pointer"
+          class="col-2 font16 fontU q-pr-lg cursor-pointerao"
           align="right "
           @click="editcatagory()"
         >
@@ -337,7 +337,9 @@ export default {
   data() {
     return {
       userData: {
+        id: 1,
         phoneNumber: "088-888-8888",
+
         username: "Destiny",
         password: "12345",
       },
