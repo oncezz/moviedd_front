@@ -193,14 +193,66 @@
         <div class="font28">สมัครสมาชิก</div>
         <div class="font20 q-py-sm" align="left" style="width: 500px">
           <div class="font20 q-pt-sm">หมายเลขโทรศัพท์มือถือ</div>
-          <q-input dark outlined dense v-model="userData.phoneNumber">
+
+          <q-input
+            dark
+            outlined
+            dense
+            v-model="userData.phoneNumber"
+            mask="##########"
+          >
           </q-input>
-          <div class="font16" style="color: #868686">ใช้สำหรับยืนยันตัวตน</div>
+          <div
+            v-show="userData.phoneNumber == ''"
+            class="font16"
+            style="color: #868686"
+          >
+            ใช้สำหรับยืนยันตัวตน
+          </div>
+          <div
+            v-show="userData.phoneNumber != '' && !isPhoneNumber()"
+            class="font16"
+            style="color: #e75427"
+          >
+            หมายเลขโทรศัพท์ต้องมีความยาว 10 ตัว
+          </div>
+          <div
+            v-show="userData.phoneNumber != '' && isPhoneNumber()"
+            class="font16"
+            style="color: #e75427"
+          >
+            &nbsp;
+          </div>
         </div>
         <div class="font20 q-py-sm" align="left" style="width: 500px">
           <div class="font20 q-pt-sm">ชื่อผู้้ใช้งาน</div>
-          <q-input dark outlined dense v-model="userData.username"> </q-input>
-          <div class="font16" style="color: #868686">
+          <q-input
+            dark
+            outlined
+            dense
+            v-model="userData.username"
+            mask="NNNNNNNNNN"
+          >
+          </q-input>
+          <div
+            class="font16"
+            style="color: #868686"
+            v-show="userData.username == ''"
+          >
+            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+          </div>
+          <div
+            v-show="userData.username != '' && isUserName()"
+            class="font16"
+            style="color: #e75427"
+          >
+            &nbsp;
+          </div>
+          <div
+            v-show="userData.username != '' && !isUserName()"
+            class="font16"
+            style="color: #e75427"
+          >
             ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
           </div>
         </div>
@@ -211,6 +263,7 @@
             outlined
             dense
             v-model="userData.password"
+            mask="NNNNNNNNNN"
             :type="isPwd ? 'password' : 'text'"
           >
             <template v-slot:append>
@@ -220,7 +273,27 @@
                 @click="isPwd = !isPwd"
               /> </template
           ></q-input>
-          <div class="font16" style="color: #868686">
+
+          <div
+            v-show="userData.password != '' && !isUserPassword()"
+            class="font16"
+            style="color: #e75427"
+          >
+            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+          </div>
+          <div
+            v-show="userData.password != '' && isUserPassword()"
+            class="font16"
+            style="color: #e75427"
+          >
+            &nbsp;
+          </div>
+
+          <div
+            v-show="userData.password == ''"
+            class="font16"
+            style="color: #868686"
+          >
             ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
           </div>
         </div>
@@ -316,6 +389,22 @@ export default {
     },
     goToOpt() {
       this.$router.push("/otprequest");
+    },
+    // ตัวเช็คเบอมือถือ 10 หลัก
+    isPhoneNumber() {
+      return this.userData.phoneNumber.length == 10;
+    },
+    // เช็คชื่อผู้ใช้งานให้เป็นภาษาอังกฤษเท่านั้น
+    isUserName() {
+      return (
+        this.userData.username.length > 5 && this.userData.username.length < 11
+      );
+    },
+    // เช็คพาสเวิดให้มี 6-10 หลัก
+    isUserPassword() {
+      return (
+        this.userData.password.length > 5 && this.userData.password.length < 11
+      );
     },
   },
 };

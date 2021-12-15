@@ -14,7 +14,7 @@
           />
         </div>
         <div align="center">
-          <div class="font20 q-ma-sm">สมัครสมาชิก</div>
+          <div class="font20 q-ma-sm">ยืนยัน OTP</div>
           <div class="font14">รหัส OTP ได้ถูกส่งไปที่หมายเลข 098-765-4321</div>
           <div class="font14 q-pt-sm">รหัสอ้างอิง #3566</div>
           <div class="brx" style="height: 200px"></div>
@@ -46,7 +46,7 @@
           </div>
         </div>
         <div align="center">
-          <div class="font28 q-ma-md">สมัครสมาชิก</div>
+          <div class="font28 q-ma-md">ยืนยัน OTP</div>
           <div class="font20">รหัส OTP ได้ถูกส่งไปที่หมายเลข 098-765-4321</div>
           <div class="font20 q-pt-md">รหัสอ้างอิง #3566</div>
           <div class="brx" style="height: 200px"></div>
@@ -81,7 +81,7 @@
           </div>
         </div>
         <div align="center" class="">
-          <div class="font28 q-ma-sm">สมัครสมาชิก</div>
+          <div class="font28 q-ma-sm">ยืนยัน OTP</div>
           <div class="font20">รหัส OTP ได้ถูกส่งไปหมายเลข 098-765-4321</div>
           <div class="font20">รหัสอ้างอิง #3566</div>
           <div class="brx" style="height: 200px"></div>
