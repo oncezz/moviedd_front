@@ -246,36 +246,46 @@
         </div>
       </div>
     </div>
+    <alert1btn
+      v-show="alertIncorrectPassword"
+      :pictureType="1"
+      textLine1="เลือกหนังได้สูงสุด 8 แนว"
+      @close-alert="closeAlertIncorrect()"
+    ></alert1btn>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import alert1btn from "../components/alert1btn.vue";
 import headBar from "../components/headBar.vue";
 import endBar from "../components/endBar.vue";
+import Alert1btn from "../components/alert1btn.vue";
 export default {
   components: {
     headBar,
     endBar,
+    Alert1btn,
   },
   data() {
     return {
+      alertIncorrectPassword: true, // เปิดหน้าต่างแจ้ง user password ไม่ถูกต้อง
       userData: {
         username: "",
         password: "",
       },
       isPwd: true,
-
-      wrongDia: false,
-      wrongStr: "ชื่อผู้ใช้งานไม่สามารถใช้ได้ เนื่องจากมีชื่อใช้งานนี้อยู่แล้ว",
     };
   },
   methods: {
-    saveDia() {
-      this.wrongDia = true;
+    closeAlertIncorrect() {
+      console.log("object");
+      this.alertIncorrectPassword = false;
     },
-    closeDia() {
-      this.wrongDia = false;
+    checkUser() {
+      if (this.$q.localStorage.getItem("userid") != null) {
+        this.$router.push("/home");
+      }
     },
     async loginPass() {
       let data = {
@@ -286,7 +296,7 @@ export default {
       let res = await axios.post(url, JSON.stringify(data));
       // console.log(res.data);
       if (res.data == "fail") {
-        this.redNotify("wrong password");
+        this.alertIncorrectPassword = true;
       } else {
         this.$q.localStorage.set("login", true);
         this.$q.localStorage.set("userid", res.data[0].id);
@@ -318,6 +328,9 @@ export default {
         this.userData.password.length > 5 && this.userData.password.length < 11
       );
     },
+  },
+  mounted() {
+    this.checkUser();
   },
 };
 </script>

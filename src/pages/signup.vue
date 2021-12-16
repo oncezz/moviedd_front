@@ -199,7 +199,7 @@
             outlined
             dense
             v-model="userData.phoneNumber"
-            mask="##########"
+            mask="###-###-####"
           >
           </q-input>
           <div
@@ -343,18 +343,7 @@
         </div>
       </div>
     </div>
-    <!-- dialog  -->
-    <q-dialog v-model="wrongDia">
-      <q-card class="diaBox">
-        <div align="center">
-          <div class="q-pa-lg">
-            <img src="../../public/image/redTime.svg" width="62px" alt="" />
-          </div>
-          <div class="font20 text-White q-px-sm">{{ wrongStr }}</div>
-          <div class="okInDia" @click="closeDia()">ตกลง</div>
-        </div>
-      </q-card>
-    </q-dialog>
+
     <div class="fullscreen bgDrop" v-show="wrongDia"></div>
     <div class=""></div>
   </div>
@@ -392,7 +381,7 @@ export default {
     },
     // ตัวเช็คเบอมือถือ 10 หลัก
     isPhoneNumber() {
-      return this.userData.phoneNumber.length == 10;
+      return this.userData.phoneNumber.length == 12;
     },
     // เช็คชื่อผู้ใช้งานให้เป็นภาษาอังกฤษเท่านั้น
     isUserName() {

@@ -18,7 +18,7 @@
       class="desktop-only shadow-6"
       style="max-width: 1600px; width: 100%; margin: auto"
     >
-      <head-bar :login="loginKey == 1 ? true : false"></head-bar>
+      <head-bar></head-bar>
 
       <div class="posterPromote"></div>
       <!-- ---- content ------->

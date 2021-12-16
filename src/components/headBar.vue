@@ -46,7 +46,7 @@
         <div class="col"></div>
         <!-- ----- Fav ----  -->
         <div
-          v-show="login"
+          v-show="mlogin"
           class="col-1 cursor-pointer"
           align="center"
           @click="goTofavorite()"
@@ -54,7 +54,7 @@
           รายการโปรด
         </div>
         <!-- -- Profile--- -->
-        <div v-show="login" class="col-1" align="center">
+        <div v-show="mlogin" class="col-1" align="center">
           <q-btn
             style="width: 160px"
             class="font20"
@@ -83,7 +83,7 @@
         </div>
         <!-- ------- sign Up -----  -->
         <div
-          v-show="!login"
+          v-show="!mlogin"
           class="col-1 cursor-pointer"
           align="center"
           @click="goTosignup()"
@@ -92,7 +92,7 @@
         </div>
         <!-- --------  log in ----------  -->
         <div
-          v-show="!login"
+          v-show="!mlogin"
           class="col-1 cursor-pointer"
           align="center"
           @click="goTologin()"
@@ -109,22 +109,31 @@
 
 <script>
 export default {
-  props: {
-    login: {
-      type: Boolean,
-    },
-  },
+  // props: {
+  //   login: {
+  //     type: Boolean,
+  //   },
+  // },
   data() {
     return {
+      mlogin: false, // ดูว่า login หรือยัง
       userData: {
-        id: this.$q.localStorage.getItem("userid"),
-        username: this.$q.localStorage.getItem("username"),
+        id: "",
+        username: "",
       },
-
       options: ["บัญชีผู้ใช้งาน", "ออกจากระบบ"],
     };
   },
   methods: {
+    loadUserData() {
+      this.userData.id = this.$q.localStorage.getItem("userid");
+      this.userData.username = this.$q.localStorage.getItem("username");
+      if (this.userData.id == null) {
+        this.mlogin = false;
+      } else {
+        this.mlogin = true;
+      }
+    },
     // กดปุ่มบัญชีอผู้ใช้งานไปหน้า profile
     profileBtn() {
       this.$router.push("/profile");
@@ -154,6 +163,9 @@ export default {
       this.$q.localStorage.clear();
       this.$router.push("/home");
     },
+  },
+  mounted() {
+    this.loadUserData();
   },
 };
 </script>

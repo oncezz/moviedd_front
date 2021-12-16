@@ -507,6 +507,7 @@ export default {
     };
   },
   methods: {
+    // กด เลือก/ไม่เลือก หมวดหนัง
     pickCategory(index, pick) {
       if (pick) {
         this.movieCatList[index].pick = false;
@@ -521,11 +522,13 @@ export default {
         }
       }
     },
+    // สร้าง url รูปเป็น string ไปใส่ใน :style
     getPicPath(id) {
       let url = "";
       url = "url(" + this.serverpath + "category/" + id + ".png) no-repeat";
       return url;
     },
+    // โหลด category ที่มี pick เพิ่ม true,false
     async loadFavCat() {
       let data = {
         userid: this.$q.localStorage.getItem("userid"),
@@ -573,6 +576,9 @@ export default {
   border-radius: 20px 0px 0px 20px;
 }
 .catBtn {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
   cursor: pointer;
   border-radius: 10px;
   height: 124px;
@@ -580,6 +586,9 @@ export default {
   line-height: 124px;
 }
 .blueCatBtn {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
   z-index: 99;
   position: fixed;
   margin: auto;
