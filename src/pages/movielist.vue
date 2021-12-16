@@ -595,7 +595,7 @@ export default {
   cursor: pointer;
   border-radius: 10px;
   height: 124px;
-  line-height: 124px;
+
   width: 208px;
   background: rgba(0, 209, 255, 0.3);
 }
