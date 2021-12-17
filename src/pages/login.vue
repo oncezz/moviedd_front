@@ -142,12 +142,12 @@
           </div>
         </div>
         <div class="font28">เข้าสู่ระบบ</div>
-        <div class="row">
-          <div class="col-4"></div>
-          <div class="col">
+        <div class="row justify-center">
+          <div class="col-4" style="width: 400px">
             <div align="left">
               <div class="font20 q-pt-sm">ชื่อผู้้ใช้งาน</div>
               <q-input
+                class="q-py-sm"
                 dark
                 outlined
                 dense
@@ -155,27 +155,6 @@
                 mask="NNNNNNNNNN"
               >
               </q-input>
-              <div
-                class="font16"
-                style="color: #868686"
-                v-show="userData.username == ''"
-              >
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
-              </div>
-              <div
-                v-show="userData.username != '' && isUserName()"
-                class="font16"
-                style="color: #e75427"
-              >
-                &nbsp;
-              </div>
-              <div
-                v-show="userData.username != '' && !isUserName()"
-                class="font16"
-                style="color: #e75427"
-              >
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
-              </div>
 
               <div class="font20 q-pt-md">รหัสผ่าน</div>
               <q-input
@@ -194,28 +173,6 @@
                   />
                 </template>
               </q-input>
-              <div
-                v-show="userData.password != '' && !isUserPassword()"
-                class="font16"
-                style="color: #e75427"
-              >
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
-              </div>
-              <div
-                v-show="userData.password != '' && isUserPassword()"
-                class="font16"
-                style="color: #e75427"
-              >
-                &nbsp;
-              </div>
-
-              <div
-                v-show="userData.password == ''"
-                class="font16"
-                style="color: #868686"
-              >
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
-              </div>
             </div>
             <div
               class="fontU font16 q-pt-md cursor-pointer"
@@ -241,8 +198,6 @@
               >
             </div>
           </div>
-
-          <div class="col-4"></div>
         </div>
       </div>
     </div>
