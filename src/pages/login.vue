@@ -1,11 +1,11 @@
 <template>
   <div>
     <!-- mobile  -->
-    <div class="mobile-only lt-sm">
+    <div class="mobile-only lt-sm" align="center">
       <head-bar></head-bar>
 
       <!-- ---- content ------->
-      <div class="" align="center">
+      <div class="" align="center" style="width: 340px">
         <div class="q-pt-lg">
           <img
             Width="201px"
@@ -17,16 +17,20 @@
         <div class="font20">เข้าสู่ระบบ</div>
         <div align="left" class="q-px-md">
           <div class="q-pt-sm">ชื่อผู้ใช้งาน</div>
-          <q-input dark outlined dense v-model="userData.username"></q-input>
-          <div class="font12" style="color: #868686">
-            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
-          </div>
-          <div class="q-pt-sm">รหัสผ่าน</div>
           <q-input
             dark
             outlined
             dense
+            mask="NNNNNNNNNN"
             v-model="userData.username"
+          ></q-input>
+          <div class="q-pt-md">รหัสผ่าน</div>
+          <q-input
+            dark
+            outlined
+            dense
+            v-model="userData.password"
+            mask="NNNNNNNNNN"
             :type="isPwd ? 'password' : 'text'"
             ><template v-slot:append>
               <q-icon
@@ -36,19 +40,18 @@
               />
             </template>
           </q-input>
-          <div class="font12" style="color: #868686">
-            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
-          </div>
         </div>
-
-        <div class="fontU font14 q-pr-md" align="right" @click="forget1()">
+        <div
+          class="fontU font14 q-pt-sm q-pr-md"
+          align="right"
+          @click="forget1()"
+        >
           ลืมรหัสผ่าน
         </div>
-
-        <div class="loginBtnMobile text-black q-mt-md" @click="loginPass()">
+        <div class="loginBtnMobile text-black q-mt-lg" @click="loginPass()">
           เข้าสู่ระบบ
         </div>
-        <div class="font12 q-pt-md">
+        <div class="font12 q-pt-lg">
           ถ้าคุณไม่ได้เป็นสมาชิก สามารถกด
           <span class="fontU" style="color: #00d1ff" @click="signUp()"
             >สมัครสมาชิก</span
@@ -69,9 +72,8 @@
           <img src="../../public/image/loginPicTablet.png" alt="" />
         </div>
         <div class="font28">เข้าสู่ระบบ</div>
-        <div class="row">
-          <div class="col-2"></div>
-          <div class="col">
+        <div class="row justify-center">
+          <div class="col-6" style="width: 400px">
             <div align="left">
               <div class="font20">ชื่อผู้ใช้งาน</div>
               <q-input
@@ -79,18 +81,18 @@
                 outlined
                 dense
                 v-model="userData.username"
+                mask="NNNNNNNNNN"
                 class="q-pt-sm"
               ></q-input>
-              <div class="font16 q-pt-sm" style="color: #868686">
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
-              </div>
-              <div class="font20 q-pt-md">รหัสผ่าน</div>
+
+              <div class="font20 q-pt-lg">รหัสผ่าน</div>
               <q-input
                 class="q-pt-sm"
                 dark
                 outlined
                 dense
-                v-model="userData.username"
+                v-model="userData.password"
+                mask="NNNNNNNNNN"
                 :type="isPwd ? 'password' : 'text'"
                 ><template v-slot:append>
                   <q-icon
@@ -100,9 +102,6 @@
                   />
                 </template>
               </q-input>
-              <div class="font16 q-pt-sm" style="color: #868686">
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
-              </div>
             </div>
             <div class="fontU font16" align="right" @click="forget1()">
               ลืมรหัสผ่าน
@@ -120,8 +119,6 @@
               >
             </div>
           </div>
-
-          <div class="col-2"></div>
         </div>
       </div>
 
@@ -142,12 +139,12 @@
           </div>
         </div>
         <div class="font28">เข้าสู่ระบบ</div>
-        <div class="row">
-          <div class="col-4"></div>
-          <div class="col">
+        <div class="row justify-center">
+          <div class="col-4" style="width: 400px">
             <div align="left">
               <div class="font20 q-pt-sm">ชื่อผู้้ใช้งาน</div>
               <q-input
+                class="q-py-sm"
                 dark
                 outlined
                 dense
@@ -155,27 +152,6 @@
                 mask="NNNNNNNNNN"
               >
               </q-input>
-              <div
-                class="font16"
-                style="color: #868686"
-                v-show="userData.username == ''"
-              >
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
-              </div>
-              <div
-                v-show="userData.username != '' && isUserName()"
-                class="font16"
-                style="color: #e75427"
-              >
-                &nbsp;
-              </div>
-              <div
-                v-show="userData.username != '' && !isUserName()"
-                class="font16"
-                style="color: #e75427"
-              >
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
-              </div>
 
               <div class="font20 q-pt-md">รหัสผ่าน</div>
               <q-input
@@ -194,28 +170,6 @@
                   />
                 </template>
               </q-input>
-              <div
-                v-show="userData.password != '' && !isUserPassword()"
-                class="font16"
-                style="color: #e75427"
-              >
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
-              </div>
-              <div
-                v-show="userData.password != '' && isUserPassword()"
-                class="font16"
-                style="color: #e75427"
-              >
-                &nbsp;
-              </div>
-
-              <div
-                v-show="userData.password == ''"
-                class="font16"
-                style="color: #868686"
-              >
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
-              </div>
             </div>
             <div
               class="fontU font16 q-pt-md cursor-pointer"
@@ -241,8 +195,6 @@
               >
             </div>
           </div>
-
-          <div class="col-4"></div>
         </div>
       </div>
     </div>

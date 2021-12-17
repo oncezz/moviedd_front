@@ -349,9 +349,16 @@ export default {
     };
   },
   methods: {
+    // check login
+    checkUser() {
+      if (this.$q.localStorage.getItem("userid") == null) {
+        this.$router.push("/home");
+      }
+    },
     // กดปุ่มออกจากระบบ
     exitBtn() {
-      this.greenNotify("exit");
+      this.$q.localStorage.clear();
+      this.$router.push("/home");
     },
     // กดปุ่มแก้ไข เบอโทรศัพท์
     editPhoneNumberBtn() {
@@ -365,6 +372,9 @@ export default {
     editcatagory() {
       this.$router.push("/profile4");
     },
+  },
+  mounted() {
+    this.checkUser();
   },
 };
 </script>
