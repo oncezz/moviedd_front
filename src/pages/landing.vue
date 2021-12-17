@@ -3,7 +3,7 @@
     <div class="netgig fixed-center" align="center">
       <img
         src="../../public/image/netgig.svg"
-        style="width: 90%; max-width: 500px"
+        style="width: 80%; max-width: 500px"
         alt=""
       />
     </div>

@@ -3,7 +3,52 @@
     <div class="mobile-only lt-sm">
       <head-bar></head-bar>
       <!-- ---- content ------->
-
+      <div class="promoteMobile"></div>
+      <div class="font14">หนังใหม่</div>
+      <div class="overx">
+        <div class="row inover">
+          <div class="q-pr-sm">
+            <img
+              class="posterPicMobile"
+              src="../../public/image/temp/99.jpg"
+              alt=""
+            />
+          </div>
+          <div class="q-pr-sm">
+            <img
+              class="posterPicMobile"
+              src="../../public/image/temp/3.jpg"
+              alt=""
+            />
+          </div>
+          <div class="q-pr-sm">
+            <img
+              class="posterPicMobile"
+              src="../../public/image/temp/5.jpg"
+              alt=""
+            />
+          </div>
+          <div class="q-pr-sm">
+            <img
+              class="posterPicMobile"
+              src="../../public/image/temp/4.jpg"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <div class="font14">แฟนตาซี</div>
+      <div class="row">
+        <div class="q-pa-sm">
+          <img class="posterPicMobile" :src="getPathPic('movie', 52)" alt="" />
+        </div>
+        <div class="q-pa-sm">
+          <img class="posterPicMobile" :src="getPathPic('movie', 53)" alt="" />
+        </div>
+        <div class="q-pa-sm">
+          <img class="posterPicMobile" :src="getPathPic('movie', 54)" alt="" />
+        </div>
+      </div>
       <!-- ---- content ------->
       <end-bar :login="loginKey == 1 ? true : false" :menu="1"></end-bar>
     </div>
@@ -36,8 +81,17 @@ export default {
   },
   data() {
     return {
+      slide: 1,
       loginKey: this.$q.localStorage.getItem("login"),
     };
+  },
+  methods: {
+    // เอา url ของ posterรูป type{"movie","series"} id=idของหนัง
+    getPathPic(type, id) {
+      let url;
+      url = this.serverpath + "poster/" + type + "/" + id + ".jpg";
+      return url;
+    },
   },
 };
 </script>
@@ -48,5 +102,21 @@ export default {
   height: 670px;
   margin: auto;
   border: 1px solid yellow;
+}
+.promoteMobile {
+  height: 500px;
+  border: 1px solid yellow;
+}
+.posterPicMobile {
+  width: 95px;
+  height: 135px;
+}
+.overx {
+  width: 95%;
+  height: 160px;
+  overflow-x: auto;
+}
+.inover {
+  width: 700px;
 }
 </style>
