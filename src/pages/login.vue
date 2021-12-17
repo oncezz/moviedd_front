@@ -246,10 +246,11 @@
         </div>
       </div>
     </div>
+    <!-- alert password ไม่ถูกต้อง  -->
     <alert1btn
       v-show="alertIncorrectPassword"
       :pictureType="1"
-      textLine1="เลือกหนังได้สูงสุด 8 แนว"
+      textLine1="ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
       @close-alert="closeAlertIncorrect()"
     ></alert1btn>
   </div>
@@ -269,7 +270,7 @@ export default {
   },
   data() {
     return {
-      alertIncorrectPassword: true, // เปิดหน้าต่างแจ้ง user password ไม่ถูกต้อง
+      alertIncorrectPassword: false, // เปิดหน้าต่างแจ้ง user password ไม่ถูกต้อง
       userData: {
         username: "",
         password: "",

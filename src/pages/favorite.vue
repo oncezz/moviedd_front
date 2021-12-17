@@ -222,19 +222,29 @@
         </div>
       </div>
     </div>
+    <alert2btn
+      v-show="alertDelMovieFav"
+      textLine="คุณต้องการลบออกจากรายการโปรดใช่หรือไม่"
+      @cancle-alert="cancleDelDavMovie()"
+      @ok-alert="DelFavMovie()"
+    ></alert2btn>
   </div>
 </template>
 
 <script>
+import alert2btn from "../components/alert1btn.vue";
 import headBar from "../components/headBar.vue";
 import endBar from "../components/endBar.vue";
+import Alert2btn from "src/components/alert2btn.vue";
 export default {
   components: {
     headBar,
     endBar,
+    Alert2btn,
   },
   data() {
     return {
+      alertDelMovieFav: false,
       favoriteMovie: [
         //type 1 = Movie
         //type 2 = Series
@@ -260,13 +270,22 @@ export default {
     };
   },
   methods: {
+    // กดลบหนังออกจาก Fav
+    DelFavMovie() {
+      this.greenNotify("del movie");
+      this.alertDelMovieFav = false;
+    },
+    //กด cancle ลบหนัง
+    cancleDelDavMovie() {
+      this.alertDelMovieFav = false;
+    },
     // กดปุ่มเล่นหนัง
     playBtn() {
       this.greenNotify("play movie");
     },
     // กดปุ่มลบรายชื่อ
     deleteBtn() {
-      this.greenNotify("deletecomplete");
+      this.alertDelMovieFav = true;
     },
   },
 };
