@@ -303,7 +303,7 @@
           <span
             class="fontU cursor-pointer"
             style="color: #00d1ff"
-            @click="saveDia()"
+            @click="goToLogIn()"
           >
             เข้าสู่ระบบ</span
           >
@@ -312,25 +312,25 @@
       <div>
         <div class="promoTag row no-padding">
           <div class="col q-pt-md q-pl-xl">
-            <div class="font32">สิทธิพิเศษสำหรับสมาชิก</div>
+            <div class="font28">สิทธิพิเศษสำหรับสมาชิก</div>
             <div class="row q-pt-md">
               <div class="lineOrder"></div>
               <div class="q-pl-md">
-                <div class="font24" style="margin-top: -5px">
+                <div class="font20" style="margin-top: -5px">
                   ระบบจัดเก็บหนัง
                 </div>
 
-                <div class="font19">ง่ายต่อการดูหนัง หรือไว้ดูภายหลัง</div>
+                <div class="font18">ง่ายต่อการดูหนัง หรือไว้ดูภายหลัง</div>
               </div>
             </div>
             <div class="row q-pt-md">
               <div class="lineOrder"></div>
               <div class="q-pl-md">
-                <div class="font24" style="margin-top: -5px">
+                <div class="font20" style="margin-top: -5px">
                   ระบบจัดการหน้าแรก
                 </div>
 
-                <div class="font19">
+                <div class="font18">
                   ระบบ AI จะจัดหนังในแนวที่คุณชอบ มารอให้คุณได้ชม อย่างจุใจ
                 </div>
               </div>
@@ -379,6 +379,10 @@ export default {
     goToOpt() {
       this.$router.push("/otprequest");
     },
+    goToLogIn() {
+      this.$router.push("/login");
+    },
+
     // ตัวเช็คเบอมือถือ 10 หลัก
     isPhoneNumber() {
       return this.userData.phoneNumber.length == 12;
