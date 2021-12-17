@@ -453,7 +453,12 @@
             <div v-show="allPick == 0" class="skipBtn font24" align="center">
               ข้าม
             </div>
-            <div v-show="allPick != 0" class="skipBtn font24" align="center">
+            <div
+              v-show="allPick != 0"
+              @click="saveUserFavBtn()"
+              class="skipBtn font24"
+              align="center"
+            >
               เสร็จสิ้น
             </div>
           </div>
@@ -467,9 +472,9 @@
           style="position: relative"
           @click="pickCategory(index, item.pick)"
         >
-          <div class="blueCatBtn" v-show="item.pick"></div>
+          <div class="blueCatBtnPC" v-show="item.pick"></div>
           <div
-            class="catBtn"
+            class="catBtnPC"
             align="center"
             :style="{ background: getPicPath(item.id) }"
           >
@@ -507,6 +512,7 @@ export default {
     };
   },
   methods: {
+    saveUserFavBtn() {},
     // กด เลือก/ไม่เลือก หมวดหนัง
     pickCategory(index, pick) {
       if (pick) {
@@ -575,7 +581,7 @@ export default {
   background: #00d1ff;
   border-radius: 20px 0px 0px 20px;
 }
-.catBtn {
+.catBtnPC {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
@@ -585,7 +591,7 @@ export default {
   width: 208px;
   line-height: 124px;
 }
-.blueCatBtn {
+.blueCatBtnPC {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
@@ -595,8 +601,8 @@ export default {
   cursor: pointer;
   border-radius: 10px;
   height: 124px;
-
   width: 208px;
   background: rgba(0, 209, 255, 0.3);
+  border: 4px solid #00d1ff;
 }
 </style>
