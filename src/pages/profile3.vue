@@ -33,12 +33,12 @@
             outlined
             dense
             v-model="userData.oldpassword"
-            :type="isPwd ? 'password' : 'text'"
+            :type="oldPwd ? 'password' : 'text'"
             ><template v-slot:append>
               <q-icon
-                :name="isPwd ? 'visibility_off' : 'visibility'"
+                :name="oldPwd ? 'visibility_off' : 'visibility'"
                 class="cursor-pointer"
-                @click="isPwd = !isPwd"
+                @click="oldPwd = !oldPwd"
               />
             </template>
           </q-input>
@@ -51,12 +51,12 @@
             outlined
             dense
             v-model="userData.newpassword"
-            :type="isPwd ? 'password' : 'text'"
+            :type="oldPwd ? 'password' : 'text'"
             ><template v-slot:append>
               <q-icon
-                :name="isPwd ? 'visibility_off' : 'visibility'"
+                :name="oldPwd ? 'visibility_off' : 'visibility'"
                 class="cursor-pointer"
-                @click="isPwd = !isPwd"
+                @click="oldPwd = !oldPwd"
               />
             </template>
           </q-input>
@@ -70,13 +70,13 @@
             dark
             outlined
             dense
-            v-model="userData.comfirmpassword"
-            :type="isPwd ? 'password' : 'text'"
+            v-model="userData.confirmpassword"
+            :type="confirmPwd ? 'password' : 'text'"
             ><template v-slot:append>
               <q-icon
-                :name="isPwd ? 'visibility_off' : 'visibility'"
+                :name="confirmPwd ? 'visibility_off' : 'visibility'"
                 class="cursor-pointer"
-                @click="isPwd = !isPwd"
+                @click="confirmPwd = !confirmPwd"
               />
             </template>
           </q-input>
@@ -85,7 +85,9 @@
           <div class="font12 q-pt-md row justify-center">
             <div class="backBtnMobile" @click="goBackProfile()">ย้อนกลับ</div>
             <div class="q-pa-md"></div>
-            <div class="nextBtnMobile text-black" @click="nextBtn()">ตกลง</div>
+            <div class="confirmBtnMobile text-black" @click="confirmBtn()">
+              ตกลง
+            </div>
           </div>
         </div>
       </div>
@@ -128,12 +130,12 @@
                 outlined
                 dense
                 v-model="userData.oldpassword"
-                :type="isPwd ? 'password' : 'text'"
+                :type="oldPwd ? 'password' : 'text'"
                 ><template v-slot:append>
                   <q-icon
-                    :name="isPwd ? 'visibility_off' : 'visibility'"
+                    :name="oldPwd ? 'visibility_off' : 'visibility'"
                     class="cursor-pointer"
-                    @click="isPwd = !isPwd"
+                    @click="oldPwd = !oldPwd"
                   />
                 </template>
               </q-input>
@@ -146,12 +148,12 @@
                 outlined
                 dense
                 v-model="userData.newpassword"
-                :type="isPwd ? 'password' : 'text'"
+                :type="newPwd ? 'password' : 'text'"
                 ><template v-slot:append>
                   <q-icon
-                    :name="isPwd ? 'visibility_off' : 'visibility'"
+                    :name="newPwd ? 'visibility_off' : 'visibility'"
                     class="cursor-pointer"
-                    @click="isPwd = !isPwd"
+                    @click="newPwd = !newPwd"
                   />
                 </template>
               </q-input>
@@ -170,13 +172,13 @@
                 dark
                 outlined
                 dense
-                v-model="userData.comfirmpassword"
-                :type="isPwd ? 'password' : 'text'"
+                v-model="userData.confirmpassword"
+                :type="confirmPwd ? 'password' : 'text'"
                 ><template v-slot:append>
                   <q-icon
-                    :name="isPwd ? 'visibility_off' : 'visibility'"
+                    :name="confirmPwd ? 'visibility_off' : 'visibility'"
                     class="cursor-pointer"
-                    @click="isPwd = !isPwd"
+                    @click="confirmPwd = !confirmPwd"
                   />
                 </template>
               </q-input>
@@ -187,7 +189,7 @@
                   ย้อนกลับ
                 </div>
                 <div class="q-pa-md"></div>
-                <div class="nextBtntablet text-black" @click="nextBtn()">
+                <div class="confirmBtntablet text-black" @click="confirmBtn()">
                   ตกลง
                 </div>
               </div>
@@ -239,12 +241,12 @@
                 outlined
                 dense
                 v-model="userData.oldpassword"
-                :type="isPwd ? 'password' : 'text'"
+                :type="oldPwd ? 'password' : 'text'"
                 ><template v-slot:append>
                   <q-icon
-                    :name="isPwd ? 'visibility_off' : 'visibility'"
+                    :name="oldPwd ? 'visibility_off' : 'visibility'"
                     class="cursor-pointer"
-                    @click="isPwd = !isPwd"
+                    @click="oldPwd = !oldPwd"
                   />
                 </template>
               </q-input>
@@ -257,17 +259,36 @@
                 outlined
                 dense
                 v-model="userData.newpassword"
-                :type="isPwd ? 'password' : 'text'"
+                :type="newPwd ? 'password' : 'text'"
                 ><template v-slot:append>
                   <q-icon
-                    :name="isPwd ? 'visibility_off' : 'visibility'"
+                    :name="newPwd ? 'visibility_off' : 'visibility'"
                     class="cursor-pointer"
-                    @click="isPwd = !isPwd"
+                    @click="newPwd = !newPwd"
+                    mask="NNNNNNNNNN"
                   />
                 </template>
               </q-input>
-              <div class="font16 q-pt-sm" style="color: #868686" align="right">
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+              <div
+                v-show="userData.newpassword == ''"
+                class="font16 q-pt-sm"
+                style="color: #868686"
+              >
+                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+              </div>
+              <div
+                v-show="userData.newpassword != '' && !isUserPassword()"
+                class="font16 q-pt-sm"
+                style="color: #e75427"
+              >
+                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+              </div>
+              <div
+                v-show="userData.newpassword != '' && isUserPassword()"
+                class="font16 q-pt-sm"
+                style="color: #e75427"
+              >
+                &nbsp;
               </div>
 
               <div class="font20 q-pt-md">ยืนยันรหัสผ่านใหม่</div>
@@ -277,13 +298,13 @@
                 dark
                 outlined
                 dense
-                v-model="userData.comfirmpassword"
-                :type="isPwd ? 'password' : 'text'"
+                v-model="userData.confirmpassword"
+                :type="confirmPwd ? 'password' : 'text'"
                 ><template v-slot:append>
                   <q-icon
-                    :name="isPwd ? 'visibility_off' : 'visibility'"
+                    :name="confirmPwd ? 'visibility_off' : 'visibility'"
                     class="cursor-pointer"
-                    @click="isPwd = !isPwd"
+                    @click="confirmPwd = !confirmPwd"
                   />
                 </template>
               </q-input>
@@ -292,7 +313,9 @@
               <div class="font18 q-py-xl row justify-center">
                 <div class="backBtn" @click="goBackProfile()">ย้อนกลับ</div>
                 <div class="q-pa-md"></div>
-                <div class="nextBtn text-black" @click="nextBtn()">ตกลง</div>
+                <div class="confirmBtn text-black" @click="confirmBtn()">
+                  ตกลง
+                </div>
               </div>
             </div>
           </div>
@@ -305,6 +328,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import headBar from "../components/headBar.vue";
 import endBar from "../components/endBar.vue";
 export default {
@@ -316,15 +340,17 @@ export default {
     return {
       userData: {
         phoneNumber: "088-888-8888",
-        username: "Destiny",
+        username: "Destiny", //ชื่อผู้ใช้งาน
         password: "12345",
         oldpassword: "",
         newpassword: "",
-        comfirmpassword: "",
+        confirmpassword: "",
       },
-      isPwd: true,
-      comfirmPwd: "",
-      loginKey: this.$q.localStorage.getItem("login"),
+      oldPwd: true,
+      newPwd: true,
+      confirmPwd: true,
+
+      userId: "", //รหัสผู้ใช้งาน
     };
   },
   methods: {
@@ -333,9 +359,62 @@ export default {
       this.$router.push("/profile");
     },
     // กดปุ่มต่อไป
-    nextBtn() {
-      this.greenNotify("complete");
+    async confirmBtn() {
+      if (this.userData.newpassword != this.userData.confirmpassword) {
+        this.redNotify("รหัสผ่านของคุณไม่ตรงกัน");
+        return;
+      }
+      let data = {
+        userId: this.userId,
+        oldPassword: this.userData.oldpassword,
+        newPassword: this.userData.newpassword,
+      };
+      let url = this.serverpath + "fe_changepassword.php";
+      let res = await axios.post(url, JSON.stringify(data));
+      if (res.data === "finish") {
+        this.greenNotify("เปลี่ยนรหัสผ่านเสร็จสิ้น");
+        this.$router.push("/home");
+      } else {
+        this.redNotify("รหัสผ่านเดิมไม่ถูกต้อง");
+      }
     },
+    // เช็คว่าloginรึยัง
+    checkUserLogIn() {
+      if (this.userId == null) {
+        this.$router.push("/home");
+      }
+    },
+    // ตัวโหลด data
+    loadUserData() {
+      this.userId = this.$q.localStorage.getItem("userid");
+      this.userData.username = this.$q.localStorage.getItem("username");
+    },
+    // ตัวเช็คเบอมือถือ 10 หลัก
+    isPhoneNumber() {
+      return this.userData.phoneNumber.length == 12;
+    },
+    // เช็คชื่อผู้ใช้งานให้เป็นภาษาอังกฤษเท่านั้น
+    isUserName() {
+      return (
+        this.userData.username.length > 5 && this.userData.username.length < 11
+      );
+    },
+    // เช็คพาสเวิดให้มี 6-10 หลัก
+    isUserPassword() {
+      return (
+        this.userData.password.length > 5 && this.userData.password.length < 11
+      );
+    },
+    // เช็คยืนยันพาสเวิดให้มี 6-10 หลัก
+    isUserRePassword() {
+      return (
+        this.userData.rePassword.length > 5 &&
+        this.userData.rePassword.length < 11
+      );
+    },
+  },
+  mounted() {
+    this.loadUserData();
   },
 };
 </script>
@@ -363,20 +442,20 @@ export default {
   border: 1px solid #ffffff;
   box-sizing: border-box;
 }
-.nextBtn {
+.confirmBtn {
   cursor: pointer;
   width: 116px;
   height: 40px;
   line-height: 40px;
   background: #00d1ff;
 }
-.nextBtntablet {
+.confirmBtntablet {
   width: 116px;
   height: 40px;
   line-height: 40px;
   background: #00d1ff;
 }
-.nextBtnMobile {
+.confirmBtnMobile {
   width: 90px;
   height: 27px;
   line-height: 27px;

@@ -30,8 +30,9 @@
             input-style="font-size: 14px;"
             dark
             outlined
+            mask="NNNNNNNNNN"
             dense
-            v-model="userData.username"
+            v-model="userData.password"
             :type="isPwd ? 'password' : 'text'"
             ><template v-slot:append>
               <q-icon
@@ -41,18 +42,36 @@
               />
             </template>
           </q-input>
-          <div align="right" class="font12 q-pt-sm" style="color: #868686">
-            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+          <div
+            v-show="userData.password == ''"
+            class="font12 q-pt-sm"
+            style="color: #868686"
+          >
+            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+          </div>
+          <div
+            v-show="userData.password != '' && !isUserPassword()"
+            class="font12 q-pt-sm"
+            style="color: #e75427"
+          >
+            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+          </div>
+          <div
+            v-show="userData.password != '' && isUserPassword()"
+            class="font12 q-pt-sm"
+            style="color: #e75427"
+          >
+            &nbsp;
           </div>
 
-          <div class="font14 q-pt-sm">ยืนยันรหัสผ่านใหม่</div>
+          <div class="font14 q-pt-md">ยืนยันรหัสผ่านใหม่</div>
           <q-input
             class=""
             input-style="font-size: 14px;"
             dark
             outlined
             dense
-            v-model="userData.username"
+            v-model="userData.rePassword"
             :type="isPwd ? 'password' : 'text'"
             ><template v-slot:append>
               <q-icon
@@ -62,8 +81,26 @@
               />
             </template>
           </q-input>
-          <div align="right" class="font12 q-pt-sm" style="color: #868686">
-            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+          <div
+            v-show="userData.rePassword == ''"
+            class="font12 q-pt-sm"
+            style="color: #868686"
+          >
+            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+          </div>
+          <div
+            v-show="userData.rePassword != '' && !isUserRePassword()"
+            class="font12 q-pt-sm"
+            style="color: #e75427"
+          >
+            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+          </div>
+          <div
+            v-show="userData.rePassword != '' && isUserRePassword()"
+            class="font12 q-pt-sm"
+            style="color: #e75427"
+          >
+            &nbsp;
           </div>
         </div>
       </div>
@@ -103,14 +140,15 @@
                 readonly
               />
             </div>
-            <div class="font20 q-pt-xl">รหัสผ่านใหม่</div>
+            <div class="font20 q-pt-md">รหัสผ่านใหม่</div>
             <q-input
               class="q-pt-sm"
               input-style="font-size: 18px;"
               dark
               outlined
               dense
-              v-model="userData.username"
+              mask="NNNNNNNNNN"
+              v-model="userData.password"
               :type="isPwd ? 'password' : 'text'"
               ><template v-slot:append>
                 <q-icon
@@ -120,8 +158,26 @@
                 />
               </template>
             </q-input>
-            <div align="right" class="font16 q-pt-sm" style="color: #868686">
-              ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+            <div
+              v-show="userData.password == ''"
+              class="font16 q-pt-sm"
+              style="color: #868686"
+            >
+              ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+            </div>
+            <div
+              v-show="userData.password != '' && !isUserPassword()"
+              class="font16 q-pt-sm"
+              style="color: #e75427"
+            >
+              ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+            </div>
+            <div
+              v-show="userData.password != '' && isUserPassword()"
+              class="font16 q-pt-sm"
+              style="color: #e75427"
+            >
+              &nbsp;
             </div>
 
             <div class="font20 q-pt-lg">ยืนยันรหัสผ่านใหม่</div>
@@ -131,7 +187,8 @@
               dark
               outlined
               dense
-              v-model="userData.username"
+              mask="NNNNNNNNNN"
+              v-model="userData.rePassword"
               :type="isPwd ? 'password' : 'text'"
               ><template v-slot:append>
                 <q-icon
@@ -141,8 +198,26 @@
                 />
               </template>
             </q-input>
-            <div align="right" class="font16 q-pt-sm" style="color: #868686">
-              ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+            <div
+              v-show="userData.rePassword == ''"
+              class="font16 q-pt-sm"
+              style="color: #868686"
+            >
+              ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+            </div>
+            <div
+              v-show="userData.rePassword != '' && !isUserRePassword()"
+              class="font16 q-pt-sm"
+              style="color: #e75427"
+            >
+              ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+            </div>
+            <div
+              v-show="userData.rePassword != '' && isUserRePassword()"
+              class="font16 q-pt-sm"
+              style="color: #e75427"
+            >
+              &nbsp;
             </div>
           </div>
         </div>
@@ -194,7 +269,8 @@
               dark
               outlined
               dense
-              v-model="userData.username"
+              mask="NNNNNNNNNN"
+              v-model="userData.password"
               :type="isPwd ? 'password' : 'text'"
               ><template v-slot:append>
                 <q-icon
@@ -204,8 +280,26 @@
                 />
               </template>
             </q-input>
-            <div align="right" class="font16 q-pt-sm" style="color: #868686">
-              ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+            <div
+              v-show="userData.password == ''"
+              class="font16 q-pt-sm"
+              style="color: #868686"
+            >
+              ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+            </div>
+            <div
+              v-show="userData.password != '' && !isUserPassword()"
+              class="font16 q-pt-sm"
+              style="color: #e75427"
+            >
+              ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+            </div>
+            <div
+              v-show="userData.password != '' && isUserPassword()"
+              class="font16 q-pt-sm"
+              style="color: #e75427"
+            >
+              &nbsp;
             </div>
 
             <div class="font20 q-pt-lg">ยืนยันรหัสผ่านใหม่</div>
@@ -215,7 +309,7 @@
               dark
               outlined
               dense
-              v-model="userData.username"
+              v-model="userData.rePassword"
               :type="isPwd ? 'password' : 'text'"
               ><template v-slot:append>
                 <q-icon
@@ -225,8 +319,26 @@
                 />
               </template>
             </q-input>
-            <div align="right" class="font16 q-pt-sm" style="color: #868686">
-              ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+            <div
+              v-show="userData.rePassword == ''"
+              class="font16 q-pt-sm"
+              style="color: #868686"
+            >
+              ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+            </div>
+            <div
+              v-show="userData.rePassword != '' && !isUserRePassword()"
+              class="font16 q-pt-sm"
+              style="color: #e75427"
+            >
+              ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+            </div>
+            <div
+              v-show="userData.rePassword != '' && isUserRePassword()"
+              class="font16 q-pt-sm"
+              style="color: #e75427"
+            >
+              &nbsp;
             </div>
           </div>
         </div>
@@ -256,6 +368,7 @@ export default {
         phoneNumber: "",
         username: "Destiny",
         password: "",
+        rePassword: "",
       },
       isPwd: true,
       comfirmPwd: "",
@@ -266,6 +379,29 @@ export default {
     // กดปุ่มยืนยันตั้งค่ารหัสผ่านใหม่
     saveBtn() {
       this.greenNotify("complete");
+    },
+    // ตัวเช็คเบอมือถือ 10 หลัก
+    isPhoneNumber() {
+      return this.userData.phoneNumber.length == 12;
+    },
+    // เช็คชื่อผู้ใช้งานให้เป็นภาษาอังกฤษเท่านั้น
+    isUserName() {
+      return (
+        this.userData.username.length > 5 && this.userData.username.length < 11
+      );
+    },
+    // เช็คพาสเวิดให้มี 6-10 หลัก
+    isUserPassword() {
+      return (
+        this.userData.password.length > 5 && this.userData.password.length < 11
+      );
+    },
+    // เช็คยืนยันพาสเวิดให้มี 6-10 หลัก
+    isUserRePassword() {
+      return (
+        this.userData.rePassword.length > 5 &&
+        this.userData.rePassword.length < 11
+      );
     },
   },
 };

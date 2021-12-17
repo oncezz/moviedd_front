@@ -14,10 +14,34 @@
       </div>
       <div class="font24 q-pt-sm" align="center">ลืมรหัสผ่าน</div>
       <div class="font14 q-pt-sm">เบอร์โทรศัพท์มือถือของคุณที่ลงทะเบียนไว้</div>
-      <div>
-        <q-input outlined v-model="telephone" dark dense />
-        <div align="right" class="font12 q-pt-sm" style="color: #868686">
-          ใช้สำหรับการยืนยันตัวตน
+      <div class="q-pt-sm">
+        <q-input
+          outlined
+          v-model="userData.phoneNumber"
+          dark
+          dense
+          mask="###-###-####"
+        />
+        <div
+          v-show="userData.phoneNumber == ''"
+          class="font12 q-pt-sm"
+          style="color: #868686"
+        >
+          ใช้สำหรับยืนยันตัวตน
+        </div>
+        <div
+          v-show="userData.phoneNumber != '' && !isPhoneNumber()"
+          class="font12 q-pt-sm"
+          style="color: #e75427"
+        >
+          หมายเลขโทรศัพท์ต้องมีความยาว 10 ตัว
+        </div>
+        <div
+          v-show="userData.phoneNumber != '' && isPhoneNumber()"
+          class="font12 q-pt-sm"
+          style="color: #e75427"
+        >
+          &nbsp;
         </div>
       </div>
       <div align="center">
@@ -47,9 +71,32 @@
         เบอร์โทรศัพท์มือถือของคุณที่ลงทะเบียนไว้
       </div>
       <div class="q-px-xl">
-        <q-input outlined v-model="telephone" dark />
-        <div align="right" class="font16 q-pt-sm" style="color: #868686">
-          ใช้สำหรับการยืนยันตัวตน
+        <q-input
+          outlined
+          v-model="userData.phoneNumber"
+          dark
+          mask="###-###-####"
+        />
+        <div
+          v-show="userData.phoneNumber == ''"
+          class="font16 q-pt-sm"
+          style="color: #868686"
+        >
+          ใช้สำหรับยืนยันตัวตน
+        </div>
+        <div
+          v-show="userData.phoneNumber != '' && !isPhoneNumber()"
+          class="font16 q-pt-sm"
+          style="color: #e75427"
+        >
+          หมายเลขโทรศัพท์ต้องมีความยาว 10 ตัว
+        </div>
+        <div
+          v-show="userData.phoneNumber != '' && isPhoneNumber()"
+          class="font16 q-pt-sm"
+          style="color: #e75427"
+        >
+          &nbsp;
         </div>
       </div>
       <div align="center">
@@ -81,9 +128,33 @@
           เบอร์โทรศัพท์มือถือของคุณที่ลงทะเบียนไว้
         </div>
         <div class="q-pt-sm">
-          <q-input outlined v-model="telephone" dark dense></q-input>
-          <div align="right" class="font16 q-pt-md" style="color: #868686">
-            ใช้สำหรับการยืนยันตัวตน
+          <q-input
+            outlined
+            mask="###-###-####"
+            v-model="userData.phoneNumber"
+            dark
+            dense
+          ></q-input>
+          <div
+            v-show="userData.phoneNumber == ''"
+            class="font16 q-pt-sm"
+            style="color: #868686"
+          >
+            ใช้สำหรับยืนยันตัวตน
+          </div>
+          <div
+            v-show="userData.phoneNumber != '' && !isPhoneNumber()"
+            class="font16 q-pt-sm"
+            style="color: #e75427"
+          >
+            หมายเลขโทรศัพท์ต้องมีความยาว 10 ตัว
+          </div>
+          <div
+            v-show="userData.phoneNumber != '' && isPhoneNumber()"
+            class="font16 q-pt-sm"
+            style="color: #e75427"
+          >
+            &nbsp;
           </div>
         </div>
         <div align="center">
@@ -105,6 +176,11 @@ export default {
   components: { headBar, EndBar },
   data() {
     return {
+      userData: {
+        phoneNumber: "",
+        username: "",
+        password: "",
+      },
       telephone: "",
     };
   },
@@ -116,6 +192,22 @@ export default {
     // กดปุ่มต่อไปเพื่อไปหน้า ขอ OTP
     nextBtn() {
       this.$router.push("/forgetpassword2");
+    },
+    // ตัวเช็คเบอมือถือ 10 หลัก
+    isPhoneNumber() {
+      return this.userData.phoneNumber.length == 12;
+    },
+    // เช็คชื่อผู้ใช้งานให้เป็นภาษาอังกฤษเท่านั้น
+    isUserName() {
+      return (
+        this.userData.username.length > 5 && this.userData.username.length < 11
+      );
+    },
+    // เช็คพาสเวิดให้มี 6-10 หลัก
+    isUserPassword() {
+      return (
+        this.userData.password.length > 5 && this.userData.password.length < 11
+      );
     },
   },
 };
