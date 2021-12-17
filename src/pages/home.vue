@@ -3,7 +3,48 @@
     <div class="mobile-only lt-sm">
       <head-bar></head-bar>
       <!-- ---- content ------->
-      <div class="promoteMobile"></div>
+      <q-carousel
+        class="promoteMobile"
+        animated
+        navigation
+        v-model="slide"
+        infinite
+        :autoplay="true"
+        arrows
+        transition-prev="slide-right"
+        transition-next="slide-left"
+        @mouseenter="false"
+        @mouseleave="true"
+      >
+        <q-carousel-slide
+          :name="1"
+          :img-src="serverpath + '/promotion/movie/1m.jpg'"
+        >
+          <div class="absolute-bottom customCaption brx" align="center">
+            <div class="absolute-bottom font12">
+              <div class="font12 q-py-md">แอ็คชั่น | ผจญภัย | ตลก</div>
+              <div class="row justify-evenly">
+                <div class="favBtnInPromote">รายการโปรด</div>
+                <div class="playBtnInPromote">เล่นหนังเรื่องนี้</div>
+              </div>
+              <div class="" style="height: 60px"></div>
+            </div>
+          </div>
+        </q-carousel-slide>
+        <q-carousel-slide
+          :name="2"
+          img-src="https://cdn.quasar.dev/img/parallax1.jpg"
+        />
+        <q-carousel-slide
+          :name="3"
+          img-src="https://cdn.quasar.dev/img/parallax2.jpg"
+        />
+        <q-carousel-slide
+          :name="4"
+          img-src="https://cdn.quasar.dev/img/quasar.jpg"
+        />
+      </q-carousel>
+
       <div class="font14">หนังใหม่</div>
       <div class="overx">
         <div class="row inover">
@@ -104,8 +145,8 @@ export default {
   border: 1px solid yellow;
 }
 .promoteMobile {
+  position: relative;
   height: 500px;
-  border: 1px solid yellow;
 }
 .posterPicMobile {
   width: 95px;
@@ -118,5 +159,28 @@ export default {
 }
 .inover {
   width: 700px;
+}
+.customCaption {
+  height: 400px;
+  text-align: center;
+  background: linear-gradient(360deg, #000000 16.71%, rgba(0, 0, 0, 0) 60.48%);
+}
+.favBtnInPromote {
+  border: 1px solid #fefefe;
+  border-radius: 20px;
+  width: 120px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  color: #fefefe;
+}
+.playBtnInPromote {
+  background: #00d1ff;
+  border-radius: 20px;
+  width: 120px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  color: #0d0d0d;
 }
 </style>
