@@ -69,9 +69,8 @@
           <img src="../../public/image/loginPicTablet.png" alt="" />
         </div>
         <div class="font28">เข้าสู่ระบบ</div>
-        <div class="row">
-          <div class="col-2"></div>
-          <div class="col">
+        <div class="row justify-center">
+          <div class="col-6" style="width: 400px">
             <div align="left">
               <div class="font20">ชื่อผู้ใช้งาน</div>
               <q-input
@@ -81,16 +80,14 @@
                 v-model="userData.username"
                 class="q-pt-sm"
               ></q-input>
-              <div class="font16 q-pt-sm" style="color: #868686">
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
-              </div>
-              <div class="font20 q-pt-md">รหัสผ่าน</div>
+
+              <div class="font20 q-pt-lg">รหัสผ่าน</div>
               <q-input
                 class="q-pt-sm"
                 dark
                 outlined
                 dense
-                v-model="userData.username"
+                v-model="userData.password"
                 :type="isPwd ? 'password' : 'text'"
                 ><template v-slot:append>
                   <q-icon
@@ -100,9 +97,6 @@
                   />
                 </template>
               </q-input>
-              <div class="font16 q-pt-sm" style="color: #868686">
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
-              </div>
             </div>
             <div class="fontU font16" align="right" @click="forget1()">
               ลืมรหัสผ่าน
@@ -120,8 +114,6 @@
               >
             </div>
           </div>
-
-          <div class="col-2"></div>
         </div>
       </div>
 
