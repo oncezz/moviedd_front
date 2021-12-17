@@ -14,7 +14,7 @@
           />
         </div>
         <div class="font20">สมัครสมาชิก</div>
-        <div class="font14 q-pl-lg" align="left">
+        <div class="font18 q-pl-lg" align="left">
           <div class="q-pt-md">หมายเลขโทรศัพท์มือถือ</div>
           <q-input dark outlined dense v-model="userData.phoneNumber">
           </q-input>
@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="saveBtnMobile q-mt-md" @click="goToOpt()">ถัดไป</div>
-        <div class="font12 q-py-md">
+        <div class="font14 q-py-md">
           ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
           <span class="fontU cursor-pointer" style="color: #00d1ff">
             เข้าสู่ระบบ</span
@@ -77,7 +77,11 @@
           </div>
         </div>
         <div class="picTagM">
-          <img src="../../public/image/sinupPromoMobile.png" alt="" />
+          <img
+            height="300px"
+            src="../../public/image/sinupPromoMobile.png"
+            alt=""
+          />
         </div>
       </div>
 
@@ -443,7 +447,7 @@ export default {
 }
 .picTagM {
   position: absolute;
-  bottom: -60px;
+  bottom: -120px;
   right: 0px;
 }
 .saveBtnMobile {
