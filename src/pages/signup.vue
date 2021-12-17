@@ -16,37 +16,114 @@
         <div class="font20">สมัครสมาชิก</div>
         <div class="font18 q-pl-lg" align="left">
           <div class="q-pt-md">หมายเลขโทรศัพท์มือถือ</div>
-          <q-input dark outlined dense v-model="userData.phoneNumber">
-          </q-input>
-          <div class="font12" style="color: #868686">ใช้สำหรับยืนยันตัวตน</div>
-          <div class="q-pt-sm">ชื่อผู้ใช้งาน</div>
           <q-input
             dark
             outlined
             dense
+            mask="###-###-####"
+            v-model="userData.phoneNumber"
+          >
+          </q-input>
+          <div
+            v-show="userData.phoneNumber == ''"
+            class="font12"
+            style="color: #868686"
+          >
+            ใช้สำหรับยืนยันตัวตน
+          </div>
+          <div
+            v-show="userData.phoneNumber != '' && !isPhoneNumber()"
+            class="font12"
+            style="color: #e75427"
+          >
+            หมายเลขโทรศัพท์ต้องมีความยาว 10 ตัว
+          </div>
+          <div
+            v-show="userData.phoneNumber != '' && isPhoneNumber()"
+            class="font12"
+            style="color: #e75427"
+          >
+            &nbsp;
+          </div>
+          <div class="q-pt-sm font18">ชื่อผู้ใช้งาน</div>
+          <q-input
+            dark
+            outlined
+            mask="NNNNNNNNNN"
+            dense
             v-model="userData.username"
+          >
+          </q-input>
+          <div
+            class="font12"
+            style="color: #868686"
+            v-show="userData.username == ''"
+          >
+            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+          </div>
+
+          <div
+            v-show="userData.username != '' && !isUserName()"
+            class="font12"
+            style="color: #e75427"
+          >
+            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+          </div>
+          <div
+            v-show="userData.username != '' && isUserName()"
+            class="font12"
+            style="color: #e75427"
+          >
+            &nbsp;
+          </div>
+          <div class="q-pt-sm">รหัสผ่าน</div>
+          <q-input
+            dark
+            outlined
+            dense
+            mask="NNNNNNNNNN"
+            v-model="userData.password"
             :type="isPwd ? 'password' : 'text'"
-            ><template v-slot:append>
-              <q-icon
+            ><template v-slot:append
+              ><q-icon
                 :name="isPwd ? 'visibility_off' : 'visibility'"
                 class="cursor-pointer"
                 @click="isPwd = !isPwd"
               />
             </template>
           </q-input>
-          <div class="font12" style="color: #868686">
-            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+          <div
+            v-show="userData.password != '' && !isUserPassword()"
+            class="font12"
+            style="color: #e75427"
+          >
+            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
           </div>
-          <div class="q-pt-sm">รหัสผ่าน</div>
-          <q-input dark outlined dense v-model="userData.password"> </q-input>
-          <div class="font12" style="color: #868686">
-            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+
+          <div
+            v-show="userData.password == ''"
+            class="font12"
+            style="color: #868686"
+          >
+            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+          </div>
+          <div
+            v-show="userData.password != '' && isUserPassword()"
+            class="font12"
+            style="color: #e75427"
+          >
+            &nbsp;
           </div>
         </div>
         <div class="saveBtnMobile q-mt-md" @click="goToOpt()">ถัดไป</div>
         <div class="font14 q-py-md">
           ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
-          <span class="fontU cursor-pointer" style="color: #00d1ff">
+
+          <span
+            @click="goToLogIn()"
+            class="fontU cursor-pointer"
+            style="color: #00d1ff"
+          >
             เข้าสู่ระบบ</span
           >
         </div>
@@ -107,22 +184,71 @@
             <div class="font28">สมัครสมาชิก</div>
             <div class="font20" align="left" style="">
               <div class="q-pt-md">หมายเลขโทรศัพท์มือถือ</div>
-              <q-input dark outlined dense v-model="userData.phoneNumber">
+              <q-input
+                dark
+                outlined
+                dense
+                v-model="userData.phoneNumber"
+                mask="###-###-####"
+              >
               </q-input>
-              <div class="font16 q-pt-sm" style="color: #868686">
+              <div
+                v-show="userData.phoneNumber == ''"
+                class="font16"
+                style="color: #868686"
+              >
                 ใช้สำหรับยืนยันตัวตน
               </div>
+              <div
+                v-show="userData.phoneNumber != '' && !isPhoneNumber()"
+                class="font16"
+                style="color: #e75427"
+              >
+                หมายเลขโทรศัพท์ต้องมีความยาว 10 ตัว
+              </div>
+              <div
+                v-show="userData.phoneNumber != '' && isPhoneNumber()"
+                class="font16"
+                style="color: #e75427"
+              >
+                &nbsp;
+              </div>
               <div class="q-pt-md">ชื่อผู้ใช้งาน</div>
-              <q-input dark outlined dense v-model="userData.phoneNumber">
+              <q-input
+                dark
+                outlined
+                dense
+                v-model="userData.username"
+                mask="NNNNNNNNNN"
+              >
               </q-input>
-              <div class="font16 q-pt-sm" style="color: #868686">
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+              <div
+                class="font16"
+                style="color: #868686"
+                v-show="userData.username == ''"
+              >
+                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+              </div>
+              <div
+                v-show="userData.username != '' && isUserName()"
+                class="font16"
+                style="color: #e75427"
+              >
+                &nbsp;
+              </div>
+              <div
+                v-show="userData.username != '' && !isUserName()"
+                class="font16"
+                style="color: #e75427"
+              >
+                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
               </div>
               <div class="q-pt-sm">รหัสผ่าน</div>
               <q-input
                 dark
                 outlined
                 dense
+                mask="NNNNNNNNNN"
                 v-model="userData.password"
                 :type="isPwd ? 'password' : 'text'"
                 ><template v-slot:append>
@@ -133,8 +259,28 @@
                   />
                 </template>
               </q-input>
-              <div class="font16" style="color: #868686">
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+
+              <div
+                v-show="userData.password != '' && !isUserPassword()"
+                class="font16"
+                style="color: #e75427"
+              >
+                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+              </div>
+              <div
+                v-show="userData.password != '' && isUserPassword()"
+                class="font16"
+                style="color: #e75427"
+              >
+                &nbsp;
+              </div>
+
+              <div
+                v-show="userData.password == ''"
+                class="font16"
+                style="color: #868686"
+              >
+                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
               </div>
             </div>
             <div
@@ -144,9 +290,14 @@
             >
               ถัดไป
             </div>
-            <div class="font16 q-py-md">
+
+            <div class="font16 q-py-md q-pb-xl">
               ถ้าคุณเป็นสมาชิกอยู่แล้ว สามารถ
-              <span class="fontU cursor-pointer" style="color: #00d1ff">
+              <span
+                @click="goToLogIn()"
+                class="fontU cursor-pointer"
+                style="color: #00d1ff"
+              >
                 เข้าสู่ระบบ</span
               >
             </div>
@@ -342,7 +493,7 @@
           </div>
 
           <div class="picTag">
-            <img src="../../public/image/picTag.png" alt="" />
+            <img height="350px" src="../../public/image/picTag.png" alt="" />
           </div>
         </div>
       </div>
@@ -383,7 +534,9 @@ export default {
     goToOpt() {
       this.$router.push("/otprequest");
     },
+
     goToLogIn() {
+      console.log("logIn");
       this.$router.push("/login");
     },
 
@@ -437,7 +590,7 @@ export default {
 }
 .picTag {
   position: absolute;
-  bottom: -6px;
+  bottom: 0px;
   right: 0px;
 }
 .picTagTablet {

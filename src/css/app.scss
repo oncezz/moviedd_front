@@ -38,6 +38,9 @@
 .font14 {
   font-size: 14px;
 }
+.font12 {
+  font-size: 12px;
+}
 .fontU {
   text-decoration: underline;
 }
@@ -69,11 +72,15 @@ body {
   backdrop-filter: blur(4px);
   width: 500px;
   height: 250px;
-  // box-shadow: 15px 15px #00d1ff;
+  box-shadow: 15px 15px #00d1ff;
 
   //  border: 1px solid #00d1ff;
 }
-.blueBtn {
+.okInDia {
+  position: absolute;
+  margin: auto;
+  bottom: 20px;
+  left: 190px;
   cursor: pointer;
   width: 120px;
   height: 40px;
@@ -81,14 +88,5 @@ body {
   background: #00d1ff;
   border: 1px solid #00d1ff;
   color: black;
-  font-size: 18px;
-}
-.whiteBtn {
-  cursor: pointer;
-  width: 120px;
-  height: 40px;
-  line-height: 40px;
-  border: 1px solid #00d1ff;
-  color: #00d1ff;
   font-size: 18px;
 }
