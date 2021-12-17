@@ -1,11 +1,11 @@
 <template>
   <div>
     <!-- mobile  -->
-    <div class="mobile-only lt-sm">
+    <div class="mobile-only lt-sm" align="center">
       <head-bar></head-bar>
 
       <!-- ---- content ------->
-      <div class="" align="center">
+      <div class="" align="center" style="width: 340px">
         <div class="q-pt-lg">
           <img
             Width="201px"
@@ -17,16 +17,20 @@
         <div class="font20">เข้าสู่ระบบ</div>
         <div align="left" class="q-px-md">
           <div class="q-pt-sm">ชื่อผู้ใช้งาน</div>
-          <q-input dark outlined dense v-model="userData.username"></q-input>
-          <div class="font12" style="color: #868686">
-            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
-          </div>
-          <div class="q-pt-sm">รหัสผ่าน</div>
           <q-input
             dark
             outlined
             dense
+            mask="NNNNNNNNNN"
             v-model="userData.username"
+          ></q-input>
+          <div class="q-pt-md">รหัสผ่าน</div>
+          <q-input
+            dark
+            outlined
+            dense
+            v-model="userData.password"
+            mask="NNNNNNNNNN"
             :type="isPwd ? 'password' : 'text'"
             ><template v-slot:append>
               <q-icon
@@ -36,19 +40,18 @@
               />
             </template>
           </q-input>
-          <div class="font12" style="color: #868686">
-            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
-          </div>
         </div>
-
-        <div class="fontU font14 q-pr-md" align="right" @click="forget1()">
+        <div
+          class="fontU font14 q-pt-sm q-pr-md"
+          align="right"
+          @click="forget1()"
+        >
           ลืมรหัสผ่าน
         </div>
-
-        <div class="loginBtnMobile text-black q-mt-md" @click="loginPass()">
+        <div class="loginBtnMobile text-black q-mt-lg" @click="loginPass()">
           เข้าสู่ระบบ
         </div>
-        <div class="font12 q-pt-md">
+        <div class="font12 q-pt-lg">
           ถ้าคุณไม่ได้เป็นสมาชิก สามารถกด
           <span class="fontU" style="color: #00d1ff" @click="signUp()"
             >สมัครสมาชิก</span
@@ -78,6 +81,7 @@
                 outlined
                 dense
                 v-model="userData.username"
+                mask="NNNNNNNNNN"
                 class="q-pt-sm"
               ></q-input>
 
@@ -88,6 +92,7 @@
                 outlined
                 dense
                 v-model="userData.password"
+                mask="NNNNNNNNNN"
                 :type="isPwd ? 'password' : 'text'"
                 ><template v-slot:append>
                   <q-icon
