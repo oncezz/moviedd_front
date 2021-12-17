@@ -13,14 +13,13 @@
         arrows
         transition-prev="slide-right"
         transition-next="slide-left"
-        @mouseenter="false"
-        @mouseleave="true"
+        swipeable
       >
         <q-carousel-slide
           :name="1"
           :img-src="serverpath + '/promotion/movie/1m.jpg'"
         >
-          <div class="absolute-bottom customCaption brx" align="center">
+          <div class="absolute-bottom customCaption" align="center">
             <div class="absolute-bottom font12">
               <div class="font12 q-py-md">แอ็คชั่น | ผจญภัย | ตลก</div>
               <div class="row justify-evenly">
