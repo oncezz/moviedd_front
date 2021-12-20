@@ -21,6 +21,7 @@ const routes = [
     path: "/otprequest",
     component: () => import("pages/otprequest.vue"),
   },
+
   {
     path: "/forgetpassword1",
     component: () => import("pages/forgetpasswordstep1.vue"),
@@ -64,6 +65,14 @@ const routes = [
   {
     path: "/search",
     component: () => import("pages/search.vue"),
+  },
+  {
+    path: "/moviecategory",
+    component: () => import("pages/moviecategory.vue"),
+  },
+  {
+    path: "/test",
+    component: () => import("pages/test.vue"),
   },
 ];
 
