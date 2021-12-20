@@ -6,8 +6,13 @@
       style="max-width: 1600px; width: 100%; margin: auto"
     >
       <div class="backGroundPc">
-        <div class="topTextPc q-pt-md" align="center">ประเภทหนัง</div>
-
+        <div class="row items-center">
+          <div class="col-1"></div>
+          <div class="col topTextPc q-pt-md" align="center">ประเภทหนัง</div>
+          <div class="col-1 closeBtn" @click="closeBtn()" align="center">
+            <q-icon name="far fa-times-circle" size="40px" />
+          </div>
+        </div>
         <div class="categoryNamePc">
           <div
             v-for="(item, index) in category"
@@ -40,6 +45,10 @@ export default {
 
       this.category = res.data;
       this.category.sort((a, b) => a.orderid - b.orderid);
+    },
+    // กดปุ่มปิดกลับไปหน้าแรก
+    closeBtn() {
+      this.$router.push("/home");
     },
   },
   mounted() {
@@ -76,5 +85,11 @@ export default {
 .categoryNamePc {
   overflow-y: auto;
   height: calc(100vh - 100px);
+}
+.closeBtn {
+  cursor: pointer;
+}
+.closeBtn:hover {
+  color: yellow;
 }
 </style>
