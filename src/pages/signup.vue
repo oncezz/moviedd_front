@@ -535,7 +535,7 @@ export default {
     async goToOpt() {
       let data = {
         username: this.userData.username,
-        phonenumber: this.userData.phoneNumber,
+        telephone: this.userData.phoneNumber,
         password: this.userData.password,
       };
       let url = this.serverpath + "fe_signup_adduser.php";
@@ -547,6 +547,9 @@ export default {
         this.redNotify("ชื่อผู้ใช้งานนี้มีอยู่ในระบบแล้ว");
         return;
       } else {
+        this.$q.localStorage.set("userid", res.data);
+        this.$q.localStorage.set("username", this.userData.username);
+        this.$q.localStorage.set("login", true);
         this.$router.push("/movielist");
       }
     },
