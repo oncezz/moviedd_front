@@ -253,43 +253,18 @@
       <div class="row">
         <div class="col-2"></div>
         <div class="col">
-          <div align="center" class="font28">แนวหนังที่คุณชอบ 5/8</div>
+          <div align="center" class="font28">
+            แนวหนังที่คุณชอบ {{ itemFav.length }}/8
+          </div>
           <div class="row q-pt-md" align="center">
-            <div class="col-3">
-              <img
-                width="90%"
-                src="../../public/image/movielist/horror.png"
-                alt=""
-              />
-            </div>
-            <div class="col-3">
-              <img
-                width="90%"
-                src="../../public/image/movielist/fantasy.png"
-                alt=""
-              />
-            </div>
-            <div class="col-3">
-              <img
-                width="90%"
-                src="../../public/image/movielist/cartoon.png"
-                alt=""
-              />
-            </div>
-            <div class="col-3">
-              <img
-                width="90%"
-                src="../../public/image/movielist/mystery.png"
-                alt=""
-              />
-            </div>
-            <div class="row" style="width: 100%; height: 15px"></div>
-            <div class="col-3">
-              <img
-                width="90%"
-                src="../../public/image/movielist/india.png"
-                alt=""
-              />
+            <div
+              class="catPick col-3 q-ma-md"
+              align="center"
+              v-for="(item, index) in itemFav"
+              :key="index"
+              :style="{ background: getPicPath(item.id) }"
+            >
+              <div class="font22" align>{{ item.catname }}</div>
             </div>
           </div>
         </div>
@@ -323,6 +298,7 @@ export default {
         username: "Destiny",
         password: "123456",
       },
+      itemFav: [],
     };
   },
   methods: {
@@ -362,6 +338,15 @@ export default {
       } else {
         this.userData.phoneNumber = res.data;
       }
+      url = this.serverpath + "fe_profileloadfav.php";
+      let res2 = await axios.post(url, JSON.stringify(data));
+      // console.log(res2.data);
+      this.itemFav = res2.data.filter((item) => item.pick);
+    },
+    getPicPath(id) {
+      let url = "";
+      url = "url(" + this.serverpath + "category/" + id + ".png) no-repeat";
+      return url;
     },
   },
   mounted() {
@@ -398,5 +383,14 @@ export default {
   width: 96%;
   margin: auto;
   border: 1px solid #868686;
+}
+.catPick {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  border-radius: 10px;
+  height: 124px;
+  width: 208px;
+  line-height: 124px;
 }
 </style>
