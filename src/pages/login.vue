@@ -142,7 +142,7 @@
         <div class="row justify-center">
           <div class="col-4" style="width: 400px">
             <div align="left">
-              <div class="font20 q-pt-sm">ชื่อผู้้ใช้งาน</div>
+              <div class="font20 q-pt-sm">ชื่อผู้ใช้งาน</div>
               <q-input
                 class="q-py-sm"
                 dark
