@@ -214,11 +214,12 @@ import axios from "axios";
 import alert1btn from "../components/alert1btn.vue";
 import headBar from "../components/headBar.vue";
 import endBar from "../components/endBar.vue";
+import Alert1btn from "../components/alert1btn.vue";
 export default {
   components: {
     headBar,
     endBar,
-    alert1btn,
+    Alert1btn,
   },
   data() {
     return {
