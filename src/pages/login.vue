@@ -161,6 +161,7 @@
                 dense
                 v-model="userData.password"
                 mask="NNNNNNNNNN"
+                @keyup.enter="loginPass()"
                 :type="isPwd ? 'password' : 'text'"
                 ><template v-slot:append>
                   <q-icon

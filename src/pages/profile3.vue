@@ -277,14 +277,14 @@
                 ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
               </div>
               <div
-                v-show="userData.newpassword != '' && !isUserPassword()"
+                v-show="userData.newpassword != '' && !isUserNewPassword()"
                 class="font16 q-pt-sm"
                 style="color: #e75427"
               >
                 ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
               </div>
               <div
-                v-show="userData.newpassword != '' && isUserPassword()"
+                v-show="userData.newpassword != '' && isUserNewPassword()"
                 class="font16 q-pt-sm"
                 style="color: #e75427"
               >
@@ -360,6 +360,14 @@ export default {
     },
     // กดปุ่มต่อไป
     async confirmBtn() {
+      if (
+        this.userData.oldpassword.length == 0 ||
+        this.userData.newpassword.length == 0 ||
+        this.userData.confirmpassword.length == 0
+      ) {
+        this.redNotify("กรุณากรอกตัวเลือกให้ครบ");
+        return;
+      }
       if (this.userData.newpassword != this.userData.confirmpassword) {
         this.redNotify("รหัสผ่านของคุณไม่ตรงกัน");
         return;
@@ -405,7 +413,14 @@ export default {
         this.userData.password.length > 5 && this.userData.password.length < 11
       );
     },
-    // เช็คยืนยันพาสเวิดให้มี 6-10 หลัก
+    // เช็คพาสเวิดใหม่ให้มี 6-10 หลัก
+    isUserNewPassword() {
+      return (
+        this.userData.newpassword.length > 5 &&
+        this.userData.newpassword.length < 11
+      );
+    },
+    // เช็คยืนยันพาสเวิดใหม่ให้มี 6-10 หลัก
     isUserRePassword() {
       return (
         this.userData.rePassword.length > 5 &&

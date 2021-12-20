@@ -262,9 +262,6 @@ export default {
         username: "Destiny",
         password: "12345",
       },
-      isPwd: true,
-      comfirmPwd: "",
-      loginKey: this.$q.localStorage.getItem("login"),
     };
   },
   methods: {

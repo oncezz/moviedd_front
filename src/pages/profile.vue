@@ -53,14 +53,7 @@
             readonly
             dense
             v-model="userData.password"
-            :type="isPwd ? 'password' : 'text'"
-            ><template v-slot:append>
-              <q-icon
-                :name="isPwd ? 'visibility_off' : 'visibility'"
-                class="cursor-pointer"
-                @click="isPwd = !isPwd"
-              />
-            </template>
+          >
           </q-input>
           <div
             class="font12 fontU q-pt-sm"
@@ -136,14 +129,7 @@
                 readonly
                 dense
                 v-model="userData.password"
-                :type="isPwd ? 'password' : 'text'"
-                ><template v-slot:append>
-                  <q-icon
-                    :name="isPwd ? 'visibility_off' : 'visibility'"
-                    class="cursor-pointer"
-                    @click="isPwd = !isPwd"
-                  />
-                </template>
+              >
               </q-input>
               <div
                 class="font16 fontU q-pt-sm"
@@ -240,17 +226,11 @@
                 input-style="font-size: 18px;"
                 dark
                 outlined
+                type="password"
                 readonly
                 dense
                 v-model="userData.password"
-                :type="isPwd ? 'password' : 'text'"
-                ><template v-slot:append>
-                  <q-icon
-                    :name="isPwd ? 'visibility_off' : 'visibility'"
-                    class="cursor-pointer"
-                    @click="isPwd = !isPwd"
-                  />
-                </template>
+              >
               </q-input>
               <div
                 class="font16 fontU q-pt-sm cursor-pointer"
@@ -314,7 +294,7 @@
           </div>
         </div>
         <div
-          class="col-2 font16 fontU q-pr-lg cursor-pointerao"
+          class="col-2 font16 fontU q-pr-lg cursor-pointer"
           align="right "
           @click="editcatagory()"
         >
@@ -327,6 +307,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import headBar from "../components/headBar.vue";
 import endBar from "../components/endBar.vue";
 export default {
@@ -339,13 +320,9 @@ export default {
       userData: {
         id: 1,
         phoneNumber: "088-888-8888",
-
         username: "Destiny",
-        password: "12345",
+        password: "123456",
       },
-      isPwd: true,
-      comfirmPwd: "",
-      loginKey: this.$q.localStorage.getItem("login"),
     };
   },
   methods: {
@@ -372,9 +349,24 @@ export default {
     editcatagory() {
       this.$router.push("/profile4");
     },
+    async loadData() {
+      this.userData.username = this.$q.localStorage.getItem("username");
+      let data = {
+        userid: this.$q.localStorage.getItem("userid"),
+      };
+      let url = this.serverpath + "fe_profile_loadtelephone.php";
+      let res = await axios.post(url, JSON.stringify(data));
+      if (res.data === "fail") {
+        this.$q.localStorage.clear();
+        this.$router.push("/home");
+      } else {
+        this.userData.phoneNumber = res.data;
+      }
+    },
   },
   mounted() {
     this.checkUser();
+    this.loadData();
   },
 };
 </script>
