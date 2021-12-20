@@ -215,6 +215,7 @@ export default {
     };
   },
   methods: {
+    // กดแล้วย้อนกลับไปหน้าแรก
     goBackProfile() {
       this.$router.push("/profile");
     },
