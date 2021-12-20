@@ -22,13 +22,7 @@
           dense
           mask="###-###-####"
         />
-        <div
-          v-show="userData.phoneNumber == ''"
-          class="font12 q-pt-sm"
-          style="color: #868686"
-        >
-          ใช้สำหรับยืนยันตัวตน
-        </div>
+
         <div
           v-show="userData.phoneNumber != '' && !isPhoneNumber()"
           class="font12 q-pt-sm"
@@ -77,13 +71,7 @@
           dark
           mask="###-###-####"
         />
-        <div
-          v-show="userData.phoneNumber == ''"
-          class="font16 q-pt-sm"
-          style="color: #868686"
-        >
-          ใช้สำหรับยืนยันตัวตน
-        </div>
+
         <div
           v-show="userData.phoneNumber != '' && !isPhoneNumber()"
           class="font16 q-pt-sm"
@@ -135,13 +123,7 @@
             dark
             dense
           ></q-input>
-          <div
-            v-show="userData.phoneNumber == ''"
-            class="font16 q-pt-sm"
-            style="color: #868686"
-          >
-            ใช้สำหรับยืนยันตัวตน
-          </div>
+
           <div
             v-show="userData.phoneNumber != '' && !isPhoneNumber()"
             class="font16 q-pt-sm"
@@ -181,7 +163,6 @@ export default {
         username: "",
         password: "",
       },
-      telephone: "",
     };
   },
   methods: {
@@ -191,7 +172,9 @@ export default {
     },
     // กดปุ่มต่อไปเพื่อไปหน้า ขอ OTP
     nextBtn() {
-      this.$router.push("/forgetpassword2");
+      this.userPhoneNumber();
+
+      // this.$router.push("/forgetpassword2");
     },
     // ตัวเช็คเบอมือถือ 10 หลัก
     isPhoneNumber() {
@@ -208,6 +191,14 @@ export default {
       return (
         this.userData.password.length > 5 && this.userData.password.length < 11
       );
+    },
+    async userPhoneNumber() {
+      let data = {
+        telephone: this.userData.phoneNumber,
+      };
+      let url = this.serverpath + "fe_profile_fogetcheckphone.php";
+      let res = await axios.post(url, JSON.stringify(data));
+      console.log(res.data);
     },
   },
 };

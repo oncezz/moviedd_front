@@ -273,6 +273,13 @@ export default {
     saveBtn() {
       this.greenNotify("complete");
     },
+    async loadData() {
+      this.userData.username = this.$q.localStorage.getItem("username");
+    },
+  },
+
+  mounted() {
+    this.loadData();
   },
 };
 </script>
