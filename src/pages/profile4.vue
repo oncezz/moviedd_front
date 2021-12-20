@@ -185,52 +185,30 @@
         <div class="col-3"></div>
         <div class="col" align="center">
           <div class="font24">เลือกแนวหนังที่คุณชอบ</div>
-          <div class="font20">เลือกหนังไปแล้ว 4/8 แนว</div>
+          <div class="font20">เลือกหนังไปแล้ว {{ allPick }}/8 แนว</div>
         </div>
         <div class="col-3"></div>
       </div>
       <div class="row q-pt-xl">
-        <div class="col-2" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/cartoon.png"
-            alt=""
-          />
-        </div>
-        <div class="col-2" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/korea.png"
-            alt=""
-          />
-        </div>
-        <div class="col-2" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/family.png"
-            alt=""
-          />
-        </div>
-        <div class="col-2" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/china.png"
-            alt=""
-          />
-        </div>
-        <div class="col-2" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/superhero.png"
-            alt=""
-          />
-        </div>
-        <div class="col-2" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/scifi.png"
-            alt=""
-          />
+        <div
+          class="col-2 q-pa-sm"
+          v-for="(item, index) in movieCatList"
+          :key="index"
+          style="position: relative"
+        >
+          <div
+            class="blueCatBtnPC"
+            v-show="item.pick"
+            @click="pickCategory(index, item.pick)"
+          ></div>
+          <div
+            class="catBtnPC"
+            align="center"
+            :style="{ background: getPicPath(item.id) }"
+            @click="pickCategory(index, item.pick)"
+          >
+            <div class="font22" align>{{ item.catname }}</div>
+          </div>
         </div>
       </div>
       <div align="center" class="q-pt-lg">
@@ -248,6 +226,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import headBar from "../components/headBar.vue";
 import endBar from "../components/endBar.vue";
 export default {
@@ -257,10 +236,11 @@ export default {
   },
   data() {
     return {
+      allPick: 0,
+      movieCatList: [],
       userData: {
-        phoneNumber: "088-888-8888",
         username: "Destiny",
-        password: "12345",
+        userid: 1,
       },
     };
   },
@@ -270,11 +250,54 @@ export default {
       this.$router.push("/profile");
     },
     // กดปุ่มยืนยันแนวหนัง
-    saveBtn() {
+    async saveBtn() {
+      let data = [];
+      data = this.movieCatList.filter((item) => item.pick).map((x) => x.id);
+      let data2 = {
+        userid: this.$q.localStorage.getItem("userid"),
+        fav: data,
+      };
+      let url = this.serverpath + "fe_profile_savefavcategory.php";
+      let res = await axios.post(url, JSON.stringify(data2));
       this.greenNotify("complete");
+      this.$router.push("/profile");
     },
+    // กด เลือก/ไม่เลือก หมวดหนัง
+    pickCategory(index, pick) {
+      if (pick) {
+        this.movieCatList[index].pick = false;
+        this.allPick--;
+      } else {
+        if (this.allPick == 8) {
+          this.redNotify("pick 8/8");
+          return;
+        } else {
+          this.movieCatList[index].pick = true;
+          this.allPick++;
+        }
+      }
+    },
+    // สร้าง url รูปเป็น string ไปใส่ใน :style
+    getPicPath(id) {
+      let url = "";
+      url = "url(" + this.serverpath + "category/" + id + ".png) no-repeat";
+      return url;
+    },
+    // load ข้อมูล
     async loadData() {
       this.userData.username = this.$q.localStorage.getItem("username");
+      this.userData.userid = this.$q.localStorage.getItem("userid");
+      let data = {
+        userid: this.userData.userid,
+      };
+      let url = this.serverpath + "fe_profileloadfav.php";
+      let res = await axios.post(url, JSON.stringify(data));
+      this.movieCatList = res.data;
+      for (let i = 0; i < res.data.length; i++) {
+        if (res.data[i].pick) {
+          this.allPick++;
+        }
+      }
     },
   },
 
@@ -353,5 +376,29 @@ export default {
   color: black;
   background: #00d1ff;
   border-radius: 2px;
+}
+.catBtnPC {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  cursor: pointer;
+  border-radius: 10px;
+  height: 124px;
+  width: 208px;
+  line-height: 124px;
+}
+.blueCatBtnPC {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  z-index: 99;
+  position: absolute;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 10px;
+  height: 124px;
+  width: 208px;
+  background: rgba(0, 209, 255, 0.3);
+  border: 4px solid #00d1ff;
 }
 </style>

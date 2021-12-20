@@ -475,13 +475,17 @@
           v-for="(item, index) in movieCatList"
           :key="index"
           style="position: relative"
-          @click="pickCategory(index, item.pick)"
         >
-          <div class="blueCatBtnPC" v-show="item.pick"></div>
+          <div
+            class="blueCatBtnPC"
+            v-show="item.pick"
+            @click="pickCategory(index, item.pick)"
+          ></div>
           <div
             class="catBtnPC"
             align="center"
             :style="{ background: getPicPath(item.id) }"
+            @click="pickCategory(index, item.pick)"
           >
             <div class="font22" align>{{ item.catname }}</div>
           </div>
@@ -621,7 +625,7 @@ export default {
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
   z-index: 99;
-  position: fixed;
+  position: absolute;
   margin: auto;
   cursor: pointer;
   border-radius: 10px;
