@@ -80,30 +80,19 @@ body {
   background-color: rgba($color: black, $alpha: 0.8);
 }
 // dialog
-.diaBox {
-  background: linear-gradient(
-    360deg,
-    rgba(0, 0, 0, 0.95) 74.33%,
-    rgba(0, 209, 255, 0.95) 127.31%
-  );
-  backdrop-filter: blur(4px);
-  width: 500px;
-  height: 250px;
-  box-shadow: 15px 15px #00d1ff;
-
-  //  border: 1px solid #00d1ff;
+.whiteBtn {
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #00d1ff;
+  font-size: 18px;
+  color: #00d1ff;
 }
-.okInDia {
-  position: absolute;
-  margin: auto;
-  bottom: 20px;
-  left: 190px;
-  cursor: pointer;
+.blueBtn {
   width: 120px;
   height: 40px;
   line-height: 40px;
   background: #00d1ff;
-  border: 1px solid #00d1ff;
-  color: black;
   font-size: 18px;
+  color: black;
 }
