@@ -521,6 +521,7 @@ export default {
     // กด ข้าม ไม่เลือกหมวดหนัง
     skipBtn() {
       this.greenNotify("สมัครสมาชิกเสร็จสิ้น");
+      this.$router.push("/home");
     },
     // กดเลือกหมวดหนังเรียบร้อย
     async saveUserFavBtn() {
@@ -535,6 +536,7 @@ export default {
       let res = await axios.post(url, JSON.stringify(data2));
 
       this.greenNotify("สมัครสมาชิกเสร็จสิ้น");
+      this.$router.push("/home");
     },
     // กด เลือก/ไม่เลือก หมวดหนัง
     pickCategory(index, pick) {
