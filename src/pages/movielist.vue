@@ -450,7 +450,12 @@
             </div>
           </div>
           <div class="col-4" align="right">
-            <div v-show="allPick == 0" class="skipBtn font24" align="center">
+            <div
+              v-show="allPick == 0"
+              class="skipBtn font24"
+              align="center"
+              @click="skipBtn()"
+            >
               ข้าม
             </div>
             <div
@@ -509,10 +514,28 @@ export default {
           pick: false,
         },
       ],
+      itemFav: [],
     };
   },
   methods: {
-    saveUserFavBtn() {},
+    // กด ข้าม ไม่เลือกหมวดหนัง
+    skipBtn() {
+      this.greenNotify("สมัครสมาชิกเสร็จสิ้น");
+    },
+    // กดเลือกหมวดหนังเรียบร้อย
+    async saveUserFavBtn() {
+      let data = [];
+      data = this.movieCatList.filter((item) => item.pick).map((x) => x.id);
+      let data2 = {
+        userid: this.$q.localStorage.getItem("userid"),
+        fav: data,
+      };
+      console.log(data2);
+      let url = this.serverpath + "fe_profile_savefavcategory.php";
+      let res = await axios.post(url, JSON.stringify(data2));
+
+      this.greenNotify("สมัครสมาชิกเสร็จสิ้น");
+    },
     // กด เลือก/ไม่เลือก หมวดหนัง
     pickCategory(index, pick) {
       if (pick) {
