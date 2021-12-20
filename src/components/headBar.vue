@@ -40,21 +40,23 @@
         <div class="col-2 cursor-pointer" align="center" @click="goHome()">
           <img src="../../public/image/netgig.svg" alt="" />
         </div>
-        <div class="col-1" align="center">หนัง</div>
-        <div class="col-1" align="center">ซี่รี่ย์</div>
-        <div class="col-1" align="center">ประเภท</div>
+        <div class="col-1 menuHead" align="center">หนัง</div>
+        <div class="col-1 menuHead" align="center">ซี่รี่ย์</div>
+        <div class="col-1 menuHead" @click="goToMovieCategory()" align="center">
+          ประเภท
+        </div>
         <div class="col"></div>
         <!-- ----- Fav ----  -->
         <div
           v-show="mlogin"
-          class="col-1 cursor-pointer"
+          class="col-1 menuHead"
           align="center"
           @click="goTofavorite()"
         >
           รายการโปรด
         </div>
         <!-- -- Profile--- -->
-        <div v-show="mlogin" class="col-1" align="center">
+        <div v-show="mlogin" class="menuHead col-1" align="center">
           <q-btn
             style="width: 160px"
             class="font20"
@@ -84,7 +86,7 @@
         <!-- ------- sign Up -----  -->
         <div
           v-show="!mlogin"
-          class="col-1 cursor-pointer"
+          class="col-1 menuHead"
           align="center"
           @click="goTosignup()"
         >
@@ -93,7 +95,7 @@
         <!-- --------  log in ----------  -->
         <div
           v-show="!mlogin"
-          class="col-1 cursor-pointer"
+          class="col-1 menuHead"
           align="center"
           @click="goTologin()"
         >
@@ -163,6 +165,9 @@ export default {
       this.$q.localStorage.clear();
       this.$router.push("/home");
     },
+    goToMovieCategory() {
+      this.$router.push("/moviecategory");
+    },
   },
   mounted() {
     this.loadUserData();
@@ -195,5 +200,11 @@ export default {
   text-decoration: underline;
   color: white;
   background: rgba(0, 0, 0, 1);
+}
+.menuHead {
+  cursor: pointer;
+}
+.menuHead:hover {
+  color: #00d1ff;
 }
 </style>
