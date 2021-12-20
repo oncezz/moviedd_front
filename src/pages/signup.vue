@@ -380,7 +380,7 @@
           </div>
         </div>
         <div class="font20 q-py-sm" align="left" style="width: 500px">
-          <div class="font20 q-pt-sm">ชื่อผู้้ใช้งาน</div>
+          <div class="font20 q-pt-sm">ชื่อผู้ใช้งาน</div>
           <q-input
             dark
             outlined
@@ -505,6 +505,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import headBar from "../components/headBar.vue";
 import endBar from "../components/endBar.vue";
 export default {
@@ -531,13 +532,23 @@ export default {
     closeDia() {
       this.wrongDia = false;
     },
-    goToOpt() {
-      this.$router.push("/otprequest");
-    },
-
-    goToLogIn() {
-      console.log("logIn");
-      this.$router.push("/login");
+    async goToOpt() {
+      let data = {
+        username: this.userData.username,
+        phonenumber: this.userData.phoneNumber,
+        password: this.userData.password,
+      };
+      let url = this.serverpath + "fe_signup_adduser.php";
+      let res = await axios.post(url, JSON.stringify(data));
+      if (res.data == "This phone number exist") {
+        this.redNotify("เบอร์มือถือนี้มีการลงทะเบียนใช้งานแล้ว");
+        return;
+      } else if (res.data == "This username exist") {
+        this.redNotify("ชื่อผู้ใช้งานนี้มีอยู่ในระบบแล้ว");
+        return;
+      } else {
+        this.$router.push("/movielist");
+      }
     },
 
     // ตัวเช็คเบอมือถือ 10 หลัก

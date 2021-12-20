@@ -112,9 +112,7 @@
         </div>
         <div class="font28 q-pt-md" align="center">ลืมรหัสผ่าน</div>
 
-        <div class="font20 q-pt-md">
-          เบอร์โทรศัพท์มือถือของคุณที่ลงทะเบียนไว้
-        </div>
+        <div class="font20 q-pt-md">เบอร์มือถือของคุณที่ลงทะเบียนไว้</div>
         <div class="q-pt-sm">
           <q-input
             outlined
@@ -152,6 +150,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import headBar from "src/components/headBar.vue";
 import EndBar from "src/components/endBar.vue";
 export default {
@@ -196,9 +195,14 @@ export default {
       let data = {
         telephone: this.userData.phoneNumber,
       };
-      let url = this.serverpath + "fe_profile_fogetcheckphone.php";
+      let url = this.serverpath + "fe_profile_forgetcheckphone.php";
       let res = await axios.post(url, JSON.stringify(data));
-      console.log(res.data);
+      if (res.data === "fail") {
+        this.redNotify("ไม่มีเบอร์มือถือนี้อยู่ในระบบ");
+      } else {
+        console.log(res.data);
+        this.greenNotify("Pass");
+      }
     },
   },
 };
