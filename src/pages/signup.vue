@@ -570,6 +570,9 @@ export default {
         this.userData.password.length > 5 && this.userData.password.length < 11
       );
     },
+    goToLogIn() {
+      this.$router.push("/login");
+    },
   },
 };
 </script>

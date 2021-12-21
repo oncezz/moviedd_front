@@ -11,7 +11,7 @@
           src="../../public/image/profilePic.png"
           alt=""
         />
-        <div class="font24 q-pt-lg">ข้อมูลบัญชีผู้ใช้งาน</div>
+        <div class="font24 q-pt-lg">บัญชีผู้ใช้งาน</div>
 
         <div align="left" class="q-pa-md">
           <div class="font14 q-pt-sm">ชื่อผู้ใช้งาน</div>
@@ -38,7 +38,6 @@
           </div>
           <div
             class="font12 fontU q-pt-sm"
-            style="color: #868686"
             align="right"
             @click="editPhoneNumberBtn()"
           >
@@ -49,6 +48,7 @@
             class="q-pt-sm"
             input-style="font-size: 14px;"
             dark
+            type="password"
             outlined
             readonly
             dense
@@ -57,19 +57,45 @@
           </q-input>
           <div
             class="font12 fontU q-pt-sm"
-            style="color: #868686"
             align="right"
             @click="editPasswordBtn()"
           >
             เปลี่ยนรหัสผ่าน
           </div>
         </div>
-        <div align="center" class="q-pt-md">
-          <div class="signoutBtnMobile font14" @click="exitBtn()">
-            ออกจากระบบ
+        <hr class="pagelineMobile" />
+      </div>
+      <div class="row">
+        <div class="font18 col-7 q-pl-md q-pt-md">
+          แนวหนังที่คุณชอบ {{ itemFav.length }}/8
+        </div>
+        <div
+          class="font12 q-pr-lg col fontU q-pt-lg"
+          align="right"
+          @click="editcatagory()"
+        >
+          แก้ไข
+        </div>
+      </div>
+      <div class="q-pt-md q-pl-lg">
+        <div class="row" align="center">
+          <div
+            class="catPickMobile col-5 q-mx-sm q-my-xs"
+            align="center"
+            v-for="(item, index) in itemFav"
+            :key="index"
+            :style="{ background: getPicPath(item.id) }"
+          >
+            <div class="font18" align>{{ item.catname }}</div>
           </div>
         </div>
       </div>
+      <div class="q-pa-md"></div>
+      <hr class="pagelineMobile" />
+      <div align="center" class="q-pt-lg">
+        <div class="signoutBtnMobile font14" @click="exitBtn()">ออกจากระบบ</div>
+      </div>
+      <div class="q-pt-lg"></div>
 
       <!-- ---- content ------->
       <end-bar :login="true" :menu="5"></end-bar>
@@ -85,7 +111,7 @@
           src="../../public/image/profilePic.png"
           alt=""
         />
-        <div class="font28 q-pt-xl">ข้อมูลบัญชีผู้ใช้งาน</div>
+        <div class="font28 q-pt-xl">บัญชีผู้ใช้งาน</div>
         <div class="row">
           <div class="col-2"></div>
           <div class="col">
@@ -114,7 +140,6 @@
               </div>
               <div
                 class="font16 fontU q-pt-sm"
-                style="color: #868686"
                 align="right"
                 @click="editPhoneNumberBtn()"
               >
@@ -126,6 +151,7 @@
                 input-style="font-size: 18px;"
                 dark
                 outlined
+                type="password"
                 readonly
                 dense
                 v-model="userData.password"
@@ -133,7 +159,6 @@
               </q-input>
               <div
                 class="font16 fontU q-pt-sm"
-                style="color: #868686"
                 align="right"
                 @click="editPasswordBtn()"
               >
@@ -141,9 +166,6 @@
               </div>
             </div>
             <div align="center" class="q-pt-md">
-              <div class="signoutBtnTablet font18" @click="exitBtn()">
-                ออกจากระบบ
-              </div>
               <div class="q-pa-md"></div>
             </div>
           </div>
@@ -152,18 +174,36 @@
         <hr class="pageline" />
         <div class="q-pa-sm"></div>
         <div class="row">
-          <div class="font28 q-pl-lg col-4">แนวหนังที่คุณชอบ</div>
-          <div class="font28 q-pl-xl col-2 fontU" @click="editcatagory()">
+          <div class="font24 col-5 q-pt-sm">
+            แนวหนังที่คุณชอบ {{ itemFav.length }}/8
+          </div>
+          <div
+            class="font16 q-pr-xl col fontU q-pt-sm"
+            align="right"
+            @click="editcatagory()"
+          >
             แก้ไข
           </div>
         </div>
-        <div class="row q-pt-md q-pl-sm">
-          <div class="col-4" align="center">
-            <img
-              style="width: 90%"
-              src="../../public/image/movielist/fantasy.png"
-              alt=""
-            />
+
+        <div class="q-pt-md q-pl-lg">
+          <div class="row" align="center">
+            <div
+              class="catPick col-4 q-ma-md"
+              align="center"
+              v-for="(item, index) in itemFav"
+              :key="index"
+              :style="{ background: getPicPath(item.id) }"
+            >
+              <div class="font22" align>{{ item.catname }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="q-pa-md"></div>
+        <hr class="pageline" />
+        <div class="q-pt-lg">
+          <div class="signoutBtnTablet font18" @click="exitBtn()">
+            ออกจากระบบ
           </div>
         </div>
         <div class="q-pa-md"></div>
@@ -384,6 +424,11 @@ export default {
   margin: auto;
   border: 1px solid #868686;
 }
+.pagelineMobile {
+  width: 93%;
+  margin: auto;
+  border: 1px solid #868686;
+}
 .catPick {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
@@ -392,5 +437,14 @@ export default {
   height: 124px;
   width: 208px;
   line-height: 124px;
+}
+.catPickMobile {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  border-radius: 10px;
+  height: 87px;
+  width: 146px;
+  line-height: 87px;
 }
 </style>

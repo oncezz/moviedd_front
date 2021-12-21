@@ -157,21 +157,39 @@
                 />
               </div>
               <div class="font20 q-pt-xl">เบอร์โทรศัพท์</div>
+
               <div class="q-pt-sm">
                 <q-input
                   input-style="font-size: 18px;"
                   dark
+                  mask="###-###-####"
                   outlined
                   dense
                   v-model="userData.phoneNumber"
                 />
               </div>
 
-              <div class="font20 q-pt-xl">รหัสผ่าน</div>
+              <div
+                v-show="userData.phoneNumber != '' && !isPhoneNumber()"
+                class="font16"
+                style="color: #e75427"
+              >
+                หมายเลขโทรศัพท์ต้องมีความยาว 10 ตัว
+              </div>
+              <div
+                v-show="userData.phoneNumber == ''"
+                class="font16"
+                style="color: #e75427"
+              >
+                &nbsp;
+              </div>
+
+              <div class="font20 q-pt-lg">รหัสผ่าน</div>
               <q-input
                 class="q-pt-sm"
                 input-style="font-size: 18px;"
                 dark
+                mask="NNNNNNNNNN"
                 dense
                 outlined
                 v-model="userData.password"
@@ -195,6 +213,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import headBar from "../components/headBar.vue";
 import endBar from "../components/endBar.vue";
 export default {
@@ -205,13 +224,13 @@ export default {
   data() {
     return {
       userData: {
-        phoneNumber: "088-888-8888",
+        phoneNumber: "",
         username: "Destiny",
-        password: "12345",
+        password: "",
+        userid: "",
       },
       isPwd: true,
       comfirmPwd: "",
-      loginKey: this.$q.localStorage.getItem("login"),
     };
   },
   methods: {
@@ -219,10 +238,50 @@ export default {
     goBackProfile() {
       this.$router.push("/profile");
     },
-    // กดปุ่มต่อไป
-    nextBtn() {
-      this.greenNotify("complete");
+    // ตัวเช็คเบอมือถือ 10 หลัก
+    isPhoneNumber() {
+      return this.userData.phoneNumber.length == 12;
     },
+    // โหลด data
+    loadUserData() {
+      this.userData.username = this.$q.localStorage.getItem("username");
+      this.userData.userid = this.$q.localStorage.getItem("userid");
+    },
+    // กดปุ่มต่อไป
+    async nextBtn() {
+      if (
+        this.userData.password.length == 0 ||
+        this.userData.phoneNumber.length == 0
+      ) {
+        this.redNotify("กรุณากรอกตัวเลือกให้ครบ");
+        return;
+      }
+      let data = {
+        userid: this.userData.userid,
+        newphone: this.userData.phoneNumber,
+        password: this.userData.password,
+      };
+      let url = this.serverpath + "fe_profile_changephone.php";
+      let res = await axios.post(url, JSON.stringify(data));
+
+      if (res.data === "update") {
+        this.greenNotify("แก้ไขเบอร์โทรศัพท์เสร็จสิ้น");
+        this.$router.push("/profile");
+      } else if (res.data == "This phonenumber exist") {
+        this.redNotify("มีเบอร์โทรศัพท์นี้ในระบบแล้ว");
+      } else if (res.data == "Password incorrect") {
+        this.redNotify("รหัสผ่านไม่ถูกต้อง");
+      } else if (res.data == "not change") {
+        this.greenNotify("แก้ไขเบอร์โทรศัพท์เสร็จสิ้น");
+        this.$router.push("/profile");
+      } else {
+        this.redNotify(res.data);
+      }
+    },
+  },
+
+  mounted() {
+    this.loadUserData();
   },
 };
 </script>
