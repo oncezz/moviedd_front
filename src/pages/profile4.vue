@@ -31,33 +31,31 @@
         <div class="col-3" align="left"></div>
         <div class="col" align="center">
           <div class="font18">เลือกแนวหนังที่คุณชอบ</div>
-          <div class="font14">เลือกหนังไปแล้ว 4/8 แนว</div>
+          <div class="font14">เลือกหนังไปแล้ว {{ allPick }}/8 แนว</div>
         </div>
         <div class="col-3"></div>
       </div>
       <div class="row q-ma-md">
-        <div class="col-6" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/cartoon.png"
-            alt=""
-          />
-        </div>
-
-        <div class="col-6" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/korea.png"
-            alt=""
-          />
-        </div>
-        <div class="row" style="width: 100%; height: 15px"></div>
-        <div class="col-6" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/family.png"
-            alt=""
-          />
+        <div
+          class="col-6 q-mt-md q-pl-sm"
+          align="left"
+          v-for="(item, index) in movieCatList"
+          :key="index"
+          style="position: relative"
+        >
+          <div
+            class="blueCatBtnMobile"
+            v-show="item.pick"
+            @click="pickCategory(index, item.pick)"
+          ></div>
+          <div
+            class="catBtnMobile"
+            align="center"
+            :style="{ background: getPicPath(item.id) }"
+            @click="pickCategory(index, item.pick)"
+          >
+            <div class="font22" align>{{ item.catname }}</div>
+          </div>
         </div>
       </div>
       <div align="center" class="q-pt-md font12">
@@ -102,35 +100,32 @@
           <div class="col-2"></div>
         </div>
         <div class="row q-pt-xl">
-          <div class="col-4" align="left"></div>
           <div class="col" align="center">
             <div class="font24">เลือกแนวหนังที่คุณชอบ</div>
-            <div class="font20">เลือกหนังไปแล้ว 4/8 แนว</div>
+            <div class="font20">เลือกหนังไปแล้ว {{ allPick }}/8 แนว</div>
           </div>
-          <div class="col-4"></div>
         </div>
-        <div class="row q-ma-lg">
-          <div class="col-4" align="center">
-            <img
-              style="width: 90%"
-              src="../../public/image/movielist/cartoon.png"
-              alt=""
-            />
-          </div>
-
-          <div class="col-4" align="center">
-            <img
-              style="width: 90%"
-              src="../../public/image/movielist/korea.png"
-              alt=""
-            />
-          </div>
-          <div class="col-4" align="center">
-            <img
-              style="width: 90%"
-              src="../../public/image/movielist/family.png"
-              alt=""
-            />
+        <div class="row q-pl-lg">
+          <div
+            class="col-4 q-mt-md q-pl-sm"
+            align="left"
+            v-for="(item, index) in movieCatList"
+            :key="index"
+            style="position: relative"
+          >
+            <div
+              class="blueCatBtnTablet"
+              v-show="item.pick"
+              @click="pickCategory(index, item.pick)"
+            ></div>
+            <div
+              class="catBtnTablet"
+              align="center"
+              :style="{ background: getPicPath(item.id) }"
+              @click="pickCategory(index, item.pick)"
+            >
+              <div class="font22" align>{{ item.catname }}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -412,6 +407,26 @@ export default {
   width: 208px;
   line-height: 124px;
 }
+.catBtnTablet {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  cursor: pointer;
+  border-radius: 10px;
+  height: 124px;
+  width: 208px;
+  line-height: 124px;
+}
+.catBtnMobile {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  cursor: pointer;
+  border-radius: 10px;
+  height: 87px;
+  width: 146px;
+  line-height: 87px;
+}
 .blueCatBtnPC {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
@@ -423,6 +438,34 @@ export default {
   border-radius: 10px;
   height: 124px;
   width: 208px;
+  background: rgba(0, 209, 255, 0.3);
+  border: 4px solid #00d1ff;
+}
+.blueCatBtnTablet {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  z-index: 9;
+  position: absolute;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 10px;
+  height: 124px;
+  width: 208px;
+  background: rgba(0, 209, 255, 0.3);
+  border: 4px solid #00d1ff;
+}
+.blueCatBtnMobile {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  z-index: 9;
+  position: absolute;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 10px;
+  height: 87px;
+  width: 146px;
   background: rgba(0, 209, 255, 0.3);
   border: 4px solid #00d1ff;
 }

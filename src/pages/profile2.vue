@@ -28,6 +28,7 @@
           <div class="font14 q-pt-lg">เบอร์โทรศัพท์</div>
           <div class="">
             <q-input
+              mask="###-###-####"
               input-style="font-size: 14px;"
               dark
               outlined
@@ -35,8 +36,22 @@
               v-model="userData.phoneNumber"
             />
           </div>
+          <div
+            v-show="userData.phoneNumber != '' && !isPhoneNumber()"
+            class="font12"
+            style="color: #e75427"
+          >
+            หมายเลขโทรศัพท์ต้องมีความยาว 10 ตัว
+          </div>
+          <div
+            v-show="userData.phoneNumber == '' || isPhoneNumber()"
+            class="font12"
+            style="color: #e75427"
+          >
+            &nbsp;
+          </div>
 
-          <div class="font14 q-pt-lg">รหัสผ่าน</div>
+          <div class="font14 q-pt-sm">รหัสผ่าน</div>
           <q-input
             class=""
             input-style="font-size: 14px;"
@@ -52,7 +67,7 @@
           <div class="font12 q-pt-md row justify-center">
             <div class="backBtnMobile" @click="goBackProfile()">ย้อนกลับ</div>
             <div class="q-pa-md"></div>
-            <div class="nextBtnMobile text-black" @click="nextBtn()">ต่อไป</div>
+            <div class="nextBtnMobile text-black" @click="nextBtn()">ตกลง</div>
           </div>
         </div>
       </div>
@@ -95,12 +110,27 @@
                   outlined
                   dense
                   v-model="userData.phoneNumber"
-                  readonly
+                  mask="###-###-####"
                 />
+              </div>
+              <div
+                v-show="userData.phoneNumber != '' && !isPhoneNumber()"
+                class="font16"
+                style="color: #e75427"
+              >
+                หมายเลขโทรศัพท์ต้องมีความยาว 10 ตัว
+              </div>
+              <div
+                v-show="userData.phoneNumber == '' || isPhoneNumber()"
+                class="font16"
+                style="color: #e75427"
+              >
+                &nbsp;
               </div>
 
               <div class="font20 q-pt-xl">รหัสผ่าน</div>
               <q-input
+                mask="NNNNNNNNNN"
                 class="q-pt-sm"
                 input-style="font-size: 18px;"
                 dark
@@ -115,7 +145,7 @@
               <div class="font18 q-py-xl row justify-center">
                 <div class="backBtn" @click="goBackProfile()">ย้อนกลับ</div>
                 <div class="q-pa-md"></div>
-                <div class="nextBtn text-black" @click="nextBtn()">ต่อไป</div>
+                <div class="nextBtn text-black" @click="nextBtn()">ตกลง</div>
               </div>
             </div>
           </div>
@@ -177,7 +207,7 @@
                 หมายเลขโทรศัพท์ต้องมีความยาว 10 ตัว
               </div>
               <div
-                v-show="userData.phoneNumber == ''"
+                v-show="userData.phoneNumber == '' || isPhoneNumber()"
                 class="font16"
                 style="color: #e75427"
               >
@@ -201,7 +231,7 @@
               <div class="font18 q-py-xl row justify-center">
                 <div class="backBtn" @click="goBackProfile()">ย้อนกลับ</div>
                 <div class="q-pa-md"></div>
-                <div class="nextBtn text-black" @click="nextBtn()">ต่อไป</div>
+                <div class="nextBtn text-black" @click="nextBtn()">ตกลง</div>
               </div>
             </div>
           </div>
@@ -251,7 +281,7 @@ export default {
     async nextBtn() {
       if (
         this.userData.password.length == 0 ||
-        this.userData.phoneNumber.length == 0
+        this.userData.phoneNumber.length != 12
       ) {
         this.redNotify("กรุณากรอกตัวเลือกให้ครบ");
         return;
