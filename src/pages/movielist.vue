@@ -493,6 +493,23 @@
       </div>
       <!----------------------->
     </div>
+    <!-- กดบันทึกแนวหนังเรียบร้อย  -->
+    <alert1btn
+      v-show="saveCategoryDoneAlert"
+      textLine1="สมัครสมาชิกเสร็จสิ้น"
+      pictureType="2"
+      @close-alert="closeAlertSaveBtn()"
+    >
+    </alert1btn>
+    <!-- เลือกหมวดหนังเกิน 8 หมวด  -->
+    <alert1btn
+      v-show="pickCategory8Alert"
+      textLine1="เลือกหนังได้สูงสุด 8 แนว"
+      textLine2="เลือกอีกครั้งเพื่อยกเลิกแนวหนัง"
+      pictureType="1"
+      @close-alert="closeAlertPickBtn()"
+    >
+    </alert1btn>
   </div>
 </template>
 
@@ -521,13 +538,23 @@ export default {
         },
       ],
       itemFav: [],
+      saveCategoryDoneAlert: false, // Alert เลือกหมวดหนังเสร็จสิ้น
+      pickCategory8Alert: false, // เลือกหมวดหนังเกิน 8
     };
   },
   methods: {
     // กด ข้าม ไม่เลือกหมวดหนัง
     skipBtn() {
-      this.greenNotify("สมัครสมาชิกเสร็จสิ้น");
-      // this.$router.push("/home");
+      this.saveCategoryDoneAlert = true;
+    },
+    //ปิด alert save หมวดหนัง
+    closeAlertSaveBtn() {
+      this.saveCategoryDoneAlert = false;
+      this.$router.push("/home");
+    },
+    //ปิด alert เลือกหมวดหนังเกิน
+    closeAlertPickBtn() {
+      this.pickCategory8Alert = false;
     },
     // กดเลือกหมวดหนังเรียบร้อย
     async saveUserFavBtn() {
@@ -541,7 +568,7 @@ export default {
       let url = this.serverpath + "fe_profile_savefavcategory.php";
       let res = await axios.post(url, JSON.stringify(data2));
 
-      this.greenNotify("สมัครสมาชิกเสร็จสิ้น");
+      this.saveCategoryDoneAlert = true;
       // this.$router.push("/home");
     },
     // กด เลือก/ไม่เลือก หมวดหนัง
@@ -551,8 +578,7 @@ export default {
         this.allPick--;
       } else {
         if (this.allPick == 8) {
-          this.redNotify("pick 8/8");
-          return;
+          this.pickCategory8Alert = true;
         } else {
           this.movieCatList[index].pick = true;
           this.allPick++;

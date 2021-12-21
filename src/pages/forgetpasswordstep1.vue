@@ -146,6 +146,14 @@
         </div>
       </div>
     </div>
+    <alert1btn
+      v-show="noPhoneAlert"
+      textLine1="เบอร์โทรศัพท์หมายเลขนี้"
+      textLine2="ยังไม่ได้ลงทะเบียน"
+      pictureType="1"
+      @close-alert="closeAlertNoPhone()"
+    >
+    </alert1btn>
   </div>
 </template>
 
@@ -153,8 +161,9 @@
 import axios from "axios";
 import headBar from "src/components/headBar.vue";
 import EndBar from "src/components/endBar.vue";
+import alert1btn from "src/components/alert1btn.vue";
 export default {
-  components: { headBar, EndBar },
+  components: { headBar, EndBar, alert1btn },
   data() {
     return {
       userData: {
@@ -162,6 +171,7 @@ export default {
         username: "",
         password: "",
       },
+      noPhoneAlert: false,
     };
   },
   methods: {
@@ -191,6 +201,7 @@ export default {
         this.userData.password.length > 5 && this.userData.password.length < 11
       );
     },
+    // กดต่อไปเพื่อเช็คเบอร์โทรศัพท์ในระบบ
     async userPhoneNumber() {
       let data = {
         telephone: this.userData.phoneNumber,
@@ -198,11 +209,15 @@ export default {
       let url = this.serverpath + "fe_profile_forgetcheckphone.php";
       let res = await axios.post(url, JSON.stringify(data));
       if (res.data === "fail") {
-        this.redNotify("ไม่มีเบอร์มือถือนี้อยู่ในระบบ");
+        this.noPhoneAlert = true;
       } else {
-        console.log(res.data);
+        // console.log(res.data);
         this.greenNotify("Pass");
       }
+    },
+    // ปิด Alert ไม่มีโทรศัพท์ในระบบ
+    closeAlertNoPhone() {
+      this.noPhoneAlert = false;
     },
   },
 };

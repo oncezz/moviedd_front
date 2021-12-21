@@ -222,6 +222,7 @@
         </div>
       </div>
     </div>
+    <!-- ถามตอนลบหนังออกจาก fav  -->
     <alert2btn
       v-show="alertDelMovieFav"
       textLine="คุณต้องการลบรายชื่อใช่หรือไม่"
@@ -232,15 +233,14 @@
 </template>
 
 <script>
-import alert2btn from "../components/alert1btn.vue";
+import alert2btn from "../components/alert2btn.vue";
 import headBar from "../components/headBar.vue";
 import endBar from "../components/endBar.vue";
-import Alert2btn from "src/components/alert2btn.vue";
 export default {
   components: {
     headBar,
     endBar,
-    Alert2btn,
+    alert2btn,
   },
   data() {
     return {

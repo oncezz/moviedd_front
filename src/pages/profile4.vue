@@ -219,9 +219,23 @@
         </div>
       </div>
     </div>
-    <div>
-      <div class="q-pt-xl"></div>
-    </div>
+    <!-- กดบันทึกแนวหนังเรียบร้อย  -->
+    <alert1btn
+      v-show="saveCategoryDoneAlert"
+      textLine1="บันทึกแนวหนังที่คุณชอบสำเร็จ"
+      pictureType="2"
+      @close-alert="closeAlertSaveBtn()"
+    >
+    </alert1btn>
+    <!-- เลือกหมวดหนังเกิน 8 หมวด  -->
+    <alert1btn
+      v-show="pickCategory8Alert"
+      textLine1="เลือกหนังได้สูงสุด 8 แนว"
+      textLine2="เลือกอีกครั้งเพื่อยกเลิกแนวหนัง"
+      pictureType="1"
+      @close-alert="closeAlertPickBtn()"
+    >
+    </alert1btn>
   </div>
 </template>
 
@@ -229,10 +243,12 @@
 import axios from "axios";
 import headBar from "../components/headBar.vue";
 import endBar from "../components/endBar.vue";
+import alert1btn from "../components/alert1btn.vue";
 export default {
   components: {
     headBar,
     endBar,
+    alert1btn,
   },
   data() {
     return {
@@ -242,12 +258,23 @@ export default {
         username: "Destiny",
         userid: 1,
       },
+      saveCategoryDoneAlert: false, // Alert เลือกหมวดหนังเสร็จสิ้น
+      pickCategory8Alert: false, // เลือกหมวดหนังเกิน 8
     };
   },
   methods: {
     // กดปุ่มกลับไปหน้า profile
     backBtn() {
       this.$router.push("/profile");
+    },
+    //ปิด alert save หมวดหนัง
+    closeAlertSaveBtn() {
+      this.saveCategoryDoneAlert = false;
+      this.$router.push("/profile");
+    },
+    //ปิด alert เลือกหมวดหนังเกิน
+    closeAlertPickBtn() {
+      this.pickCategory8Alert = false;
     },
     // กดปุ่มยืนยันแนวหนัง
     async saveBtn() {
@@ -259,8 +286,7 @@ export default {
       };
       let url = this.serverpath + "fe_profile_savefavcategory.php";
       let res = await axios.post(url, JSON.stringify(data2));
-      this.greenNotify("complete");
-      this.$router.push("/profile");
+      this.saveCategoryDoneAlert = true;
     },
     // กด เลือก/ไม่เลือก หมวดหนัง
     pickCategory(index, pick) {
@@ -269,8 +295,7 @@ export default {
         this.allPick--;
       } else {
         if (this.allPick == 8) {
-          this.redNotify("pick 8/8");
-          return;
+          this.pickCategory8Alert = true;
         } else {
           this.movieCatList[index].pick = true;
           this.allPick++;
