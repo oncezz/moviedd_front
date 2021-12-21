@@ -224,7 +224,7 @@
     </div>
     <alert2btn
       v-show="alertDelMovieFav"
-      textLine="คุณต้องการลบออกจากรายการโปรดใช่หรือไม่"
+      textLine="คุณต้องการลบรายชื่อใช่หรือไม่"
       @cancle-alert="cancleDelDavMovie()"
       @ok-alert="DelFavMovie()"
     ></alert2btn>

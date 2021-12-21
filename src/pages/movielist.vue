@@ -500,10 +500,12 @@
 import axios from "axios";
 import headBar from "../components/headBar.vue";
 import endBar from "../components/endBar.vue";
+import alert1btn from "src/components/alert1btn.vue";
 export default {
   components: {
     headBar,
     endBar,
+    alert1btn,
   },
   data() {
     return {
@@ -525,7 +527,7 @@ export default {
     // กด ข้าม ไม่เลือกหมวดหนัง
     skipBtn() {
       this.greenNotify("สมัครสมาชิกเสร็จสิ้น");
-      this.$router.push("/home");
+      // this.$router.push("/home");
     },
     // กดเลือกหมวดหนังเรียบร้อย
     async saveUserFavBtn() {
@@ -540,7 +542,7 @@ export default {
       let res = await axios.post(url, JSON.stringify(data2));
 
       this.greenNotify("สมัครสมาชิกเสร็จสิ้น");
-      this.$router.push("/home");
+      // this.$router.push("/home");
     },
     // กด เลือก/ไม่เลือก หมวดหนัง
     pickCategory(index, pick) {
@@ -624,7 +626,7 @@ export default {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
-  z-index: 99;
+  z-index: 9;
   position: absolute;
   margin: auto;
   cursor: pointer;

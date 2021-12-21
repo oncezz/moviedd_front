@@ -1,6 +1,12 @@
 <template>
   <div class="fullscreen bgDrop">
     <div class="fixed-center alertBox" align="center">
+      <q-icon
+        name="fas fa-question-circle"
+        color="yellow-14"
+        size="60px"
+        class="q-pt-md"
+      />
       <div class="fontTitle q-py-md">{{ textLine }}</div>
       <div class="row justify-evenly">
         <div class="whiteBtn" @click="cancleAlert()">ยกเลิก</div>
@@ -46,7 +52,7 @@ export default {
     //   backdrop-filter: blur(4px);
   }
   .fontTitle {
-    line-height: 100px;
+    line-height: 40px;
     font-size: 14px;
   }
 }
@@ -64,7 +70,7 @@ export default {
     //   backdrop-filter: blur(4px);
   }
   .fontTitle {
-    line-height: 100px;
+    line-height: 40px;
     font-size: 20px;
   }
 }
