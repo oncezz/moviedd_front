@@ -35,9 +35,9 @@
         </div>
         <div class="col-3"></div>
       </div>
-      <div class="row q-ma-md">
+      <div class="row q-pa-md">
         <div
-          class="col-6 q-mt-md q-pl-sm"
+          class="col-6 q-pt-md"
           align="left"
           v-for="(item, index) in movieCatList"
           :key="index"
@@ -54,7 +54,7 @@
             :style="{ background: getPicPath(item.id) }"
             @click="pickCategory(index, item.pick)"
           >
-            <div class="font22" align>{{ item.catname }}</div>
+            <div class="font18" align>{{ item.catname }}</div>
           </div>
         </div>
       </div>
@@ -422,6 +422,10 @@ export default {
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
   cursor: pointer;
+  // background-size: cover;
+  // position: absolute;
+  background-size: 100% 100%;
+  margin-left: calc((50vw - 146px - 15px) / 2);
   border-radius: 10px;
   height: 87px;
   width: 146px;
@@ -461,7 +465,7 @@ export default {
   user-select: none; /* Standard syntax */
   z-index: 9;
   position: absolute;
-  margin: auto;
+  left: calc((50vw - 146px - 15px) / 2);
   cursor: pointer;
   border-radius: 10px;
   height: 87px;

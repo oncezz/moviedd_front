@@ -30,6 +30,7 @@
             class="q-pt-sm"
             input-style="font-size: 14px;"
             dark
+            mask="NNNNNNNNNN"
             outlined
             dense
             v-model="userData.oldpassword"
@@ -48,25 +49,45 @@
             class="q-pt-sm"
             input-style="font-size: 14px;"
             dark
+            mask="NNNNNNNNNN"
             outlined
             dense
             v-model="userData.newpassword"
-            :type="oldPwd ? 'password' : 'text'"
+            :type="newPwd ? 'password' : 'text'"
             ><template v-slot:append>
               <q-icon
-                :name="oldPwd ? 'visibility_off' : 'visibility'"
+                :name="newPwd ? 'visibility_off' : 'visibility'"
                 class="cursor-pointer"
-                @click="oldPwd = !oldPwd"
+                @click="newPwd = !newPwd"
               />
             </template>
           </q-input>
-          <div class="font12 q-pt-sm" style="color: #868686" align="right">
+          <div
+            v-show="userData.newpassword == ''"
+            class="font12 q-pt-sm"
+            style="color: #868686"
+          >
             ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+          </div>
+          <div
+            v-show="userData.newpassword != '' && !isUserNewPassword()"
+            class="font12 q-pt-sm"
+            style="color: #e75427"
+          >
+            ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+          </div>
+          <div
+            v-show="userData.newpassword != '' && isUserNewPassword()"
+            class="font12 q-pt-sm"
+            style="color: #e75427"
+          >
+            &nbsp;
           </div>
           <div class="font14 q-pt-sm">ยืนยันรหัสผ่านใหม่</div>
           <q-input
             class="q-pt-sm"
             input-style="font-size: 14px;"
+            mask="NNNNNNNNNN"
             dark
             outlined
             dense
@@ -126,6 +147,7 @@
               <q-input
                 class="q-pt-sm"
                 input-style="font-size: 18px;"
+                mask="NNNNNNNNNN"
                 dark
                 outlined
                 dense
@@ -144,6 +166,7 @@
               <q-input
                 class="q-pt-sm"
                 input-style="font-size: 18px;"
+                mask="NNNNNNNNNN"
                 dark
                 outlined
                 dense
@@ -158,11 +181,25 @@
                 </template>
               </q-input>
               <div
-                class="font16 fontU q-pt-sm"
+                v-show="userData.newpassword == ''"
+                class="font16 q-pt-sm"
                 style="color: #868686"
-                align="right"
               >
-                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6-10 หลัก
+                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+              </div>
+              <div
+                v-show="userData.newpassword != '' && !isUserNewPassword()"
+                class="font16 q-pt-sm"
+                style="color: #e75427"
+              >
+                ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+              </div>
+              <div
+                v-show="userData.newpassword != '' && isUserNewPassword()"
+                class="font16 q-pt-sm"
+                style="color: #e75427"
+              >
+                &nbsp;
               </div>
 
               <div class="font20 q-pt-md">ยืนยันรหัสผ่านใหม่</div>
@@ -170,6 +207,7 @@
                 class="q-pt-sm"
                 input-style="font-size: 18px;"
                 dark
+                mask="NNNNNNNNNN"
                 outlined
                 dense
                 v-model="userData.confirmpassword"

@@ -198,6 +198,7 @@
           </div>
         </div>
       </div>
+      <div class="q-pa-xl"></div>
     </div>
     <!-- alert password ไม่ถูกต้อง  -->
     <alert1btn
