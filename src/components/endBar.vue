@@ -211,11 +211,26 @@ export default {
     menu: {
       type: Number,
     },
-    login: {
-      type: Boolean,
-    },
+  },
+  data() {
+    return {
+      login: false,
+      userData: {
+        id: "",
+        username: "",
+      },
+    };
   },
   methods: {
+    loadUserData() {
+      this.userData.id = this.$q.localStorage.getItem("userid");
+      this.userData.username = this.$q.localStorage.getItem("username");
+      if (this.userData.id == null) {
+        this.login = false;
+      } else {
+        this.login = true;
+      }
+    },
     goHome() {
       this.$router.push("/home");
     },
@@ -231,6 +246,9 @@ export default {
     goProfile() {
       this.$router.push("/profile");
     },
+  },
+  mounted() {
+    this.loadUserData();
   },
 };
 </script>
