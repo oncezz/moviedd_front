@@ -5,17 +5,14 @@
       <!-- ---- content ------->
       <div class="fixed-top headBGtablet"></div>
       <div>
-        <q-icon
-          size="sm"
-          class="fas fa-arrow-left q-pl-lg"
-          style="padding-top: 10px"
-        />
+        <q-icon size="sm" class="" style="padding-top: 10px" />
       </div>
       <div align="center" class="q-pt-sm">
         <q-input
           outlined
           rounded
           dark
+          dense
           bg-color="grey-10"
           clearable
           clear-icon="close"
@@ -83,17 +80,14 @@
       <!-- ---- content ------->
 
       <div>
-        <q-icon
-          size="lg"
-          class="fas fa-arrow-left q-pl-lg"
-          style="padding-top: 10px"
-        />
+        <q-icon size="lg" class="" style="padding-top: 10px" />
       </div>
       <div align="center" class="q-pt-sm">
         <q-input
           outlined
           rounded
           dark
+          dense
           bg-color="grey-10"
           clearable
           clear-icon="close"
@@ -163,13 +157,18 @@
       <!-- ---- content ------->
 
       <div>
-        <q-icon size="xl" class="fas fa-arrow-left q-pt-xl" />
+        <q-icon
+          size="xl"
+          @click="backBtn()"
+          class="fas fa-arrow-left q-pt-xl cursor-pointer"
+        />
       </div>
 
       <div align="center">
         <q-input
           outlined
           rounded
+          dense
           dark
           bg-color="grey-10"
           clearable
@@ -186,7 +185,7 @@
           หนังค้นหายอดนิยม
         </div>
       </div>
-      <div class="row q-pa-lg">
+      <div class="row q-pa-lg cursor-pointer">
         <div class="col-2" align="center">
           <img
             style="width: 90%"
@@ -247,6 +246,11 @@ export default {
       loginKey: this.$q.localStorage.getItem("login"),
       searchMovie: "",
     };
+  },
+  methods: {
+    backBtn() {
+      this.$router.push("/home");
+    },
   },
 };
 </script>

@@ -437,19 +437,18 @@
             ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
           </div>
           <div
-            v-show="userData.password != '' && isUserPassword()"
-            class="font16"
-            style="color: #e75427"
-          >
-            &nbsp;
-          </div>
-
-          <div
             v-show="userData.password == ''"
             class="font16"
             style="color: #868686"
           >
             ตัวอักษรภาษาอังกฤษหรือตัวเลข 6 - 10 หลัก
+          </div>
+          <div
+            v-show="userData.password != '' && isUserPassword()"
+            class="font16"
+            style="color: #e75427"
+          >
+            &nbsp;
           </div>
         </div>
         <div class="saveBtn font18 q-mt-lg" @click="goToOpt()">ถัดไป</div>

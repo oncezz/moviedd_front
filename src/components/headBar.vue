@@ -102,7 +102,12 @@
           เข้าสู่ระบบ
         </div>
         <!----------------------->
-        <div class="col-1" align="center"><q-icon class="fas fa-search" /></div>
+        <div class="col-1" align="center">
+          <q-icon
+            @click="goSearch()"
+            class="menuHead fas fa-search cursor-pointer"
+          />
+        </div>
       </div>
       <div class="headPC q-pa-sm"></div>
     </div>
@@ -139,6 +144,10 @@ export default {
     // กดปุ่มบัญชีอผู้ใช้งานไปหน้า profile
     profileBtn() {
       this.$router.push("/profile");
+    },
+    // กดปุ่มไปหน้า search
+    goSearch() {
+      this.$router.push("/search");
     },
     // กดปุ่มยืนยันแนวหนัง
     saveBtn() {
