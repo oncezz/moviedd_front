@@ -74,6 +74,11 @@ const routes = [
     path: "/test",
     component: () => import("pages/test.vue"),
   },
+
+  {
+    path: "/watchmovie",
+    component: () => import("pages/watchmovie.vue"),
+  },
 ];
 
 export default routes;

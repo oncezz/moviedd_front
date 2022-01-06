@@ -440,7 +440,7 @@
       <head-bar></head-bar>
       <!-- ---- content ------->
       <div align="center">
-        <div class="row items-center">
+        <div class="row q-px-xl items-center">
           <div class="col-4"></div>
           <div class="col">
             <div class="font24 q-ma-sm">เลือกแนวหนังที่คุณชอบ</div>
@@ -452,16 +452,17 @@
           <div class="col-4" align="right">
             <div
               v-show="allPick == 0"
-              class="skipBtn font24"
+              class="skipBtn font20"
               align="center"
               @click="skipBtn()"
             >
               ข้าม
             </div>
+
             <div
               v-show="allPick != 0"
               @click="saveUserFavBtn()"
-              class="skipBtn font24"
+              class="skipBtn font20"
               align="center"
             >
               เสร็จสิ้น
@@ -469,7 +470,7 @@
           </div>
         </div>
       </div>
-      <div class="row q-pt-xl q-px-xl q-ml-lg">
+      <div class="row q-pt-lg q-px-xl">
         <div
           class="col-2 q-pa-sm"
           v-for="(item, index) in movieCatList"
@@ -616,8 +617,8 @@ export default {
 .skipBtn {
   cursor: pointer;
   width: 125px;
-  height: 55px;
-  line-height: 55px;
+  height: 40px;
+  line-height: 40px;
   color: black;
   background: #00d1ff;
   border-radius: 40px;

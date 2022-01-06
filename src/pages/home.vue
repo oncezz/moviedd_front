@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- mobile  -->
     <div class="mobile-only lt-sm">
       <head-bar></head-bar>
       <!-- ---- content ------->
@@ -92,6 +93,7 @@
       <!-- ---- content ------->
       <end-bar :login="loginKey == 1 ? true : false" :menu="1"></end-bar>
     </div>
+    <!-- tablet -->
     <div class="mobile-only gt-xs">
       <head-bar></head-bar>
       <!-- ---- content ------->
@@ -99,14 +101,62 @@
       <!-- ---- content ------->
       <end-bar :login="loginKey == 1 ? true : false" :menu="1"></end-bar>
     </div>
+    <!-- pc -->
     <div
       class="desktop-only shadow-6"
       style="max-width: 1600px; width: 100%; margin: auto"
     >
       <head-bar></head-bar>
 
-      <div class="posterPromote"></div>
+      <!-- <div class="posterPromote"></div> -->
       <!-- ---- content ------->
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col">
+          <q-carousel
+            class="promotePc"
+            style="width: 1200px"
+            animated
+            navigation
+            v-model="slide"
+            infinite
+            autoplay="false"
+            transition-prev="slide-right"
+            transition-next="slide-left"
+            swipeable
+          >
+            <q-carousel-slide
+              :name="1"
+              :img-src="serverpath + '/promotion/movie/1p.jpg'"
+            >
+              <div class="absolute-bottom brx customCaptionPc" align="center">
+                <div class="absolute-bottom font12">
+                  <div class="font12 q-py-md">แอ็คชั่น | ผจญภัย | ตลก</div>
+                  <div class="row justify-evenly">
+                    <div class="favBtnInPromotePc">รายการโปรด</div>
+                    <div class="playBtnInPromotePc">เล่นหนังเรื่องนี้</div>
+                  </div>
+                </div>
+              </div>
+            </q-carousel-slide>
+            <q-carousel-slide
+              :name="2"
+              :img-src="serverpath + '/promotion/movie/2p.jpg'"
+            >
+              <div class="absolute-bottom brx customCaptionPc" align="center">
+                <div class="absolute-bottom font12">
+                  <div class="font12 q-py-md">แอ็คชั่น | ผจญภัย | ตลก</div>
+                  <div class="row justify-evenly">
+                    <div class="favBtnInPromotePc">รายการโปรด</div>
+                    <div class="playBtnInPromotePc">เล่นหนังเรื่องนี้</div>
+                  </div>
+                </div>
+              </div>
+            </q-carousel-slide>
+          </q-carousel>
+        </div>
+        <div class="col-1"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -147,6 +197,9 @@ export default {
   position: relative;
   height: 500px;
 }
+.promotePc {
+  position: relative;
+}
 .posterPicMobile {
   width: 95px;
   height: 135px;
@@ -164,6 +217,11 @@ export default {
   text-align: center;
   background: linear-gradient(360deg, #000000 16.71%, rgba(0, 0, 0, 0) 60.48%);
 }
+.customCaptionPc {
+  padding-top: 84px;
+  height: 200px;
+  text-align: center;
+}
 .favBtnInPromote {
   border: 1px solid #fefefe;
   border-radius: 20px;
@@ -173,6 +231,15 @@ export default {
   font-size: 12px;
   color: #fefefe;
 }
+.favBtnInPromotePc {
+  border: 1px solid #00d1ff;
+  border-radius: 40px;
+  width: 186px;
+  height: 52px;
+  line-height: 52px;
+  font-size: 20px;
+  color: #fefefe;
+}
 .playBtnInPromote {
   background: #00d1ff;
   border-radius: 20px;
@@ -180,6 +247,15 @@ export default {
   height: 30px;
   line-height: 30px;
   font-size: 12px;
+  color: #0d0d0d;
+}
+.playBtnInPromotePc {
+  background: #00d1ff;
+  border-radius: 40px;
+  width: 186px;
+  height: 52px;
+  line-height: 52px;
+  font-size: 20px;
   color: #0d0d0d;
 }
 </style>

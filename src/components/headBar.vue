@@ -41,7 +41,7 @@
           <img src="../../public/image/netgig.svg" alt="" />
         </div>
         <div class="col-1 menuHead" align="center">หนัง</div>
-        <div class="col-1 menuHead" align="center">ซี่รี่ย์</div>
+        <div class="col-1 menuHead" align="center">ซี่รีย์</div>
         <div class="col-1 menuHead" @click="goToMovieCategory()" align="center">
           ประเภท
         </div>

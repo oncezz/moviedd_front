@@ -310,6 +310,7 @@
         <div class="q-pt-md" style="font-size: 32px" align="center">
           สิทธิพิเศษสำหรับสมาชิก
         </div>
+
         <div class="row q-pt-md q-pl-xl">
           <div class="lineOrderTablet"></div>
           <div class="q-pl-md">
@@ -320,7 +321,6 @@
 
         <div class="row q-pt-md q-pl-xl">
           <div class="lineOrderTablet"></div>
-
           <div class="q-pl-md">
             <div class="font24">ระบบจัดการหน้าแรก</div>
             <div class="font19">
@@ -329,8 +329,10 @@
             </div>
           </div>
         </div>
-        <div class="picTagTablet">
-          <img src="../../public/image/signupPromoTablet.png" alt="" />
+        <div class="absolute-bottom-right">
+          <div class="q-pt-md">
+            <img src="../../public/image/signupPromoTablet.png" alt="" />
+          </div>
         </div>
       </div>
 
@@ -344,7 +346,7 @@
     >
       <head-bar></head-bar>
       <div class="q-pa-lg text-white" align="center">
-        <div><img src="../../public/image/signupPromo.png" alt="" /></div>
+        <!-- <div><img src="../../public/image/signupPromo.png" alt="" /></div> -->
         <div class="font28">สมัครสมาชิก</div>
         <div class="font20 q-py-sm" align="left" style="width: 500px">
           <div class="font20 q-pt-sm">หมายเลขโทรศัพท์มือถือ</div>
@@ -369,7 +371,7 @@
             class="font16"
             style="color: #e75427"
           >
-            หมายเลขโทรศัพท์ต้องมีความยาว 10 ตัว
+            หมายเลขโทรศัพท์มือถือต้องมีความยาว 10 ตัว
           </div>
           <div
             v-show="userData.phoneNumber != '' && isPhoneNumber()"
@@ -462,10 +464,11 @@
             เข้าสู่ระบบ</span
           >
         </div>
+        <div style="height: 10px"></div>
       </div>
       <div>
         <div class="promoTag row no-padding">
-          <div class="col q-pt-md q-pl-xl">
+          <div class="col q-pt-lg q-pl-xl">
             <div class="font28">สิทธิพิเศษสำหรับสมาชิก</div>
             <div class="row q-pt-md">
               <div class="lineOrder"></div>
@@ -492,7 +495,7 @@
           </div>
 
           <div class="picTag">
-            <img height="350px" src="../../public/image/picTag.png" alt="" />
+            <img height="330px" src="../../public/image/picTag.png" alt="" />
           </div>
         </div>
       </div>
@@ -532,6 +535,18 @@ export default {
       this.wrongDia = false;
     },
     async goToOpt() {
+      if (this.userData.phoneNumber.length != 12) {
+        this.redNotify("กรุณากรอกหมายเลขโทรศัพท์มือถือให้ถูกต้อง");
+        return;
+      }
+      if (this.userData.username.length < 6) {
+        this.redNotify("กรุณากรอกชื่อผู้ใช้งานให้ถูกต้อง");
+        return;
+      }
+      if (this.userData.password.length < 6) {
+        this.redNotify("กรุณากรอกรหัสให้ถูกต้อง");
+        return;
+      }
       let data = {
         username: this.userData.username,
         telephone: this.userData.phoneNumber,
@@ -585,12 +600,15 @@ export default {
   cursor: pointer;
   width: 120px;
   height: 40px;
+
   line-height: 40px;
-  border: 1px solid white;
+  border: 1px;
+  background: #00d1ff;
+  color: black;
 }
 .promoTag {
   position: relative;
-  height: 287px;
+  height: 250px;
   width: 100%;
   background: #1f1f1f;
 }
@@ -611,7 +629,7 @@ export default {
 }
 .picTagTablet {
   position: absolute;
-  bottom: -220px;
+  bottom: 0px;
   right: 0px;
 }
 .picTagM {
@@ -623,14 +641,18 @@ export default {
   width: 90px;
   height: 27px;
   line-height: 27px;
-  border: 1px solid white;
+  border: 1px;
   border-radius: 2px;
+  background: #00d1ff;
+  color: black;
 }
 .saveBtnTablet {
   width: 116px;
   height: 40px;
   line-height: 40px;
-  border: 1px solid white;
+  border: 1px solid;
+  background: #00d1ff;
+  color: black;
 }
 .endHeaderMobile {
   width: 100%;
@@ -638,6 +660,7 @@ export default {
   background: #1f1f1f;
 }
 .endHeaderTablet {
+  position: relative;
   width: 100%;
   height: 291px;
   background: #1f1f1f;
