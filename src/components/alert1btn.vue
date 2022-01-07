@@ -6,13 +6,13 @@
           name="fas fa-exclamation-circle"
           color="yellow-5"
           size="55px"
-          v-show="pictureType == 1"
+          v-show="pictureType == '1'"
         />
         <q-icon
           name="fas fa-check-circle"
           color="green-13"
           size="43px"
-          v-show="pictureType == 2"
+          v-show="pictureType == '2'"
         />
         <div class="fontTitle1line" v-show="!line2show">
           {{ textLine1 }}
@@ -32,7 +32,7 @@
 export default {
   props: {
     pictureType: {
-      type: Number,
+      type: String,
     },
     textLine1: {
       type: String,

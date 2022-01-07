@@ -229,206 +229,52 @@
           <div class="col-4"></div>
           <div class="col">
             <div class="font24 q-ma-sm">เลือกแนวหนังที่คุณชอบ</div>
-            <div class="font20">เลือกสูงสุดได้ 8 แนว</div>
+            <div v-show="allPick == 0" class="font20">เลือกสูงสุดได้ 8 แนว</div>
+            <div v-show="allPick != 0" class="font20">
+              เลือกไปแล้ว {{ allPick }}/8 แนว
+            </div>
           </div>
           <div class="col-4" align="right">
-            <div class="skipBtnTablet font24" align="center">ข้าม</div>
+            <div
+              v-show="allPick == 0"
+              class="skipBtnTablet font20"
+              align="center"
+            >
+              ข้าม
+            </div>
+            <div
+              v-show="allPick != 0"
+              class="skipBtnTablet font20"
+              align="center"
+            >
+              เสร็จสิ้น
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row q-pt-lg q-px-xl">
+        <div
+          class="col-4 q-pa-sm"
+          v-for="(item, index) in movieCatList"
+          :key="index"
+          style="position: relative"
+        >
+          <div
+            class="blueCatBtnPC"
+            v-show="item.pick"
+            @click="pickCategory(index, item.pick)"
+          ></div>
+          <div
+            class="catBtnPC"
+            align="center"
+            :style="{ background: getPicPath(item.id) }"
+            @click="pickCategory(index, item.pick)"
+          >
+            <div class="font22" align>{{ item.catname }}</div>
           </div>
         </div>
       </div>
 
-      <div class="row q-ma-xl">
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/cartoon.png"
-            alt=""
-          />
-        </div>
-
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/korea.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/family.png"
-            alt=""
-          />
-        </div>
-        <div class="row" style="width: 100%; height: 15px"></div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/china.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/superhero.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/scifi.png"
-            alt=""
-          />
-        </div>
-        <div class="row" style="width: 100%; height: 15px"></div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/japan.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/drama.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/comedy.png"
-            alt=""
-          />
-        </div>
-        <div class="row" style="width: 100%; height: 15px"></div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/thai.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/history.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/adventure.png"
-            alt=""
-          />
-        </div>
-        <div class="row" style="width: 100%; height: 15px"></div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/musical.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/fantasy.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/popular.png"
-            alt=""
-          />
-        </div>
-        <div class="row" style="width: 100%; height: 15px"></div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/triller.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/show.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/romantic.png"
-            alt=""
-          />
-        </div>
-        <div class="row" style="width: 100%; height: 15px"></div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/mystery.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/war.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/horror.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/documentary.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/award.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/crime.png"
-            alt=""
-          />
-        </div>
-        <div class="row" style="width: 100%; height: 15px"></div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/india.png"
-            alt=""
-          />
-        </div>
-        <div class="col-4" align="center">
-          <img
-            style="width: 90%"
-            src="../../public/image/movielist/erotic.png"
-            alt=""
-          />
-        </div>
-      </div>
       <!-- ---- content ------->
       <end-bar :login="loginKey == 1 ? true : false" :menu="1"></end-bar>
     </div>
@@ -565,7 +411,6 @@ export default {
         userid: this.$q.localStorage.getItem("userid"),
         fav: data,
       };
-      console.log(data2);
       let url = this.serverpath + "fe_profile_savefavcategory.php";
       let res = await axios.post(url, JSON.stringify(data2));
 

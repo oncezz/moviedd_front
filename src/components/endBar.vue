@@ -168,13 +168,13 @@
             <div>
               <img src="../../public/image/favIcon.svg" width="30px" alt="" />
             </div>
-            <div>เพิ่มรายชื่อ</div>
+            <div>รายการโปรด</div>
           </div>
           <div class="pick" v-show="menu == 4">
             <div>
               <img src="../../public/image/favIconA.svg" width="30px" alt="" />
             </div>
-            <div>เพิ่มรายชื่อ</div>
+            <div>รายการโปรด</div>
           </div>
         </div>
         <!-- Profile  -->

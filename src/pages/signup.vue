@@ -153,12 +153,10 @@
             </div>
           </div>
         </div>
-        <div class="picTagM">
-          <img
-            height="300px"
-            src="../../public/image/sinupPromoMobile.png"
-            alt=""
-          />
+        <div class="absolute-bottom-right">
+          <div class="picTagM q-pt-md">
+            <img src="../../public/image/sinupPromoMobile.png" alt="" />
+          </div>
         </div>
       </div>
 
@@ -634,7 +632,7 @@ export default {
 }
 .picTagM {
   position: absolute;
-  bottom: -120px;
+  bottom: -30px;
   right: 0px;
 }
 .saveBtnMobile {
